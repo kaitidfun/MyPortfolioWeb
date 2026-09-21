@@ -38,8 +38,14 @@ function useScrollSnap(enabled) {
         if (offset <= holdHeight) return;
 
         const progress = (offset - holdHeight) / (sectionHeight - holdHeight);
+        // Snapping "back" only needs to retreat to the end of the hold zone
+        // (still visually the same as the section's resting state) rather
+        // than all the way to its very start, so a small scroll forward
+        // isn't yanked back further than the user actually scrolled.
         const target =
-          progress < 0.5 ? index * sectionHeight : (index + 1) * sectionHeight;
+          progress < 0.5
+            ? index * sectionHeight + holdHeight
+            : (index + 1) * sectionHeight;
 
         if (Math.abs(target - y) > 2) {
           window.scrollTo({ top: target, behavior: "smooth" });
