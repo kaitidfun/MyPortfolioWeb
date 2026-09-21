@@ -8,7 +8,7 @@ import ContactSection from "../components/ContactSection";
 export default function Home() {
   return (
     <>
-      <FullSection zIndex={10} transitionIn={false}>
+      <FullSection zIndex={10}>
         <Hero />
       </FullSection>
       <FullSection zIndex={20}>
@@ -20,7 +20,7 @@ export default function Home() {
       <FullSection zIndex={40}>
         <TechStack />
       </FullSection>
-      <FullSection zIndex={50} transitionOut={false}>
+      <FullSection zIndex={50}>
         <ContactSection />
       </FullSection>
     </>
