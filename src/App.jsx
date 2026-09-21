@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import ProjectPage from "./pages/ProjectPage";
-import { SECTION_HOLD_VH, SECTION_TOTAL_VH } from "./constants";
+import { SECTION_TOTAL_VH } from "./constants";
 
 // Index (0-based) of each full-viewport, position:sticky section stacked on
 // the home page (see Home.jsx: hero, about, projects, skills, contact).
@@ -11,60 +11,9 @@ import { SECTION_HOLD_VH, SECTION_TOTAL_VH } from "./constants";
 // elements once they're stacked/stuck, so the only reliable target is
 // index * each section's total scroll height (SECTION_TOTAL_VH).
 const HOME_STACK_SECTIONS = { about: 1, projects: 2, skills: 3, contact: 4 };
-const NUM_HOME_SECTIONS = 5;
-
-// Once the scroll settles mid-transition (past a section's "aim lock" hold,
-// but not yet fully into the next one), snap on to whichever side is
-// closer instead of leaving two sections half-covering each other.
-function useScrollSnap(enabled) {
-  useEffect(() => {
-    if (!enabled) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    let timer = null;
-
-    const handleScroll = () => {
-      clearTimeout(timer);
-      timer = setTimeout(() => {
-        const vh = window.innerHeight;
-        const sectionHeight = vh * (SECTION_TOTAL_VH / 100);
-        const holdHeight = vh * (SECTION_HOLD_VH / 100);
-        const maxIndex = NUM_HOME_SECTIONS - 1;
-        const y = window.scrollY;
-        const index = Math.min(maxIndex, Math.floor(y / sectionHeight));
-        if (index >= maxIndex) return;
-
-        const offset = y - index * sectionHeight;
-        if (offset <= holdHeight) return;
-
-        const progress = (offset - holdHeight) / (sectionHeight - holdHeight);
-        // Snapping "back" only needs to retreat to the end of the hold zone
-        // (still visually the same as the section's resting state) rather
-        // than all the way to its very start, so a small scroll forward
-        // isn't yanked back further than the user actually scrolled.
-        const target =
-          progress < 0.5
-            ? index * sectionHeight + holdHeight
-            : (index + 1) * sectionHeight;
-
-        if (Math.abs(target - y) > 2) {
-          window.scrollTo({ top: target, behavior: "smooth" });
-        }
-      }, 140);
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      clearTimeout(timer);
-    };
-  }, [enabled]);
-}
 
 function ScrollManager() {
   const location = useLocation();
-
-  useScrollSnap(location.pathname === "/");
 
   useEffect(() => {
     if (location.pathname === "/" && location.hash) {
