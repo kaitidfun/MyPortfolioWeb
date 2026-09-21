@@ -2,6 +2,7 @@ import { useParams, Link, Navigate } from "react-router-dom";
 import { projects } from "../data/resumeData";
 import DemoPlaceholder from "../components/DemoPlaceholder";
 import Reveal from "../components/Reveal";
+import Footer from "../components/Footer";
 
 export default function ProjectPage() {
   const { id } = useParams();
@@ -14,6 +15,7 @@ export default function ProjectPage() {
   const { demoType, details } = project;
 
   return (
+    <>
     <article className="section-shell py-16 sm:py-20">
       <Reveal>
         <Link
@@ -78,5 +80,7 @@ export default function ProjectPage() {
         </div>
       </Reveal>
     </article>
+    <Footer />
+    </>
   );
 }

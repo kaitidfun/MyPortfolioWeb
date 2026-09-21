@@ -34,3 +34,59 @@ body {
     @apply mx-auto w-full max-w-6xl px-6 sm:px-8 lg:px-10;
   }
 }
+
+@keyframes hero-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.hero-draw {
+  stroke-dasharray: 1;
+  animation: hero-draw 2.4s ease-out forwards;
+}
+
+.hero-draw-delay-1 {
+  animation-delay: 0.3s;
+}
+
+.hero-draw-delay-2 {
+  animation-delay: 0.6s;
+}
+
+@keyframes hero-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    r: 3;
+  }
+  50% {
+    opacity: 1;
+    r: 5;
+  }
+}
+
+.hero-pulse {
+  animation: hero-pulse 3.2s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.hero-pulse-delay-1 {
+  animation-delay: 1s;
+}
+
+.hero-pulse-delay-2 {
+  animation-delay: 2s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-draw,
+  .hero-pulse {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}

@@ -5,49 +5,54 @@ import Reveal from "./Reveal";
 
 export default function ProjectGallery() {
   return (
-    <section id="projects" className="section-shell py-20 sm:py-28">
+    <div className="flex h-full w-full flex-col justify-center bg-white py-16 sm:py-20">
+    <div className="section-shell w-full">
       <Reveal className="max-w-2xl">
-        <p className="text-sm font-semibold uppercase tracking-widest text-navy-600">
+        <p className="text-xs font-semibold uppercase tracking-widest text-navy-600 sm:text-sm">
           Selected Work
         </p>
-        <h2 className="mt-3 text-3xl font-bold tracking-tight text-ink-900 sm:text-4xl">
+        <h2 className="mt-2 text-2xl font-bold tracking-tight text-ink-900 sm:mt-3 sm:text-4xl">
           Project Gallery
         </h2>
-        <p className="mt-3 text-ink-500">
+        <p className="mt-2 hidden text-sm text-ink-500 sm:mt-3 sm:block">
           Three projects spanning generative AI, IoT hardware, and interactive
           design — click a card for the full write-up.
         </p>
       </Reveal>
 
-      <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 sm:mt-10 sm:grid sm:snap-none sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:pb-0 lg:grid-cols-3">
         {projects.map((project, index) => (
-          <Reveal key={project.id} delay={index * 0.08}>
+          <Reveal
+            key={project.id}
+            delay={index * 0.08}
+            className="w-[78%] flex-shrink-0 snap-start sm:w-auto"
+          >
             <Link
               to={`/projects/${project.id}`}
               className="group flex h-full flex-col overflow-hidden rounded-2xl border border-navy-100 bg-white shadow-sm transition hover:-translate-y-1 hover:border-navy-300 hover:shadow-lg"
             >
               <CoverPlaceholder />
-              <div className="flex flex-1 flex-col p-6">
+              <div className="flex flex-1 flex-col p-4 sm:p-6">
                 <span className="text-xs font-semibold uppercase tracking-wide text-navy-500">
                   {project.subtitle}
                 </span>
-                <h3 className="mt-2 text-xl font-bold text-ink-900 group-hover:text-navy-800">
+                <h3 className="mt-1 text-base font-bold text-ink-900 group-hover:text-navy-800 sm:mt-2 sm:text-xl">
                   {project.name}
                 </h3>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-ink-500">
+                <p className="mt-2 hidden flex-1 text-sm leading-relaxed text-ink-500 sm:block">
                   {project.blurb}
                 </p>
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
+                <div className="mt-2 flex flex-wrap gap-1.5 sm:mt-5 sm:gap-2">
+                  {project.tags.slice(0, 3).map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full bg-navy-50 px-3 py-1 text-xs font-medium text-navy-700"
+                      className="rounded-full bg-navy-50 px-2.5 py-1 text-[11px] font-medium text-navy-700 sm:px-3 sm:text-xs"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
-                <span className="mt-6 inline-flex items-center text-sm font-semibold text-navy-700">
+                <span className="mt-3 hidden items-center text-sm font-semibold text-navy-700 sm:mt-6 sm:inline-flex">
                   View details
                   <span className="ml-1 transition group-hover:translate-x-1">
                     &rarr;
@@ -58,6 +63,7 @@ export default function ProjectGallery() {
           </Reveal>
         ))}
       </div>
-    </section>
+    </div>
+    </div>
   );
 }
