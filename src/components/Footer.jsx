@@ -6,7 +6,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-navy-100 bg-navy-950 text-navy-100">
+    <footer className="border-t border-navy-100 bg-navy-950 text-navy-100 dark:border-navy-800">
       <div className="section-shell flex flex-col gap-8 py-12 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="text-lg font-bold text-white">{profile.name}</p>

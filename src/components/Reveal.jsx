@@ -28,7 +28,7 @@ export default function Reveal({ children, delay = 0, y = 24, className = "" }) 
         scrollTrigger: {
           trigger: el,
           start: "top 85%",
-          once: true,
+          toggleActions: "restart reverse restart reverse",
         },
       }
     );

@@ -3,13 +3,13 @@ import Reveal from "./Reveal";
 
 export default function TechStack() {
   return (
-    <div className="flex h-full w-full flex-col justify-center bg-navy-50 py-16 sm:py-20">
+    <div className="flex h-full w-full flex-col justify-center bg-navy-50 py-16 sm:py-20 dark:bg-navy-900">
       <div className="section-shell">
         <Reveal className="max-w-2xl">
-          <p className="text-xs font-semibold uppercase tracking-widest text-navy-600 sm:text-sm">
+          <p className="text-xs font-semibold uppercase tracking-widest text-navy-600 sm:text-sm dark:text-navy-300">
             Capabilities
           </p>
-          <h2 className="mt-2 text-2xl font-bold tracking-tight text-ink-900 sm:mt-3 sm:text-4xl">
+          <h2 className="mt-2 text-2xl font-bold tracking-tight text-ink-900 sm:mt-3 sm:text-4xl dark:text-white">
             Tech Stack &amp; Skills
           </h2>
         </Reveal>
@@ -17,15 +17,15 @@ export default function TechStack() {
         <div className="mt-6 grid grid-cols-2 gap-3 sm:mt-12 sm:gap-6 lg:grid-cols-4">
           {skillCategories.map((category, index) => (
             <Reveal key={category.title} delay={index * 0.06}>
-              <div className="h-full rounded-2xl border border-navy-100 bg-white p-3 shadow-sm sm:p-6">
-                <h3 className="text-xs font-bold uppercase tracking-wide text-navy-800 sm:text-sm">
+              <div className="h-full rounded-2xl border border-navy-100 bg-white p-3 shadow-sm sm:p-6 dark:border-navy-700 dark:bg-navy-950">
+                <h3 className="text-xs font-bold uppercase tracking-wide text-navy-800 sm:text-sm dark:text-navy-200">
                   {category.title}
                 </h3>
                 <ul className="mt-2 flex flex-wrap gap-1.5 sm:mt-4 sm:gap-2">
                   {category.skills.map((skill) => (
                     <li
                       key={skill}
-                      className="rounded-full bg-navy-50 px-2 py-0.5 text-[10px] font-medium text-navy-700 sm:px-3 sm:py-1 sm:text-xs"
+                      className="rounded-full bg-navy-50 px-2 py-0.5 text-[10px] font-medium text-navy-700 sm:px-3 sm:py-1 sm:text-xs dark:bg-navy-800 dark:text-navy-200"
                     >
                       {skill}
                     </li>
@@ -37,17 +37,17 @@ export default function TechStack() {
         </div>
 
         <div className="mt-6 sm:mt-12">
-          <h3 className="text-xs font-semibold uppercase tracking-widest text-navy-600 sm:text-sm">
+          <h3 className="text-xs font-semibold uppercase tracking-widest text-navy-600 sm:text-sm dark:text-navy-300">
             Soft Skills
           </h3>
           <div className="mt-3 grid grid-cols-3 gap-2 sm:mt-6 sm:gap-6">
             {softSkills.map((skill, index) => (
               <Reveal key={skill.title} delay={index * 0.06}>
-                <div className="h-full rounded-2xl bg-white p-3 shadow-sm sm:p-6">
-                  <p className="text-xs font-bold text-ink-900 sm:text-sm">
+                <div className="h-full rounded-2xl bg-white p-3 shadow-sm sm:p-6 dark:bg-navy-950">
+                  <p className="text-xs font-bold text-ink-900 sm:text-sm dark:text-white">
                     {skill.title}
                   </p>
-                  <p className="mt-1 hidden text-sm leading-relaxed text-ink-500 sm:mt-2 sm:block">
+                  <p className="mt-1 hidden text-sm leading-relaxed text-ink-500 sm:mt-2 sm:block dark:text-navy-300">
                     {skill.description}
                   </p>
                 </div>
