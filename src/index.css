@@ -20,10 +20,6 @@
   --color-ink-500: #5b6472;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   @apply bg-white text-ink-900 antialiased;
   font-family: var(--font-sans);
