@@ -1,23 +1,15 @@
-export default function HardwarePhotos({ photos }) {
+export default function HardwarePhotos({ photos, description }) {
   const [primary] = photos;
   return (
-    <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
+    <div className="flex flex-col gap-4">
       <img
         src={primary.src}
-        alt={primary.caption}
-        className="aspect-[4/3] w-full flex-shrink-0 rounded-xl object-cover sm:w-56"
+        alt={description || primary.caption}
+        className="aspect-[16/9] w-full rounded-xl object-cover"
       />
-      <ul className="space-y-2">
-        {photos.map((photo) => (
-          <li
-            key={photo.src}
-            className="flex gap-3 text-sm leading-relaxed text-ink-700 dark:text-navy-200"
-          >
-            <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-navy-500" />
-            <span>{photo.caption}</span>
-          </li>
-        ))}
-      </ul>
+      {description && (
+        <p className="text-sm leading-relaxed text-ink-500 dark:text-navy-300">{description}</p>
+      )}
     </div>
   );
 }

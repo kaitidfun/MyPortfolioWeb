@@ -75,7 +75,7 @@ function HighlightsList({ details }) {
           key={point}
           className="flex gap-3 text-sm leading-relaxed text-ink-700 dark:text-navy-200"
         >
-          <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-navy-500" />
+          <span className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-navy-500" />
           <span>{point}</span>
         </li>
       ))}
@@ -153,11 +153,11 @@ function IotProjectLayout({ project, details }) {
             <p className="text-sm leading-relaxed text-ink-500 dark:text-navy-300">
               {details.description}
             </p>
-          </Reveal>
-
-          <Reveal delay={0.05}>
-            <SectionHeading>Highlights</SectionHeading>
-            <HighlightsList details={details} />
+            {details.highlightNote && (
+              <p className="mt-4 text-sm leading-relaxed text-ink-500 dark:text-navy-300">
+                {details.highlightNote}
+              </p>
+            )}
           </Reveal>
 
           <Reveal delay={0.05}>
@@ -195,7 +195,10 @@ function IotProjectLayout({ project, details }) {
             <Reveal delay={0.05}>
               <SectionHeading>Hardware</SectionHeading>
               <div className="mt-4">
-                <HardwarePhotos photos={details.hardwarePhotos} />
+                <HardwarePhotos
+                  photos={details.hardwarePhotos}
+                  description={details.hardwareDescription}
+                />
               </div>
             </Reveal>
           )}

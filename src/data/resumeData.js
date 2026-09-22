@@ -56,6 +56,8 @@ export const projects = [
       subheading: "Computer Vision + Arduino + Spotify API",
       description:
         "A touchless media control system that translates real-time hand gestures into playback commands. Computer vision handles gesture recognition in Python, while an Arduino bridges the software to physical hardware, and the Spotify API drives live playback control.",
+      highlightNote:
+        "It works with any Spotify Connect device — PC, iPad, iPhone, or anything else signed into the same account — so the same gesture set can control several devices at once.",
       highlights: [
         "Built a touchless media control system using Python (Computer Vision) and Arduino.",
         "Integrated Spotify API to translate real-time hand gestures into playback commands.",
@@ -147,6 +149,8 @@ export const projects = [
           { icon: "phone", label: "iPhone" },
         ],
       },
+      hardwareDescription:
+        "The ESP32-CAM module, wired and mounted inside a simple cardboard enclosure for the working prototype.",
       hardwarePhotos: [
         {
           src: "/demos/iot/hardware-unbox.jpg",

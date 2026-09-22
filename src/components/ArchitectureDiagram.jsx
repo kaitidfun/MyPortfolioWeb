@@ -29,7 +29,7 @@ function FlowArrow({ label }) {
         &darr;
       </span>
       {label && (
-        <span className="text-center text-[9px] font-medium uppercase tracking-wide text-navy-400 dark:text-navy-500">
+        <span className="text-center text-[8px] font-medium uppercase tracking-wide text-navy-400 dark:text-navy-500">
           {label}
         </span>
       )}
@@ -40,14 +40,14 @@ function FlowArrow({ label }) {
 function StageCard({ stage }) {
   const Icon = STAGE_ICONS[stage.icon];
   return (
-    <div className="flex min-w-0 flex-1 flex-col items-center gap-2 rounded-xl border border-navy-100 bg-navy-50 p-4 text-center dark:border-navy-700 dark:bg-navy-900">
+    <div className="flex min-w-0 flex-1 flex-col items-center gap-1.5 rounded-xl border border-navy-100 bg-navy-50 p-3 text-center dark:border-navy-700 dark:bg-navy-900">
       {Icon && (
-        <div className="flex h-10 w-10 items-center justify-center">
-          <Icon className="h-8 w-8" />
+        <div className="flex h-7 w-7 items-center justify-center">
+          <Icon className="h-6 w-6" />
         </div>
       )}
-      <p className="text-[11px] font-bold text-navy-800 dark:text-white">{stage.label}</p>
-      <p className="text-[10px] leading-relaxed text-ink-500 dark:text-navy-400">{stage.detail}</p>
+      <p className="text-[10px] font-bold text-navy-800 dark:text-white">{stage.label}</p>
+      <p className="text-[9px] leading-relaxed text-ink-500 dark:text-navy-400">{stage.detail}</p>
     </div>
   );
 }
@@ -65,26 +65,26 @@ export default function ArchitectureDiagram({ stages, devices }) {
       {devices && devices.length > 0 && (
         <>
           <FlowArrow label={stages[stages.length - 1]?.flow} />
-          <div className="flex min-w-0 flex-1 flex-col items-center justify-center gap-2 rounded-xl border border-navy-100 bg-navy-50 p-4 text-center dark:border-navy-700 dark:bg-navy-900">
-            <p className="text-[10px] font-semibold uppercase tracking-wide text-navy-500 dark:text-navy-400">
+          <div className="flex min-w-0 flex-1 flex-col items-center justify-center gap-1.5 rounded-xl border border-navy-100 bg-navy-50 p-3 text-center dark:border-navy-700 dark:bg-navy-900">
+            <p className="text-[9px] font-semibold uppercase tracking-wide text-navy-500 dark:text-navy-400">
               Spotify Connect
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-3">
+            <div className="flex flex-wrap items-center justify-center gap-2.5">
               {devices.map((d) => {
                 const DeviceIcon = DEVICE_ICONS[d.icon];
                 return (
                   <div key={d.label} className="flex flex-col items-center gap-1">
                     {DeviceIcon && (
-                      <DeviceIcon className="h-6 w-6 text-navy-700 dark:text-navy-200" />
+                      <DeviceIcon className="h-5 w-5 text-navy-700 dark:text-navy-200" />
                     )}
-                    <span className="text-[10px] font-medium text-ink-500 dark:text-navy-400">
+                    <span className="text-[9px] font-medium text-ink-500 dark:text-navy-400">
                       {d.label}
                     </span>
                   </div>
                 );
               })}
             </div>
-            <p className="text-[10px] leading-relaxed text-ink-400 dark:text-navy-500">
+            <p className="text-[9px] leading-relaxed text-ink-400 dark:text-navy-500">
               + any other Spotify Connect device
             </p>
           </div>
