@@ -1,8 +1,9 @@
-export default function HeroClip({ src, caption }) {
+export default function HeroClip({ src, poster, caption }) {
   return (
     <div className="overflow-hidden rounded-2xl border border-navy-100 bg-navy-950 dark:border-navy-800">
       <video
         src={src}
+        poster={poster}
         controls
         playsInline
         preload="metadata"

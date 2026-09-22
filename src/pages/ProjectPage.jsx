@@ -33,9 +33,9 @@ function BackToProjectsLink() {
   return (
     <Link
       to="/#projects"
-      className="inline-flex flex-shrink-0 items-center gap-1.5 rounded-full border border-navy-200 bg-navy-50 py-1.5 pl-1.5 pr-3.5 text-xs font-semibold text-navy-700 shadow-sm transition hover:border-navy-300 hover:bg-navy-100 dark:border-navy-700 dark:bg-navy-900 dark:text-navy-200 dark:hover:bg-navy-800"
+      className="inline-flex flex-shrink-0 items-center gap-1 rounded-full border border-navy-200 bg-navy-50 py-1 pl-1 pr-2.5 text-[11px] font-semibold text-navy-700 shadow-sm transition hover:border-navy-300 hover:bg-navy-100 dark:border-navy-700 dark:bg-navy-900 dark:text-navy-200 dark:hover:bg-navy-800"
     >
-      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-navy-100 text-navy-700 dark:bg-navy-800 dark:text-navy-200">
+      <span className="flex h-4 w-4 items-center justify-center rounded-full bg-navy-100 text-navy-700 dark:bg-navy-800 dark:text-navy-200">
         &larr;
       </span>
       Back to projects
@@ -169,15 +169,19 @@ function IotProjectLayout({ project, details }) {
           </Reveal>
 
           <Reveal delay={0.05}>
-            <SectionHeading>Demo</SectionHeading>
+            <SectionHeading>See it in action</SectionHeading>
             <div className="mt-4 flex flex-col gap-4">
-              <HeroClip src={details.heroClip} />
-              {details.stats && <StatsCallout stats={details.stats} />}
+              <HeroClip src={details.heroClip} poster={details.heroPoster} />
+              {details.performanceNote && (
+                <p className="text-sm leading-relaxed text-ink-500 dark:text-navy-300">
+                  {details.performanceNote}
+                </p>
+              )}
             </div>
           </Reveal>
 
           <Reveal delay={0.05}>
-            <SectionHeading>Gestures</SectionHeading>
+            <SectionHeading>How do you control it?</SectionHeading>
             <div className="mt-4">
               <GestureList gestures={details.gestures} />
             </div>
@@ -185,7 +189,7 @@ function IotProjectLayout({ project, details }) {
 
           {details.architecture && (
             <Reveal delay={0.05}>
-              <SectionHeading>Architecture</SectionHeading>
+              <SectionHeading>How does it work?</SectionHeading>
               <p className="mt-2 text-sm text-ink-500 dark:text-navy-300">
                 Video capture, gesture recognition, and playback control are split across three
                 stages.
@@ -201,7 +205,7 @@ function IotProjectLayout({ project, details }) {
 
           {details.hardwarePhotos && (
             <Reveal delay={0.05}>
-              <SectionHeading>Hardware</SectionHeading>
+              <SectionHeading>What's it built on?</SectionHeading>
               <div className="mt-4">
                 <HardwarePhotos
                   photos={details.hardwarePhotos}
@@ -212,13 +216,13 @@ function IotProjectLayout({ project, details }) {
           )}
 
           <Reveal delay={0.05}>
-            <SectionHeading>Tech Stack</SectionHeading>
+            <SectionHeading>Built with</SectionHeading>
             <TechStackTags details={details} />
           </Reveal>
 
           {details.challenges && (
             <Reveal delay={0.05}>
-              <SectionHeading>Challenges &amp; Solutions</SectionHeading>
+              <SectionHeading>What got in the way?</SectionHeading>
               <div className="mt-4">
                 <ChallengesList challenges={details.challenges} />
               </div>

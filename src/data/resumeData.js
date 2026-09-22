@@ -71,7 +71,10 @@ export const projects = [
         { label: "Median latency", value: "~340 ms" },
         { label: "Accuracy", value: "~94%" },
       ],
+      performanceNote:
+        "It tracks hands at 19–20 FPS, reacts to a gesture in about 340 ms, and recognizes the correct gesture roughly 94% of the time — fast and reliable enough to feel like a real controller rather than a novelty.",
       heroClip: "/demos/iot/hero-cross-device.mp4",
+      heroPoster: "/demos/iot/hero-poster.jpg",
       gestures: [
         {
           clip: "/demos/iot/gesture-ready.mp4",
