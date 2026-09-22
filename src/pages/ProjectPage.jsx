@@ -69,7 +69,7 @@ function ProjectHeader({ project, details }) {
 
 function HighlightsList({ details }) {
   return (
-    <ul className="mt-4 space-y-3">
+    <ul className="mt-4 space-y-2">
       {details.highlights.map((point) => (
         <li
           key={point}
@@ -122,9 +122,9 @@ function HighlightsAndTechStack({ details }) {
 
 function IotProjectLayout({ project, details }) {
   return (
-    <article className="section-shell pb-16 pt-16 sm:pb-20 sm:pt-24">
+    <article className="section-shell pb-16 pt-24 sm:pb-20 sm:pt-36">
       <div className="grid gap-10 lg:grid-cols-[260px_1fr] lg:items-start lg:gap-8 xl:grid-cols-[300px_1fr] xl:gap-10">
-        <div className="min-w-0 lg:sticky lg:top-24 lg:self-start">
+        <div className="min-w-0 lg:sticky lg:top-28 lg:self-start">
           <Reveal>
             <BackToProjectsLink />
           </Reveal>
@@ -148,34 +148,35 @@ function IotProjectLayout({ project, details }) {
           </Reveal>
         </div>
 
-        <div className="flex min-w-0 flex-col divide-y divide-navy-100 dark:divide-navy-800">
+        <div className="flex min-w-0 flex-col gap-16">
           <Reveal delay={0.05}>
             <p className="text-sm leading-relaxed text-ink-500 dark:text-navy-300">
               {details.description}
             </p>
           </Reveal>
 
-          <Reveal delay={0.05} className="pt-10">
+          <Reveal delay={0.05}>
             <SectionHeading>Highlights</SectionHeading>
             <HighlightsList details={details} />
           </Reveal>
 
-          <Reveal delay={0.05} className="pt-10">
+          <Reveal delay={0.05}>
             <SectionHeading>Gestures</SectionHeading>
             <div className="mt-4">
               <GestureList gestures={details.gestures} />
             </div>
           </Reveal>
 
-          <Reveal delay={0.05} className="pt-10">
-            <div className="flex flex-col gap-2">
+          <Reveal delay={0.05}>
+            <SectionHeading>Demo</SectionHeading>
+            <div className="mt-4 flex flex-col gap-2">
               <HeroClip src={details.heroClip} />
               {details.stats && <StatsCallout stats={details.stats} />}
             </div>
           </Reveal>
 
           {details.architecture && (
-            <Reveal delay={0.05} className="pt-10">
+            <Reveal delay={0.05}>
               <SectionHeading>Architecture</SectionHeading>
               <p className="mt-2 text-sm text-ink-500 dark:text-navy-300">
                 Video capture, gesture recognition, and playback control are split across three
@@ -191,7 +192,7 @@ function IotProjectLayout({ project, details }) {
           )}
 
           {details.hardwarePhotos && (
-            <Reveal delay={0.05} className="pt-10">
+            <Reveal delay={0.05}>
               <SectionHeading>Hardware</SectionHeading>
               <div className="mt-4">
                 <HardwarePhotos photos={details.hardwarePhotos} />
@@ -199,13 +200,13 @@ function IotProjectLayout({ project, details }) {
             </Reveal>
           )}
 
-          <Reveal delay={0.05} className="pt-10">
+          <Reveal delay={0.05}>
             <SectionHeading>Tech Stack</SectionHeading>
             <TechStackTags details={details} />
           </Reveal>
 
           {details.challenges && (
-            <Reveal delay={0.05} className="pt-10">
+            <Reveal delay={0.05}>
               <SectionHeading>Challenges &amp; Solutions</SectionHeading>
               <div className="mt-4">
                 <ChallengesList challenges={details.challenges} />

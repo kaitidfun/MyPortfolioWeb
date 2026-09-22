@@ -29,7 +29,7 @@ function FlowArrow({ label }) {
         &darr;
       </span>
       {label && (
-        <span className="text-center text-[10px] font-medium uppercase tracking-wide text-navy-400 dark:text-navy-500">
+        <span className="text-center text-[9px] font-medium uppercase tracking-wide text-navy-400 dark:text-navy-500">
           {label}
         </span>
       )}
@@ -46,15 +46,15 @@ function StageCard({ stage }) {
           <Icon className="h-8 w-8" />
         </div>
       )}
-      <p className="text-xs font-bold text-navy-800 dark:text-white">{stage.label}</p>
-      <p className="text-[11px] leading-relaxed text-ink-500 dark:text-navy-400">{stage.detail}</p>
+      <p className="text-[11px] font-bold text-navy-800 dark:text-white">{stage.label}</p>
+      <p className="text-[10px] leading-relaxed text-ink-500 dark:text-navy-400">{stage.detail}</p>
     </div>
   );
 }
 
 export default function ArchitectureDiagram({ stages, devices }) {
   return (
-    <div className="flex min-w-0 flex-col items-stretch gap-1 sm:flex-row sm:items-center sm:gap-0">
+    <div className="flex min-w-0 flex-col items-stretch gap-2 sm:flex-row sm:items-center sm:gap-2">
       {stages.map((stage, i) => (
         <div key={stage.label} className="contents">
           <StageCard stage={stage} />

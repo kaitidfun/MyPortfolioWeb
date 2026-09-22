@@ -1,6 +1,6 @@
 export default function ChallengesList({ challenges }) {
   return (
-    <ul className="space-y-3">
+    <ul className="space-y-2">
       {challenges.map((c) => (
         <li
           key={c.problem}

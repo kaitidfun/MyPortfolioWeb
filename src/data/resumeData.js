@@ -130,8 +130,8 @@ export const projects = [
           },
           {
             icon: "python",
-            label: "Python (OpenCV + MediaPipe)",
-            detail: "Tracks hand landmarks and classifies the gesture",
+            label: "Python",
+            detail: "OpenCV + MediaPipe track hand landmarks and classify the gesture",
             flow: "gesture command",
           },
           {
