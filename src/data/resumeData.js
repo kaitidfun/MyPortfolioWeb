@@ -47,20 +47,20 @@ export const projects = [
     name: "IoT Gesture-Controlled Media Player",
     subtitle: "Personal / Coursework Project",
     blurb:
-      "A touchless media control system powered by computer vision and Arduino hardware.",
-    tags: ["Python", "Computer Vision", "Arduino", "Spotify API"],
+      "A touchless media control system powered by computer vision and an ESP32-CAM.",
+    tags: ["Python", "Computer Vision", "ESP32-CAM", "Spotify API"],
     demoType: "gif",
     repoUrl: "https://github.com/kaitidfun/GestureMusicController",
     details: {
       heading: "IoT Gesture-Controlled Media Player",
-      subheading: "Computer Vision + Arduino + Spotify API",
+      subheading: "Computer Vision + ESP32-CAM + Spotify API",
       description:
-        "A touchless media control system that translates real-time hand gestures into playback commands. Computer vision handles gesture recognition in Python, while an Arduino bridges the software to physical hardware, and the Spotify API drives live playback control.",
+        "A touchless media control system that translates real-time hand gestures into playback commands. An ESP32-CAM streams live video over Wi-Fi to a Python script, which handles gesture recognition with computer vision, while the Spotify API drives live playback control.",
       highlights: [
         "Fully touchless from the first gesture — no keyboard, mouse, or remote ever needed to control playback.",
         "Works with any Spotify Connect device — PC, iPad, iPhone, or anything else signed into the same account — so the same gesture set can control several at once.",
       ],
-      techStack: ["Python", "OpenCV", "MediaPipe", "Arduino", "Spotify API"],
+      techStack: ["Python", "OpenCV", "MediaPipe", "ESP32-CAM", "Spotify API"],
       demoAspect: "video",
       demoLabel: "GIF / video demo coming soon",
       stats: [
