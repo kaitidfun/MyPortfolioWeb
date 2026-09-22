@@ -153,6 +153,10 @@ export const projects = [
         "The ESP32-CAM module, wired and mounted inside a simple cardboard enclosure for the working prototype.",
       hardwarePhotos: [
         {
+          src: "/demos/iot/hardware-box-open.jpg",
+          caption: "The ESP32-CAM module mounted inside its cardboard enclosure.",
+        },
+        {
           src: "/demos/iot/hardware-unbox.jpg",
           caption: "The ESP32-CAM module, wired and ready to mount.",
         },
