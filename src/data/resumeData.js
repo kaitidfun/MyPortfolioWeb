@@ -65,8 +65,8 @@ export const projects = [
       demoLabel: "GIF / video demo coming soon",
       stats: [
         { label: "Frame rate", value: "19–20 FPS" },
-        { label: "Median latency", value: "~340 ms" },
-        { label: "Accuracy", value: "~94%" },
+        { label: "Median latency", value: "340 ms" },
+        { label: "Accuracy", value: "94%" },
       ],
       heroClip: "/demos/iot/hero-cross-device.mp4",
       heroPoster: "/demos/iot/hero-poster.jpg",
@@ -105,7 +105,7 @@ export const projects = [
         },
         {
           clip: "/demos/iot/gesture-volume.mp4",
-          emoji: "✊",
+          emoji: "✊↕️",
           gesture: "Fist, move up/down",
           action: "Volume",
           howTo:
@@ -113,7 +113,7 @@ export const projects = [
         },
         {
           clip: "/demos/iot/gesture-seek.mp4",
-          emoji: "✊",
+          emoji: "✊↔️",
           gesture: "Fist, move left/right",
           action: "Seek",
           howTo:
@@ -148,21 +148,11 @@ export const projects = [
         ],
       },
       hardwareDescription:
-        "The ESP32-CAM module, wired and mounted inside a simple cardboard enclosure for the working prototype.",
-      hardwarePhotos: [
-        {
-          src: "/demos/iot/hardware-box-open.jpg",
-          caption: "The ESP32-CAM module mounted inside its cardboard enclosure.",
-        },
-        {
-          src: "/demos/iot/hardware-unbox.jpg",
-          caption: "The ESP32-CAM module, wired and ready to mount.",
-        },
-        {
-          src: "/demos/iot/hardware-closeup.jpg",
-          caption: "Close-up of the camera board secured inside its cardboard enclosure.",
-        },
-      ],
+        "The ESP32-CAM module, wired and mounted inside a simple cardboard enclosure for the working prototype — quick to build and easy to reposition while testing camera angles and lighting.",
+      hardwarePhoto: {
+        src: "/demos/iot/hardware-box-open.jpg",
+        caption: "The ESP32-CAM module mounted inside its cardboard enclosure.",
+      },
       challenges: [
         {
           problem: "Next and Previous fired interchangeably.",

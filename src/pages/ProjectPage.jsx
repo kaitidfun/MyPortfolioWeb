@@ -161,16 +161,24 @@ function IotProjectLayout({ project, details }) {
             <SectionHeading>See it in action</SectionHeading>
             <div className="mt-4 flex flex-col gap-4">
               <HeroClip src={details.heroClip} poster={details.heroPoster} />
-              <p className="text-sm leading-relaxed text-ink-500 dark:text-navy-300">
-                It tracks hands at{" "}
-                <span className="font-semibold text-navy-800 dark:text-white">19–20 FPS</span>,
-                reacts to a gesture in about{" "}
-                <span className="font-semibold text-navy-800 dark:text-white">340 ms</span>, and
-                recognizes the correct gesture roughly{" "}
-                <span className="font-semibold text-navy-800 dark:text-white">94%</span> of the
-                time — fast and reliable enough to feel like a real controller rather than a
-                novelty.
-              </p>
+              {details.stats && (
+                <p className="text-sm leading-relaxed text-ink-500 dark:text-navy-300">
+                  It tracks hands at{" "}
+                  <span className="font-semibold text-navy-800 dark:text-white">
+                    {details.stats[0].value}
+                  </span>
+                  , reacts to a gesture in about{" "}
+                  <span className="font-semibold text-navy-800 dark:text-white">
+                    {details.stats[1].value}
+                  </span>
+                  , and recognizes the correct gesture roughly{" "}
+                  <span className="font-semibold text-navy-800 dark:text-white">
+                    {details.stats[2].value}
+                  </span>{" "}
+                  of the time — fast and reliable enough to feel like a real controller rather
+                  than a novelty.
+                </p>
+              )}
             </div>
           </Reveal>
 
@@ -197,12 +205,12 @@ function IotProjectLayout({ project, details }) {
             </Reveal>
           )}
 
-          {details.hardwarePhotos && (
+          {details.hardwarePhoto && (
             <Reveal delay={0.05}>
               <SectionHeading>What's it built on?</SectionHeading>
               <div className="mt-4">
                 <HardwarePhotos
-                  photos={details.hardwarePhotos}
+                  photo={details.hardwarePhoto}
                   description={details.hardwareDescription}
                 />
               </div>

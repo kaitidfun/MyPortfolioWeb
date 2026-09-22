@@ -1,10 +1,9 @@
-export default function HardwarePhotos({ photos, description }) {
-  const [primary] = photos;
+export default function HardwarePhotos({ photo, description }) {
   return (
     <div className="flex flex-col gap-4">
       <img
-        src={primary.src}
-        alt={description || primary.caption}
+        src={photo.src}
+        alt={description || photo.caption}
         className="aspect-[4/3] w-full rounded-xl object-cover object-top"
       />
       {description && (
