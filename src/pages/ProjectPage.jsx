@@ -85,7 +85,7 @@ function HighlightsList({ details, className = "mt-4 space-y-2" }) {
           key={point}
           className="flex gap-3 text-sm leading-relaxed text-ink-700 dark:text-navy-200"
         >
-          <span className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-navy-500" />
+          <span className="mt-2 h-[3px] w-[3px] flex-shrink-0 rounded-full bg-navy-500" />
           <span>{point}</span>
         </li>
       ))}
@@ -177,7 +177,7 @@ function IotProjectLayout({ project, details }) {
 
           <Reveal delay={0.05}>
             <SectionHeading>Demo</SectionHeading>
-            <div className="mt-4 flex flex-col gap-4">
+            <div className="mt-4 flex flex-col gap-2">
               <HeroClip src={details.heroClip} />
               {details.stats && <StatsCallout stats={details.stats} />}
             </div>
