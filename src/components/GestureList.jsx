@@ -15,10 +15,10 @@ export default function GestureList({ gestures }) {
             />
           </div>
           <div className="min-w-0">
-            <p className="text-xs font-semibold text-ink-900 sm:text-sm dark:text-white">
+            <p className="text-sm font-semibold text-ink-900 sm:text-base dark:text-white">
               {g.emoji} {g.action}
             </p>
-            <p className="mt-1 text-[11px] leading-relaxed text-ink-500 sm:text-xs dark:text-navy-300">
+            <p className="mt-1 text-xs leading-relaxed text-ink-500 sm:text-sm dark:text-navy-300">
               {g.howTo}
             </p>
           </div>

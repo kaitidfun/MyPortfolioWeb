@@ -61,7 +61,7 @@ export const projects = [
         "Integrated Spotify API to translate real-time hand gestures into playback commands.",
         "Works with any Spotify Connect device — PC, iPad, iPhone, or anything else signed into the same account — the same gesture set can control several at once.",
       ],
-      techStack: ["Python", "Computer Vision", "Arduino", "Spotify API"],
+      techStack: ["Python", "OpenCV", "MediaPipe", "Arduino", "Spotify API"],
       demoAspect: "video",
       demoLabel: "GIF / video demo coming soon",
       stats: [
