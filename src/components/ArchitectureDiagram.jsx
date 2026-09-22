@@ -46,8 +46,8 @@ function StageCard({ stage }) {
           <Icon className="h-8 w-8" />
         </div>
       )}
-      <p className="text-sm font-bold text-navy-800 dark:text-white">{stage.label}</p>
-      <p className="text-xs leading-relaxed text-ink-500 dark:text-navy-400">{stage.detail}</p>
+      <p className="text-xs font-bold text-navy-800 dark:text-white">{stage.label}</p>
+      <p className="text-[11px] leading-relaxed text-ink-500 dark:text-navy-400">{stage.detail}</p>
     </div>
   );
 }

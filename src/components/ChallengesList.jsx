@@ -1,17 +1,18 @@
 export default function ChallengesList({ challenges }) {
   return (
-    <div className="flex flex-col gap-4">
+    <ul className="space-y-3">
       {challenges.map((c) => (
-        <div
+        <li
           key={c.problem}
-          className="rounded-xl border border-navy-100 bg-navy-50 p-4 dark:border-navy-700 dark:bg-navy-900"
+          className="flex gap-3 text-sm leading-relaxed text-ink-700 dark:text-navy-200"
         >
-          <p className="text-sm font-semibold text-ink-900 dark:text-white">{c.problem}</p>
-          <p className="mt-1.5 text-sm leading-relaxed text-ink-500 dark:text-navy-300">
-            {c.solution}
-          </p>
-        </div>
+          <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-navy-500" />
+          <span>
+            <span className="font-semibold text-ink-900 dark:text-white">{c.problem}</span>{" "}
+            <span className="text-ink-500 dark:text-navy-300">{c.solution}</span>
+          </span>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
