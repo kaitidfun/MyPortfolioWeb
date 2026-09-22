@@ -155,14 +155,19 @@ export const projects = [
       },
       challenges: [
         {
-          problem: "Next and Previous fired interchangeably.",
+          problem: "The ESP32-CAM overheats during longer sessions.",
           solution:
-            "The first version only checked how many hands were open vs. closed, not which hand was which. Fixed by identifying left vs. right hand from the landmark data before mapping the gesture to a command.",
+            "The camera module itself is a weak point — it heats up fast, and once it does, the video feed loses quality and starts stuttering. Still unresolved; a better camera module with more stable thermal performance, sharper image quality, and no stutter under sustained use would fix it for good.",
         },
         {
           problem: "Volume and Seek felt jittery.",
           solution:
             "Raw hand position is noisy frame-to-frame, causing the value to jump around. Fixed by smoothing the tracked position over a short rolling window before mapping it to a volume or seek delta.",
+        },
+        {
+          problem: "Volume and Seek only track near-perfectly straight movement.",
+          solution:
+            "Seek reads hand motion almost purely along the X-axis and Volume along the Y-axis. Move diagonally — say, drifting sideways while lifting your hand — and the gesture drops out of both instead of registering on either axis. Still a limitation the system doesn't handle.",
         },
       ],
     },
