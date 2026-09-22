@@ -28,7 +28,10 @@ export default function Reveal({ children, delay = 0, y = 24, className = "" }) 
         scrollTrigger: {
           trigger: el,
           start: "top 85%",
-          toggleActions: "restart none restart none",
+          // Replay only on a fresh downward entry (onEnter). Scrolling back
+          // up into an already-revealed element (onEnterBack) should not
+          // replay it — only "none" leaves its current state alone.
+          toggleActions: "restart none none none",
         },
       }
     );

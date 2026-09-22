@@ -3,7 +3,7 @@ export default function GestureList({ gestures }) {
     <div className="divide-y divide-navy-100 border-y border-navy-100 dark:divide-navy-800 dark:border-navy-800">
       {gestures.map((g) => (
         <div key={g.action} className="flex items-center gap-4 py-4 sm:gap-5">
-          <div className="w-36 flex-shrink-0 overflow-hidden rounded-lg border border-navy-100 bg-navy-50 sm:w-48 dark:border-navy-700 dark:bg-navy-900">
+          <div className="w-44 flex-shrink-0 overflow-hidden rounded-lg border border-navy-100 bg-navy-50 sm:w-64 dark:border-navy-700 dark:bg-navy-900">
             <video
               src={g.clip}
               autoPlay

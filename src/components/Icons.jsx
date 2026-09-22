@@ -166,6 +166,24 @@ export function LaptopIcon(props) {
   );
 }
 
+export function SmartphoneIcon(props) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <rect x="7" y="2" width="10" height="20" rx="2.2" />
+      <path d="M11 18.5h2" />
+    </svg>
+  );
+}
+
 export function TabletIcon(props) {
   return (
     <svg

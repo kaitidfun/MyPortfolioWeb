@@ -59,7 +59,7 @@ export const projects = [
       highlights: [
         "Built a touchless media control system using Python (Computer Vision) and Arduino.",
         "Integrated Spotify API to translate real-time hand gestures into playback commands.",
-        "Works with any Spotify Connect device — the same gesture set controls playback on a PC and an iPad at once.",
+        "Works with any Spotify Connect device — PC, iPad, iPhone, or anything else signed into the same account — the same gesture set can control several at once.",
       ],
       techStack: ["Python", "Computer Vision", "Arduino", "Spotify API"],
       demoAspect: "video",
@@ -144,6 +144,7 @@ export const projects = [
         devices: [
           { icon: "laptop", label: "PC" },
           { icon: "tablet", label: "iPad" },
+          { icon: "phone", label: "iPhone" },
         ],
       },
       hardwarePhotos: [

@@ -4,6 +4,7 @@ import {
   SpotifyIcon,
   LaptopIcon,
   TabletIcon,
+  SmartphoneIcon,
 } from "./Icons";
 
 const STAGE_ICONS = {
@@ -15,6 +16,7 @@ const STAGE_ICONS = {
 const DEVICE_ICONS = {
   laptop: LaptopIcon,
   tablet: TabletIcon,
+  phone: SmartphoneIcon,
 };
 
 function FlowArrow({ label }) {
@@ -38,7 +40,7 @@ function FlowArrow({ label }) {
 function StageCard({ stage }) {
   const Icon = STAGE_ICONS[stage.icon];
   return (
-    <div className="flex flex-1 flex-col items-center gap-2 rounded-xl border border-navy-100 bg-navy-50 p-4 text-center dark:border-navy-700 dark:bg-navy-900">
+    <div className="flex min-w-0 flex-1 flex-col items-center gap-2 rounded-xl border border-navy-100 bg-navy-50 p-4 text-center dark:border-navy-700 dark:bg-navy-900">
       {Icon && (
         <div className="flex h-10 w-10 items-center justify-center">
           <Icon className="h-8 w-8" />
@@ -52,7 +54,7 @@ function StageCard({ stage }) {
 
 export default function ArchitectureDiagram({ stages, devices }) {
   return (
-    <div className="flex flex-col items-stretch gap-1 sm:flex-row sm:items-center sm:gap-0">
+    <div className="flex min-w-0 flex-col items-stretch gap-1 sm:flex-row sm:items-center sm:gap-0">
       {stages.map((stage, i) => (
         <div key={stage.label} className="contents">
           <StageCard stage={stage} />
@@ -63,11 +65,11 @@ export default function ArchitectureDiagram({ stages, devices }) {
       {devices && devices.length > 0 && (
         <>
           <FlowArrow label={stages[stages.length - 1]?.flow} />
-          <div className="flex flex-1 flex-col items-center justify-center gap-2 rounded-xl border border-navy-100 bg-navy-50 p-4 text-center dark:border-navy-700 dark:bg-navy-900">
+          <div className="flex min-w-0 flex-1 flex-col items-center justify-center gap-2 rounded-xl border border-navy-100 bg-navy-50 p-4 text-center dark:border-navy-700 dark:bg-navy-900">
             <p className="text-[10px] font-semibold uppercase tracking-wide text-navy-500 dark:text-navy-400">
               Spotify Connect
             </p>
-            <div className="flex items-center gap-5">
+            <div className="flex flex-wrap items-center justify-center gap-3">
               {devices.map((d) => {
                 const DeviceIcon = DEVICE_ICONS[d.icon];
                 return (
@@ -82,6 +84,9 @@ export default function ArchitectureDiagram({ stages, devices }) {
                 );
               })}
             </div>
+            <p className="text-[10px] leading-snug text-ink-400 dark:text-navy-500">
+              + any other Spotify Connect device
+            </p>
           </div>
         </>
       )}
