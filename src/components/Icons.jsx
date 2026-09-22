@@ -202,6 +202,77 @@ export function TabletIcon(props) {
   );
 }
 
+export function PromptIcon(props) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <path d="M4 5.5h16v10H9.5L5 19v-3.5H4Z" />
+      <path d="M7.5 9h9M7.5 12h6" />
+    </svg>
+  );
+}
+
+export function SparkleIcon(props) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <path d="M12 3c.5 3.2 1.4 5.1 3 6.5 1.6 1.4 3.4 2 6 2.5-2.6.5-4.4 1.1-6 2.5-1.6 1.4-2.5 3.3-3 6.5-.5-3.2-1.4-5.1-3-6.5-1.6-1.4-3.4-2-6-2.5 2.6-.5 4.4-1.1 6-2.5 1.6-1.4 2.5-3.3 3-6.5Z" />
+    </svg>
+  );
+}
+
+export function FilmIcon(props) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <rect x="3" y="4.5" width="18" height="15" rx="1.5" />
+      <path d="M8 4.5v15M16 4.5v15M3 9h5M16 9h5M3 15h5M16 15h5" />
+    </svg>
+  );
+}
+
+export function GearIcon(props) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <circle cx="12" cy="12" r="3.2" />
+      <path d="M12 3.5v2.3M12 18.2v2.3M20.5 12h-2.3M5.8 12H3.5M17.7 6.3l-1.6 1.6M7.9 16.1l-1.6 1.6M17.7 17.7l-1.6-1.6M7.9 7.9 6.3 6.3" />
+    </svg>
+  );
+}
+
 export function ImageIcon(props) {
   return (
     <svg

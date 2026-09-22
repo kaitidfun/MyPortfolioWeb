@@ -5,12 +5,20 @@ import {
   LaptopIcon,
   TabletIcon,
   SmartphoneIcon,
+  PromptIcon,
+  SparkleIcon,
+  FilmIcon,
+  GearIcon,
 } from "./Icons";
 
 const STAGE_ICONS = {
   camera: CameraModuleIcon,
   python: PythonIcon,
   spotify: SpotifyIcon,
+  prompt: PromptIcon,
+  sparkle: SparkleIcon,
+  film: FilmIcon,
+  gear: GearIcon,
 };
 
 const DEVICE_ICONS = {

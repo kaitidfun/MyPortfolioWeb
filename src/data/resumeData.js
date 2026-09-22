@@ -25,19 +25,63 @@ export const projects = [
     name: "ReelCast",
     subtitle: "Senior Project",
     blurb:
-      "Automated full commercial video generation system — not just background imagery.",
-    tags: ["Python", "FastAPI", "LTX", "Gemini"],
+      "An AI pipeline that turns a prompt into a branded video ad and publishes it across social platforms.",
+    tags: ["Gemini", "LTX Video", "FastAPI", "Celery"],
     demoType: "video",
     details: {
       heading: "ReelCast",
-      subheading: "Senior Project — Automated Commercial Video Generation",
+      subheading: "Senior Project — AI-Powered Social Media Reel Generator",
+      problem:
+        "Making a branded video ad usually means shooting footage, editing it, and coordinating a team — or settling for a generic AI tool that just drops text over stock footage. Even once it exists, getting it published means uploading it to every platform separately by hand.",
       description:
-        "An end-to-end system that automates the full production of commercial videos by integrating LTX and Gemini APIs. Rather than simply layering text over stock footage, ReelCast generates the video content itself, orchestrating generative AI models across the entire creative pipeline.",
+        "ReelCast automates the whole loop instead. A prompt and a product become a finished, branded video — Gemini plans the shot and writes the caption, LTX Video generates the footage — and it publishes straight to TikTok, Instagram, Facebook, and YouTube from one screen.",
       highlights: [
-        "Automated full commercial video generation by integrating LTX and Gemini APIs.",
-        "Developed core features end-to-end and integrated API endpoints for a seamless system workflow.",
+        "Full pipeline from prompt to a finished, branded video — no separate script, footage, or editing tools needed.",
+        "Publishes straight to TikTok, Instagram, Facebook, and YouTube — no manual re-uploading per platform.",
       ],
-      techStack: ["Python", "FastAPI", "Generative AI (LTX)", "Gemini API"],
+      techStack: [
+        "Python",
+        "FastAPI",
+        "Celery",
+        "Redis",
+        "Next.js",
+        "PostgreSQL",
+        "Cloudflare R2",
+        "Google Gemini",
+        "LTX Video",
+        "Docker",
+      ],
+      architecture: {
+        stages: [
+          {
+            icon: "prompt",
+            label: "Prompt + Product",
+            detail: "Member describes the ad and picks a product",
+            flow: "prompt",
+          },
+          {
+            icon: "sparkle",
+            label: "Gemini",
+            detail: "Generates a cinematic first frame, then writes captions and hashtags",
+            flow: "first frame",
+          },
+          {
+            icon: "film",
+            label: "LTX Video",
+            detail: "Animates the first frame into a full video clip",
+            flow: "raw video",
+          },
+          {
+            icon: "gear",
+            label: "FFmpeg",
+            detail: "Adds branding overlays and strips audio",
+          },
+        ],
+      },
+      moreFeatures: [
+        "Schedule a post for later and a background worker publishes it automatically the moment it's due — no need to be online when it goes live.",
+        "A performance dashboard pulling real revenue, views, and clicks from TikTok Shop, Shopee, and Lazada is still in progress.",
+      ],
       demoAspect: "16:9",
       demoLabel: "Video demo coming soon",
     },

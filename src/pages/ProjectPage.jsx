@@ -67,10 +67,10 @@ function ProjectHeader({ project, details }) {
   );
 }
 
-function HighlightsList({ details, className = "mt-4 space-y-2" }) {
+function BulletList({ items, className = "mt-4 space-y-2" }) {
   return (
     <ul className={className}>
-      {details.highlights.map((point) => (
+      {items.map((point) => (
         <li
           key={point}
           className="flex gap-3 text-sm leading-relaxed text-ink-700 dark:text-navy-200"
@@ -103,7 +103,7 @@ function HighlightsAndTechStack({ details }) {
     <div className="grid gap-10 sm:grid-cols-2">
       <div>
         <SectionHeading>Highlights</SectionHeading>
-        <HighlightsList details={details} />
+        <BulletList items={details.highlights} />
 
         {details.certification && (
           <p className="mt-5 rounded-lg bg-navy-50 px-4 py-3 text-xs font-medium text-navy-700 dark:bg-navy-900 dark:text-navy-300">
@@ -154,7 +154,7 @@ function IotProjectLayout({ project, details }) {
             <p className="mt-3 text-sm leading-relaxed text-ink-500 dark:text-navy-300">
               {details.description}
             </p>
-            <HighlightsList details={details} className="mt-6 space-y-2" />
+            <BulletList items={details.highlights} className="mt-6 space-y-2" />
           </Reveal>
 
           <Reveal delay={0.05}>
@@ -236,6 +236,99 @@ function IotProjectLayout({ project, details }) {
   );
 }
 
+function ReelCastLayout({ project, details }) {
+  return (
+    <article className="section-shell pb-16 pt-24 sm:pb-20 sm:pt-36">
+      <div className="grid gap-10 lg:grid-cols-[260px_1fr] lg:items-start lg:gap-8 xl:grid-cols-[300px_1fr] xl:gap-10">
+        <div className="min-w-0 lg:sticky lg:top-28 lg:self-start">
+          <Reveal>
+            <BackToProjectsLink />
+          </Reveal>
+
+          <Reveal delay={0.05} className="mt-4">
+            <h1 className="text-2xl font-extrabold tracking-tight text-ink-900 sm:text-3xl dark:text-white">
+              {details.heading}
+            </h1>
+
+            {project.repoUrl && (
+              <a
+                href={project.repoUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-4 inline-flex items-center gap-2 rounded-full bg-navy-800 px-4 py-2 text-sm font-semibold text-white transition hover:bg-navy-900 dark:bg-navy-700 dark:hover:bg-navy-600"
+              >
+                <GithubIcon className="h-4 w-4" />
+                View source on GitHub
+              </a>
+            )}
+          </Reveal>
+        </div>
+
+        <div className="flex min-w-0 flex-col gap-16">
+          <Reveal delay={0.05}>
+            <SectionHeading>What is it about?</SectionHeading>
+            {details.problem && (
+              <p className="mt-3 text-sm leading-relaxed text-ink-500 dark:text-navy-300">
+                {details.problem}
+              </p>
+            )}
+            <p className="mt-3 text-sm leading-relaxed text-ink-500 dark:text-navy-300">
+              {details.description}
+            </p>
+            <BulletList items={details.highlights} className="mt-6 space-y-2" />
+          </Reveal>
+
+          {details.heroClip && (
+            <Reveal delay={0.05}>
+              <SectionHeading>See it in action</SectionHeading>
+              <div className="mt-4">
+                <HeroClip src={details.heroClip} poster={details.heroPoster} />
+              </div>
+            </Reveal>
+          )}
+
+          {details.architecture && (
+            <Reveal delay={0.05}>
+              <SectionHeading>How does it work?</SectionHeading>
+              <p className="mt-2 text-sm text-ink-500 dark:text-navy-300">
+                A prompt and a product become a finished, branded video across a few AI-driven
+                stages.
+              </p>
+              <div className="mt-4">
+                <ArchitectureDiagram
+                  stages={details.architecture.stages}
+                  devices={details.architecture.devices}
+                />
+              </div>
+            </Reveal>
+          )}
+
+          {details.moreFeatures && (
+            <Reveal delay={0.05}>
+              <SectionHeading>What else can it do?</SectionHeading>
+              <BulletList items={details.moreFeatures} className="mt-4 space-y-2" />
+            </Reveal>
+          )}
+
+          <Reveal delay={0.05}>
+            <SectionHeading>Built with</SectionHeading>
+            <TechStackTags details={details} />
+          </Reveal>
+
+          {details.challenges && (
+            <Reveal delay={0.05}>
+              <SectionHeading>What got in the way?</SectionHeading>
+              <div className="mt-4">
+                <ChallengesList challenges={details.challenges} />
+              </div>
+            </Reveal>
+          )}
+        </div>
+      </div>
+    </article>
+  );
+}
+
 function DefaultProjectLayout({ project, details, demoType }) {
   return (
     <article className="section-shell py-16 sm:py-20">
@@ -272,6 +365,8 @@ export default function ProjectPage() {
     <>
       {details.gestures ? (
         <IotProjectLayout project={project} details={details} />
+      ) : project.id === "reelcast" ? (
+        <ReelCastLayout project={project} details={details} />
       ) : (
         <DefaultProjectLayout project={project} details={details} demoType={demoType} />
       )}
