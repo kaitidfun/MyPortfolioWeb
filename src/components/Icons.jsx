@@ -84,6 +84,106 @@ export function PlayIcon(props) {
   );
 }
 
+export function CameraModuleIcon(props) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <rect x="3" y="4" width="14" height="16" rx="1.5" />
+      <circle cx="10" cy="10.5" r="3.2" />
+      <circle cx="10" cy="10.5" r="1" fill="currentColor" stroke="none" />
+      <path d="M6.5 16.5h7M18 8h2.5M18 12h2.5M18 16h2.5" />
+    </svg>
+  );
+}
+
+export function PythonIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
+      <path
+        fill="#3776AB"
+        d="M11.9 1.6c-1 0-1.9.1-2.7.2-2.4.4-2.8 1.3-2.8 2.9v2.1h5.6v.7H4.3c-1.6 0-3 1-3.5 2.8-.5 2-.6 3.3 0 5.4.5 1.6 1.4 2.8 3 2.8h1.9v-2.5c0-1.8 1.6-3.4 3.5-3.4h5.6c1.5 0 2.7-1.2 2.7-2.7V4.7c0-1.5-1.3-2.6-2.7-2.9-1-.2-2-.3-2.9-.2ZM8.9 3.2c.6 0 1 .5 1 1.1s-.5 1.1-1 1.1-1-.5-1-1.1.4-1.1 1-1.1Z"
+      />
+      <path
+        fill="#FFD43B"
+        d="M12.1 22.4c1 0 1.9-.1 2.7-.2 2.4-.4 2.8-1.3 2.8-2.9v-2.1h-5.6v-.7h8.7c1.6 0 3-1 3.5-2.8.5-2 .6-3.3 0-5.4-.5-1.6-1.4-2.8-3-2.8h-1.9v2.5c0 1.8-1.6 3.4-3.5 3.4H9.7c-1.5 0-2.7 1.2-2.7 2.7v4.6c0 1.5 1.3 2.6 2.7 2.9 1 .2 2 .3 2.9.2Zm3.2-1.6c-.6 0-1-.5-1-1.1s.5-1.1 1-1.1 1 .5 1 1.1-.4 1.1-1 1.1Z"
+      />
+    </svg>
+  );
+}
+
+export function SpotifyIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
+      <circle cx="12" cy="12" r="11" fill="#1DB954" />
+      <path
+        d="M6.2 9.7c3.5-1 8-.8 11 1"
+        stroke="#191414"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        fill="none"
+      />
+      <path
+        d="M6.7 13c3-.7 6.6-.6 9.2.9"
+        stroke="#191414"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        fill="none"
+      />
+      <path
+        d="M7.2 16.1c2.4-.5 5.2-.4 7.3.8"
+        stroke="#191414"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+        fill="none"
+      />
+    </svg>
+  );
+}
+
+export function LaptopIcon(props) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <rect x="4" y="5" width="16" height="10.5" rx="1.2" />
+      <path d="M2 19.5h20l-1.5-3H3.5Z" />
+    </svg>
+  );
+}
+
+export function TabletIcon(props) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <rect x="5" y="3" width="14" height="18" rx="2" />
+      <path d="M11 18.2h2" />
+    </svg>
+  );
+}
+
 export function ImageIcon(props) {
   return (
     <svg

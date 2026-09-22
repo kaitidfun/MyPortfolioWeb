@@ -120,24 +120,32 @@ export const projects = [
             "Make a fist with one hand and move it left or right. Scrubs the current track's playback position.",
         },
       ],
-      architecture: [
-        {
-          label: "ESP32-CAM",
-          detail: "Streams live video over Wi-Fi",
-        },
-        {
-          label: "Python (OpenCV + MediaPipe)",
-          detail: "Tracks hand landmarks and classifies gestures into commands",
-        },
-        {
-          label: "Spotify Web API",
-          detail: "Receives playback commands (play, pause, skip, volume, seek)",
-        },
-        {
-          label: "Spotify Connect device",
-          detail: "PC or iPad — playback updates live on whichever device is active",
-        },
-      ],
+      architecture: {
+        stages: [
+          {
+            icon: "camera",
+            label: "ESP32-CAM",
+            detail: "Streams live video over Wi-Fi",
+            flow: "video frame",
+          },
+          {
+            icon: "python",
+            label: "Python (OpenCV + MediaPipe)",
+            detail: "Tracks hand landmarks and classifies the gesture",
+            flow: "gesture command",
+          },
+          {
+            icon: "spotify",
+            label: "Spotify Web API",
+            detail: "Applies the playback command",
+            flow: "live update",
+          },
+        ],
+        devices: [
+          { icon: "laptop", label: "PC" },
+          { icon: "tablet", label: "iPad" },
+        ],
+      },
       hardwarePhotos: [
         {
           src: "/demos/iot/hardware-unbox.jpg",

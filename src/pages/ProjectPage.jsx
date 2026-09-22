@@ -179,7 +179,10 @@ function IotProjectLayout({ project, details }) {
                 stages.
               </p>
               <div className="mt-4">
-                <ArchitectureDiagram nodes={details.architecture} />
+                <ArchitectureDiagram
+                  stages={details.architecture.stages}
+                  devices={details.architecture.devices}
+                />
               </div>
             </Reveal>
           )}
