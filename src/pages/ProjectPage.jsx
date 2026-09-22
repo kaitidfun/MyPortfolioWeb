@@ -19,16 +19,59 @@ function SectionHeading({ children }) {
   );
 }
 
-function ProjectHeader({ project, details }) {
+function BackToProjectsLink() {
+  return (
+    <Link
+      to="/#projects"
+      className="inline-flex flex-shrink-0 items-center gap-2 rounded-full border border-navy-200 bg-white py-1.5 pl-1.5 pr-3.5 text-xs font-semibold text-navy-700 shadow-sm transition hover:border-navy-300 hover:bg-navy-50 dark:border-navy-700 dark:bg-navy-900 dark:text-navy-200 dark:hover:bg-navy-800"
+    >
+      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-navy-100 text-navy-700 dark:bg-navy-800 dark:text-navy-200">
+        &larr;
+      </span>
+      Back to projects
+    </Link>
+  );
+}
+
+function ProjectHeader({ project, details, compact = false }) {
+  if (compact) {
+    return (
+      <>
+        <Reveal className="flex flex-wrap items-center gap-3">
+          <BackToProjectsLink />
+          <p className="text-xs font-semibold uppercase tracking-widest text-navy-600 dark:text-navy-300">
+            {details.subheading}
+          </p>
+        </Reveal>
+
+        <Reveal delay={0.05} className="mt-4">
+          <h1 className="text-2xl font-extrabold tracking-tight text-ink-900 sm:text-3xl dark:text-white">
+            {details.heading}
+          </h1>
+          <p className="mt-3 text-sm leading-relaxed text-ink-500 dark:text-navy-300">
+            {details.description}
+          </p>
+
+          {project.repoUrl && (
+            <a
+              href={project.repoUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-4 inline-flex items-center gap-2 rounded-full bg-navy-800 px-4 py-2 text-sm font-semibold text-white transition hover:bg-navy-900 dark:bg-navy-700 dark:hover:bg-navy-600"
+            >
+              <GithubIcon className="h-4 w-4" />
+              View source on GitHub
+            </a>
+          )}
+        </Reveal>
+      </>
+    );
+  }
+
   return (
     <>
       <Reveal>
-        <Link
-          to="/#projects"
-          className="inline-flex items-center gap-2 text-sm font-semibold text-navy-600 transition hover:text-navy-800 dark:text-navy-300 dark:hover:text-white"
-        >
-          &larr; Back to projects
-        </Link>
+        <BackToProjectsLink />
       </Reveal>
 
       <Reveal delay={0.05} className="mt-6 max-w-3xl">
@@ -47,7 +90,7 @@ function ProjectHeader({ project, details }) {
             href={project.repoUrl}
             target="_blank"
             rel="noreferrer"
-            className="mt-5 inline-flex items-center gap-2 rounded-full border border-navy-200 px-4 py-2 text-sm font-semibold text-navy-900 transition hover:border-navy-400 hover:bg-navy-50 dark:border-navy-700 dark:text-white dark:hover:bg-navy-900"
+            className="mt-5 inline-flex items-center gap-2 rounded-full bg-navy-800 px-4 py-2 text-sm font-semibold text-white transition hover:bg-navy-900 dark:bg-navy-700 dark:hover:bg-navy-600"
           >
             <GithubIcon className="h-4 w-4" />
             View source on GitHub
@@ -58,14 +101,17 @@ function ProjectHeader({ project, details }) {
   );
 }
 
-function HighlightsAndTechStack({ details }) {
+function HighlightsAndTechStack({ details, compact = false }) {
   return (
-    <div className="grid gap-10 sm:grid-cols-2">
+    <div className={compact ? "flex flex-col gap-8" : "grid gap-10 sm:grid-cols-2"}>
       <div>
         <SectionHeading>Highlights</SectionHeading>
         <ul className="mt-4 space-y-3">
           {details.highlights.map((point) => (
-            <li key={point} className="flex gap-3 text-sm text-ink-700 dark:text-navy-200">
+            <li
+              key={point}
+              className={`flex gap-3 text-ink-700 dark:text-navy-200 ${compact ? "text-xs" : "text-sm"}`}
+            >
               <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-navy-500" />
               <span className="leading-relaxed">{point}</span>
             </li>
@@ -99,20 +145,17 @@ function HighlightsAndTechStack({ details }) {
 function IotProjectLayout({ project, details }) {
   return (
     <article className="section-shell py-16 sm:py-20">
-      <div className="grid gap-12 lg:grid-cols-[380px_1fr] lg:items-start lg:gap-16">
-        <div className="lg:sticky lg:top-28 lg:self-start">
-          <ProjectHeader project={project} details={details} />
-          <Reveal delay={0.15} className="mt-12">
-            <HighlightsAndTechStack details={details} />
+      <div className="grid gap-12 lg:grid-cols-[300px_1fr] lg:items-start lg:gap-10 xl:grid-cols-[340px_1fr] xl:gap-14">
+        <div className="min-w-0 lg:sticky lg:top-28 lg:self-start">
+          <ProjectHeader project={project} details={details} compact />
+          <Reveal delay={0.15} className="mt-10">
+            <HighlightsAndTechStack details={details} compact />
           </Reveal>
         </div>
 
-        <div className="flex flex-col gap-14">
+        <div className="flex min-w-0 flex-col gap-14">
           <Reveal>
-            <HeroClip
-              src={details.heroClip}
-              caption="Controlling a PC and an iPad at the same time, live"
-            />
+            <HeroClip src={details.heroClip} />
           </Reveal>
 
           {details.stats && (

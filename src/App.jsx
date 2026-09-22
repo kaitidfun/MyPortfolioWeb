@@ -49,7 +49,7 @@ function ScrollManager() {
 export default function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-white dark:bg-navy-950">
         <Navbar />
         <ScrollManager />
         <main>
