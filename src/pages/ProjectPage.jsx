@@ -1,6 +1,9 @@
 import { useParams, Link, Navigate } from "react-router-dom";
 import { projects } from "../data/resumeData";
 import DemoPlaceholder from "../components/DemoPlaceholder";
+import GestureShowcase from "../components/GestureShowcase";
+import StatsCallout from "../components/StatsCallout";
+import { GithubIcon } from "../components/Icons";
 import Reveal from "../components/Reveal";
 import Footer from "../components/Footer";
 
@@ -36,11 +39,33 @@ export default function ProjectPage() {
         <p className="mt-5 text-lg leading-relaxed text-ink-500 dark:text-navy-300">
           {details.description}
         </p>
+
+        {project.repoUrl && (
+          <a
+            href={project.repoUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-5 inline-flex items-center gap-2 rounded-full border border-navy-200 px-4 py-2 text-sm font-semibold text-navy-900 transition hover:border-navy-400 hover:bg-navy-50 dark:border-navy-700 dark:text-white dark:hover:bg-navy-900"
+          >
+            <GithubIcon className="h-4 w-4" />
+            View source on GitHub
+          </a>
+        )}
       </Reveal>
 
       <Reveal delay={0.1} className="mt-10">
-        <DemoPlaceholder type={demoType} label={details.demoLabel} />
+        {details.gestures ? (
+          <GestureShowcase heroClip={details.heroClip} gestures={details.gestures} />
+        ) : (
+          <DemoPlaceholder type={demoType} label={details.demoLabel} />
+        )}
       </Reveal>
+
+      {details.stats && (
+        <Reveal delay={0.12} className="mt-6">
+          <StatsCallout stats={details.stats} />
+        </Reveal>
+      )}
 
       <Reveal delay={0.15} className="mt-12 grid gap-10 sm:grid-cols-2">
         <div>

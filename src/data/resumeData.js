@@ -50,6 +50,7 @@ export const projects = [
       "A touchless media control system powered by computer vision and Arduino hardware.",
     tags: ["Python", "Computer Vision", "Arduino", "Spotify API"],
     demoType: "gif",
+    repoUrl: "https://github.com/kaitidfun/GestureMusicController",
     details: {
       heading: "IoT Gesture-Controlled Media Player",
       subheading: "Computer Vision + Arduino + Spotify API",
@@ -58,10 +59,55 @@ export const projects = [
       highlights: [
         "Built a touchless media control system using Python (Computer Vision) and Arduino.",
         "Integrated Spotify API to translate real-time hand gestures into playback commands.",
+        "Works with any Spotify Connect device — the same gesture set controls playback on a PC and an iPad at once.",
       ],
       techStack: ["Python", "Computer Vision", "Arduino", "Spotify API"],
       demoAspect: "video",
       demoLabel: "GIF / video demo coming soon",
+      stats: [
+        { label: "Frame rate", value: "19–20 FPS" },
+        { label: "Median latency", value: "~340 ms" },
+        { label: "Accuracy", value: "~94%" },
+      ],
+      heroClip: "/demos/iot/hero-cross-device.mp4",
+      gestures: [
+        {
+          clip: "/demos/iot/gesture-ready.mp4",
+          emoji: "🖐️🖐️",
+          gesture: "Both hands open",
+          action: "Ready",
+        },
+        {
+          clip: "/demos/iot/gesture-play-pause.mp4",
+          emoji: "✊✊",
+          gesture: "Both fists",
+          action: "Play / Pause",
+        },
+        {
+          clip: "/demos/iot/gesture-next.mp4",
+          emoji: "🖐️✊",
+          gesture: "Left open + right fist",
+          action: "Next track",
+        },
+        {
+          clip: "/demos/iot/gesture-previous.mp4",
+          emoji: "✊🖐️",
+          gesture: "Left fist + right open",
+          action: "Previous track",
+        },
+        {
+          clip: "/demos/iot/gesture-volume.mp4",
+          emoji: "✊",
+          gesture: "Fist, move up/down",
+          action: "Volume",
+        },
+        {
+          clip: "/demos/iot/gesture-seek.mp4",
+          emoji: "✊",
+          gesture: "Fist, move left/right",
+          action: "Seek",
+        },
+      ],
     },
   },
   {
