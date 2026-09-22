@@ -67,15 +67,15 @@ function ProjectHeader({ project, details }) {
   );
 }
 
-function HighlightsList({ details }) {
+function HighlightsList({ details, className = "mt-4 space-y-2" }) {
   return (
-    <ul className="mt-4 space-y-2">
+    <ul className={className}>
       {details.highlights.map((point) => (
         <li
           key={point}
           className="flex gap-3 text-sm leading-relaxed text-ink-700 dark:text-navy-200"
         >
-          <span className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-navy-500" />
+          <span className="mt-2 h-[3px] w-[3px] flex-shrink-0 rounded-full bg-navy-500" />
           <span>{point}</span>
         </li>
       ))}
@@ -153,11 +153,7 @@ function IotProjectLayout({ project, details }) {
             <p className="text-sm leading-relaxed text-ink-500 dark:text-navy-300">
               {details.description}
             </p>
-            {details.highlightNote && (
-              <p className="mt-4 text-sm leading-relaxed text-ink-500 dark:text-navy-300">
-                {details.highlightNote}
-              </p>
-            )}
+            <HighlightsList details={details} className="mt-4 space-y-2" />
           </Reveal>
 
           <Reveal delay={0.05}>
