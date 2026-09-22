@@ -23,7 +23,7 @@ function BackToProjectsLink() {
   return (
     <Link
       to="/#projects"
-      className="inline-flex flex-shrink-0 items-center gap-1.5 rounded-full border border-navy-200 bg-white py-1.5 pl-1.5 pr-3.5 text-xs font-semibold text-navy-700 shadow-sm transition hover:border-navy-300 hover:bg-navy-50 dark:border-navy-700 dark:bg-navy-900 dark:text-navy-200 dark:hover:bg-navy-800"
+      className="inline-flex flex-shrink-0 items-center gap-1.5 rounded-full border border-navy-200 bg-navy-50 py-1.5 pl-1.5 pr-3.5 text-xs font-semibold text-navy-700 shadow-sm transition hover:border-navy-300 hover:bg-navy-100 dark:border-navy-700 dark:bg-navy-900 dark:text-navy-200 dark:hover:bg-navy-800"
     >
       <span className="flex h-5 w-5 items-center justify-center rounded-full bg-navy-100 text-navy-700 dark:bg-navy-800 dark:text-navy-200">
         &larr;
@@ -67,19 +67,40 @@ function ProjectHeader({ project, details }) {
   );
 }
 
+function HighlightsList({ details }) {
+  return (
+    <ul className="mt-4 space-y-3">
+      {details.highlights.map((point) => (
+        <li key={point} className="flex gap-3 text-sm text-ink-700 dark:text-navy-200">
+          <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-navy-500" />
+          <span className="leading-relaxed">{point}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function TechStackTags({ details }) {
+  return (
+    <div className="mt-4 flex flex-wrap gap-2">
+      {details.techStack.map((tech) => (
+        <span
+          key={tech}
+          className="rounded-full border border-navy-200 px-3 py-1 text-xs font-medium text-navy-800 dark:border-navy-700 dark:text-navy-200"
+        >
+          {tech}
+        </span>
+      ))}
+    </div>
+  );
+}
+
 function HighlightsAndTechStack({ details }) {
   return (
     <div className="grid gap-10 sm:grid-cols-2">
       <div>
         <SectionHeading>Highlights</SectionHeading>
-        <ul className="mt-4 space-y-3">
-          {details.highlights.map((point) => (
-            <li key={point} className="flex gap-3 text-sm text-ink-700 dark:text-navy-200">
-              <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-navy-500" />
-              <span className="leading-relaxed">{point}</span>
-            </li>
-          ))}
-        </ul>
+        <HighlightsList details={details} />
 
         {details.certification && (
           <p className="mt-5 rounded-lg bg-navy-50 px-4 py-3 text-xs font-medium text-navy-700 dark:bg-navy-900 dark:text-navy-300">
@@ -90,16 +111,7 @@ function HighlightsAndTechStack({ details }) {
 
       <div>
         <SectionHeading>Tech Stack</SectionHeading>
-        <div className="mt-4 flex flex-wrap gap-2">
-          {details.techStack.map((tech) => (
-            <span
-              key={tech}
-              className="rounded-full border border-navy-200 px-3 py-1 text-xs font-medium text-navy-800 dark:border-navy-700 dark:text-navy-200"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
+        <TechStackTags details={details} />
       </div>
     </div>
   );
@@ -107,28 +119,17 @@ function HighlightsAndTechStack({ details }) {
 
 function IotProjectLayout({ project, details }) {
   return (
-    <article className="section-shell pb-16 pt-8 sm:pb-20 sm:pt-10">
-      <Reveal>
-        <BackToProjectsLink />
-      </Reveal>
-
-      <div className="mt-6 grid gap-10 lg:grid-cols-[260px_1fr] lg:items-start lg:gap-8 xl:grid-cols-[300px_1fr] xl:gap-10">
+    <article className="section-shell pb-16 pt-12 sm:pb-20 sm:pt-16">
+      <div className="grid gap-10 lg:grid-cols-[260px_1fr] lg:items-start lg:gap-8 xl:grid-cols-[300px_1fr] xl:gap-10">
         <div className="min-w-0 lg:sticky lg:top-24 lg:self-start">
-          <Reveal delay={0.05}>
-            <p className="text-xs font-semibold uppercase tracking-wide text-navy-600 dark:text-navy-300">
-              {details.subheading}
-            </p>
-            <h1 className="mt-3 text-2xl font-extrabold tracking-tight text-ink-900 sm:text-3xl dark:text-white">
+          <Reveal>
+            <BackToProjectsLink />
+          </Reveal>
+
+          <Reveal delay={0.05} className="mt-4">
+            <h1 className="text-2xl font-extrabold tracking-tight text-ink-900 sm:text-3xl dark:text-white">
               {details.heading}
             </h1>
-          </Reveal>
-        </div>
-
-        <div className="flex min-w-0 flex-col gap-14">
-          <Reveal delay={0.05}>
-            <p className="text-base leading-relaxed text-ink-500 dark:text-navy-300">
-              {details.description}
-            </p>
 
             {project.repoUrl && (
               <a
@@ -143,8 +144,22 @@ function IotProjectLayout({ project, details }) {
             )}
           </Reveal>
 
+          <Reveal delay={0.1} className="mt-6">
+            <SectionHeading>Tech Stack</SectionHeading>
+            <TechStackTags details={details} />
+          </Reveal>
+        </div>
+
+        <div className="flex min-w-0 flex-col gap-14">
           <Reveal delay={0.05}>
-            <HighlightsAndTechStack details={details} />
+            <p className="text-sm leading-relaxed text-ink-500 dark:text-navy-300">
+              {details.description}
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.05}>
+            <SectionHeading>Highlights</SectionHeading>
+            <HighlightsList details={details} />
           </Reveal>
 
           <Reveal delay={0.05}>
