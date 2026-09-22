@@ -13,7 +13,7 @@ import Footer from "../components/Footer";
 
 function SectionHeading({ children }) {
   return (
-    <h2 className="text-sm font-bold uppercase tracking-wide text-navy-800 dark:text-navy-200">
+    <h2 className="text-base font-bold uppercase tracking-wide text-navy-800 dark:text-navy-200">
       {children}
     </h2>
   );
@@ -161,11 +161,16 @@ function IotProjectLayout({ project, details }) {
             <SectionHeading>See it in action</SectionHeading>
             <div className="mt-4 flex flex-col gap-4">
               <HeroClip src={details.heroClip} poster={details.heroPoster} />
-              {details.performanceNote && (
-                <p className="text-sm leading-relaxed text-ink-500 dark:text-navy-300">
-                  {details.performanceNote}
-                </p>
-              )}
+              <p className="text-sm leading-relaxed text-ink-500 dark:text-navy-300">
+                It tracks hands at{" "}
+                <span className="font-semibold text-navy-800 dark:text-white">19–20 FPS</span>,
+                reacts to a gesture in about{" "}
+                <span className="font-semibold text-navy-800 dark:text-white">340 ms</span>, and
+                recognizes the correct gesture roughly{" "}
+                <span className="font-semibold text-navy-800 dark:text-white">94%</span> of the
+                time — fast and reliable enough to feel like a real controller rather than a
+                novelty.
+              </p>
             </div>
           </Reveal>
 

@@ -56,12 +56,9 @@ export const projects = [
       subheading: "Computer Vision + Arduino + Spotify API",
       description:
         "A touchless media control system that translates real-time hand gestures into playback commands. Computer vision handles gesture recognition in Python, while an Arduino bridges the software to physical hardware, and the Spotify API drives live playback control.",
-      highlightNote:
-        "It works with any Spotify Connect device — PC, iPad, iPhone, or anything else signed into the same account — so the same gesture set can control several devices at once.",
       highlights: [
-        "Built a touchless media control system using Python (Computer Vision) and Arduino.",
-        "Integrated Spotify API to translate real-time hand gestures into playback commands.",
-        "Works with any Spotify Connect device — PC, iPad, iPhone, or anything else signed into the same account — the same gesture set can control several at once.",
+        "Fully touchless from the first gesture — no keyboard, mouse, or remote ever needed to control playback.",
+        "Works with any Spotify Connect device — PC, iPad, iPhone, or anything else signed into the same account — so the same gesture set can control several at once.",
       ],
       techStack: ["Python", "OpenCV", "MediaPipe", "Arduino", "Spotify API"],
       demoAspect: "video",
@@ -71,8 +68,6 @@ export const projects = [
         { label: "Median latency", value: "~340 ms" },
         { label: "Accuracy", value: "~94%" },
       ],
-      performanceNote:
-        "It tracks hands at 19–20 FPS, reacts to a gesture in about 340 ms, and recognizes the correct gesture roughly 94% of the time — fast and reliable enough to feel like a real controller rather than a novelty.",
       heroClip: "/demos/iot/hero-cross-device.mp4",
       heroPoster: "/demos/iot/hero-poster.jpg",
       gestures: [
