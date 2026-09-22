@@ -13,7 +13,7 @@ import Footer from "../components/Footer";
 
 function SectionHeading({ children }) {
   return (
-    <h2 className="text-sm font-bold uppercase tracking-wide text-navy-800 dark:text-navy-200">
+    <h2 className="text-xs font-bold uppercase tracking-wide text-navy-800 dark:text-navy-200">
       {children}
     </h2>
   );
@@ -71,7 +71,7 @@ function HighlightsList({ details }) {
   return (
     <ul className="mt-4 space-y-3">
       {details.highlights.map((point) => (
-        <li key={point} className="flex gap-3 text-sm text-ink-700 dark:text-navy-200">
+        <li key={point} className="flex gap-3 text-xs text-ink-700 dark:text-navy-200">
           <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-navy-500" />
           <span className="leading-relaxed">{point}</span>
         </li>
@@ -119,7 +119,7 @@ function HighlightsAndTechStack({ details }) {
 
 function IotProjectLayout({ project, details }) {
   return (
-    <article className="section-shell pb-16 pt-12 sm:pb-20 sm:pt-16">
+    <article className="section-shell pb-16 pt-16 sm:pb-20 sm:pt-24">
       <div className="grid gap-10 lg:grid-cols-[260px_1fr] lg:items-start lg:gap-8 xl:grid-cols-[300px_1fr] xl:gap-10">
         <div className="min-w-0 lg:sticky lg:top-24 lg:self-start">
           <Reveal>
@@ -143,16 +143,11 @@ function IotProjectLayout({ project, details }) {
               </a>
             )}
           </Reveal>
-
-          <Reveal delay={0.1} className="mt-6">
-            <SectionHeading>Tech Stack</SectionHeading>
-            <TechStackTags details={details} />
-          </Reveal>
         </div>
 
         <div className="flex min-w-0 flex-col gap-14">
           <Reveal delay={0.05}>
-            <p className="text-sm leading-relaxed text-ink-500 dark:text-navy-300">
+            <p className="text-xs leading-relaxed text-ink-500 dark:text-navy-300">
               {details.description}
             </p>
           </Reveal>
@@ -182,7 +177,7 @@ function IotProjectLayout({ project, details }) {
           {details.architecture && (
             <Reveal delay={0.05}>
               <SectionHeading>Architecture</SectionHeading>
-              <p className="mt-2 text-sm text-ink-500 dark:text-navy-300">
+              <p className="mt-2 text-xs text-ink-500 dark:text-navy-300">
                 Video capture, gesture recognition, and playback control are split across three
                 stages.
               </p>
@@ -203,6 +198,11 @@ function IotProjectLayout({ project, details }) {
               </div>
             </Reveal>
           )}
+
+          <Reveal delay={0.05}>
+            <SectionHeading>Tech Stack</SectionHeading>
+            <TechStackTags details={details} />
+          </Reveal>
 
           {details.challenges && (
             <Reveal delay={0.05}>
