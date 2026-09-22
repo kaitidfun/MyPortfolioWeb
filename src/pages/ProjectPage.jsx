@@ -19,6 +19,16 @@ function SectionHeading({ children }) {
   );
 }
 
+function SubHeading({ children, className = "" }) {
+  return (
+    <h3
+      className={`text-xs font-semibold uppercase tracking-wide text-navy-500 dark:text-navy-400 ${className}`}
+    >
+      {children}
+    </h3>
+  );
+}
+
 function BackToProjectsLink() {
   return (
     <Link
@@ -150,10 +160,12 @@ function IotProjectLayout({ project, details }) {
 
         <div className="flex min-w-0 flex-col gap-16">
           <Reveal delay={0.05}>
-            <p className="text-sm leading-relaxed text-ink-500 dark:text-navy-300">
+            <SectionHeading>What is it about?</SectionHeading>
+            <p className="mt-3 text-sm leading-relaxed text-ink-500 dark:text-navy-300">
               {details.description}
             </p>
-            <HighlightsList details={details} className="mt-4 space-y-2" />
+            <SubHeading className="mt-6">Highlights</SubHeading>
+            <HighlightsList details={details} className="mt-3 space-y-2" />
           </Reveal>
 
           <Reveal delay={0.05}>
