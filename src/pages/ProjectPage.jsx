@@ -1,25 +1,27 @@
 import { useParams, Link, Navigate } from "react-router-dom";
 import { projects } from "../data/resumeData";
 import DemoPlaceholder from "../components/DemoPlaceholder";
-import GestureShowcase from "../components/GestureShowcase";
+import GestureList from "../components/GestureList";
+import HeroClip from "../components/HeroClip";
 import StatsCallout from "../components/StatsCallout";
+import ArchitectureDiagram from "../components/ArchitectureDiagram";
+import HardwarePhotos from "../components/HardwarePhotos";
+import ChallengesList from "../components/ChallengesList";
 import { GithubIcon } from "../components/Icons";
 import Reveal from "../components/Reveal";
 import Footer from "../components/Footer";
 
-export default function ProjectPage() {
-  const { id } = useParams();
-  const project = projects.find((p) => p.id === id);
+function SectionHeading({ children }) {
+  return (
+    <h2 className="text-sm font-bold uppercase tracking-wide text-navy-800 dark:text-navy-200">
+      {children}
+    </h2>
+  );
+}
 
-  if (!project) {
-    return <Navigate to="/" replace />;
-  }
-
-  const { demoType, details } = project;
-
+function ProjectHeader({ project, details }) {
   return (
     <>
-    <article className="section-shell py-16 sm:py-20">
       <Reveal>
         <Link
           to="/#projects"
@@ -52,13 +54,123 @@ export default function ProjectPage() {
           </a>
         )}
       </Reveal>
+    </>
+  );
+}
+
+function HighlightsAndTechStack({ details }) {
+  return (
+    <div className="grid gap-10 sm:grid-cols-2">
+      <div>
+        <SectionHeading>Highlights</SectionHeading>
+        <ul className="mt-4 space-y-3">
+          {details.highlights.map((point) => (
+            <li key={point} className="flex gap-3 text-sm text-ink-700 dark:text-navy-200">
+              <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-navy-500" />
+              <span className="leading-relaxed">{point}</span>
+            </li>
+          ))}
+        </ul>
+
+        {details.certification && (
+          <p className="mt-5 rounded-lg bg-navy-50 px-4 py-3 text-xs font-medium text-navy-700 dark:bg-navy-900 dark:text-navy-300">
+            {details.certification}
+          </p>
+        )}
+      </div>
+
+      <div>
+        <SectionHeading>Tech Stack</SectionHeading>
+        <div className="mt-4 flex flex-wrap gap-2">
+          {details.techStack.map((tech) => (
+            <span
+              key={tech}
+              className="rounded-full border border-navy-200 px-3 py-1 text-xs font-medium text-navy-800 dark:border-navy-700 dark:text-navy-200"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function IotProjectLayout({ project, details }) {
+  return (
+    <article className="section-shell py-16 sm:py-20">
+      <div className="grid gap-12 lg:grid-cols-[380px_1fr] lg:items-start lg:gap-16">
+        <div className="lg:sticky lg:top-28 lg:self-start">
+          <ProjectHeader project={project} details={details} />
+          <Reveal delay={0.15} className="mt-12">
+            <HighlightsAndTechStack details={details} />
+          </Reveal>
+        </div>
+
+        <div className="flex flex-col gap-14">
+          <Reveal>
+            <HeroClip
+              src={details.heroClip}
+              caption="Controlling a PC and an iPad at the same time, live"
+            />
+          </Reveal>
+
+          {details.stats && (
+            <Reveal delay={0.05}>
+              <StatsCallout stats={details.stats} />
+            </Reveal>
+          )}
+
+          <Reveal delay={0.05}>
+            <SectionHeading>Gestures</SectionHeading>
+            <div className="mt-4">
+              <GestureList gestures={details.gestures} />
+            </div>
+          </Reveal>
+
+          {details.architecture && (
+            <Reveal delay={0.05}>
+              <SectionHeading>Architecture</SectionHeading>
+              <p className="mt-2 text-sm text-ink-500 dark:text-navy-300">
+                Video capture, gesture recognition, and playback control are split across three
+                stages.
+              </p>
+              <div className="mt-4">
+                <ArchitectureDiagram nodes={details.architecture} />
+              </div>
+            </Reveal>
+          )}
+
+          {details.hardwarePhotos && (
+            <Reveal delay={0.05}>
+              <SectionHeading>Hardware</SectionHeading>
+              <div className="mt-4">
+                <HardwarePhotos photos={details.hardwarePhotos} />
+              </div>
+            </Reveal>
+          )}
+
+          {details.challenges && (
+            <Reveal delay={0.05}>
+              <SectionHeading>Challenges &amp; Solutions</SectionHeading>
+              <div className="mt-4">
+                <ChallengesList challenges={details.challenges} />
+              </div>
+            </Reveal>
+          )}
+        </div>
+      </div>
+    </article>
+  );
+}
+
+function DefaultProjectLayout({ project, details, demoType }) {
+  return (
+    <article className="section-shell py-16 sm:py-20">
+      <ProjectHeader project={project} details={details} />
 
       <Reveal delay={0.1} className="mt-10">
-        {details.gestures ? (
-          <GestureShowcase heroClip={details.heroClip} gestures={details.gestures} />
-        ) : (
-          <DemoPlaceholder type={demoType} label={details.demoLabel} />
-        )}
+        <DemoPlaceholder type={demoType} label={details.demoLabel} />
       </Reveal>
 
       {details.stats && (
@@ -67,45 +179,31 @@ export default function ProjectPage() {
         </Reveal>
       )}
 
-      <Reveal delay={0.15} className="mt-12 grid gap-10 sm:grid-cols-2">
-        <div>
-          <h2 className="text-sm font-bold uppercase tracking-wide text-navy-800 dark:text-navy-200">
-            Highlights
-          </h2>
-          <ul className="mt-4 space-y-3">
-            {details.highlights.map((point) => (
-              <li key={point} className="flex gap-3 text-sm text-ink-700 dark:text-navy-200">
-                <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-navy-500" />
-                <span className="leading-relaxed">{point}</span>
-              </li>
-            ))}
-          </ul>
-
-          {details.certification && (
-            <p className="mt-5 rounded-lg bg-navy-50 px-4 py-3 text-xs font-medium text-navy-700 dark:bg-navy-900 dark:text-navy-300">
-              {details.certification}
-            </p>
-          )}
-        </div>
-
-        <div>
-          <h2 className="text-sm font-bold uppercase tracking-wide text-navy-800 dark:text-navy-200">
-            Tech Stack
-          </h2>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {details.techStack.map((tech) => (
-              <span
-                key={tech}
-                className="rounded-full border border-navy-200 px-3 py-1 text-xs font-medium text-navy-800 dark:border-navy-700 dark:text-navy-200"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-        </div>
+      <Reveal delay={0.15} className="mt-12">
+        <HighlightsAndTechStack details={details} />
       </Reveal>
     </article>
-    <Footer />
+  );
+}
+
+export default function ProjectPage() {
+  const { id } = useParams();
+  const project = projects.find((p) => p.id === id);
+
+  if (!project) {
+    return <Navigate to="/" replace />;
+  }
+
+  const { demoType, details } = project;
+
+  return (
+    <>
+      {details.gestures ? (
+        <IotProjectLayout project={project} details={details} />
+      ) : (
+        <DefaultProjectLayout project={project} details={details} demoType={demoType} />
+      )}
+      <Footer />
     </>
   );
 }

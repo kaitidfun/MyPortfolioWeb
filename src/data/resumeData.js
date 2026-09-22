@@ -76,36 +76,88 @@ export const projects = [
           emoji: "🖐️🖐️",
           gesture: "Both hands open",
           action: "Ready",
+          howTo:
+            "Hold both hands open and visible to the camera. This calibrates tracking and arms the system to accept the next gesture.",
         },
         {
           clip: "/demos/iot/gesture-play-pause.mp4",
           emoji: "✊✊",
           gesture: "Both fists",
           action: "Play / Pause",
+          howTo:
+            "Close both hands into fists at the same time. Toggles playback between play and pause.",
         },
         {
           clip: "/demos/iot/gesture-next.mp4",
           emoji: "🖐️✊",
           gesture: "Left open + right fist",
           action: "Next track",
+          howTo:
+            "Keep your left hand open while closing your right hand into a fist. Skips forward to the next track.",
         },
         {
           clip: "/demos/iot/gesture-previous.mp4",
           emoji: "✊🖐️",
           gesture: "Left fist + right open",
           action: "Previous track",
+          howTo:
+            "The mirror of Next — close your left hand into a fist while keeping your right hand open. Jumps back to the previous track.",
         },
         {
           clip: "/demos/iot/gesture-volume.mp4",
           emoji: "✊",
           gesture: "Fist, move up/down",
           action: "Volume",
+          howTo:
+            "Make a fist with one hand and move it up or down. Volume follows your hand's vertical position in real time.",
         },
         {
           clip: "/demos/iot/gesture-seek.mp4",
           emoji: "✊",
           gesture: "Fist, move left/right",
           action: "Seek",
+          howTo:
+            "Make a fist with one hand and move it left or right. Scrubs the current track's playback position.",
+        },
+      ],
+      architecture: [
+        {
+          label: "ESP32-CAM",
+          detail: "Streams live video over Wi-Fi",
+        },
+        {
+          label: "Python (OpenCV + MediaPipe)",
+          detail: "Tracks hand landmarks and classifies gestures into commands",
+        },
+        {
+          label: "Spotify Web API",
+          detail: "Receives playback commands (play, pause, skip, volume, seek)",
+        },
+        {
+          label: "Spotify Connect device",
+          detail: "PC or iPad — playback updates live on whichever device is active",
+        },
+      ],
+      hardwarePhotos: [
+        {
+          src: "/demos/iot/hardware-unbox.jpg",
+          caption: "The ESP32-CAM module, wired and ready to mount.",
+        },
+        {
+          src: "/demos/iot/hardware-closeup.jpg",
+          caption: "Close-up of the camera board secured inside its cardboard enclosure.",
+        },
+      ],
+      challenges: [
+        {
+          problem: "Next and Previous fired interchangeably.",
+          solution:
+            "The first version only checked how many hands were open vs. closed, not which hand was which. Fixed by identifying left vs. right hand from the landmark data before mapping the gesture to a command.",
+        },
+        {
+          problem: "Volume and Seek felt jittery.",
+          solution:
+            "Raw hand position is noisy frame-to-frame, causing the value to jump around. Fixed by smoothing the tracked position over a short rolling window before mapping it to a volume or seek delta.",
         },
       ],
     },
