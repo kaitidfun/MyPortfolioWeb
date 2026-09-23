@@ -80,12 +80,12 @@ export const projects = [
       },
       pipelineDetail: {
         intro:
-          "Neither model ever sees the member's words alone. Take this actual run: the member typed a beach chase-and-tumble scene for a Fuggler × SpongeBob \"Plankton\" keychain. Before Gemini reads a word of that, the backend wraps it in a fixed system prompt — roughly \"generate a first frame for a paid social ad; product is the Fuggler Plankton keychain, keep it fully visible and true to its real colors and shape; aspect ratio 9:16, photorealistic\" — plus the product's real title, description, and photo, so the keychain that shows up is the one actually being sold, not Gemini's best guess at one.",
+          "Neither model ever sees the member's words alone. Take this actual run: the member typed a sprinting, tripping, tumble-into-the-sand scene for a Fuggler × SpongeBob \"Plankton\" keychain. Before Gemini reads a word of that, the backend wraps it in a fixed system prompt — roughly \"generate a first frame for a paid social ad; product is the Fuggler Plankton keychain, keep it fully visible and true to its real colors and shape; aspect ratio 9:16, photorealistic\" — plus the product's real title, description, and photo, so the keychain that shows up is the one actually being sold, not Gemini's best guess at one.",
         steps: [
           {
             label: "Gemini composes the first frame",
             description:
-              "Gemini reads that wrapped prompt — the zombie-chase beach concept plus the keychain's real product photo — and composes one cinematic first frame: the keychain planted in the sand, its tag and colors intact, ocean and blurred figures behind it. Placement, lighting, and composition are all locked in here, before any motion exists.",
+              "Gemini reads that wrapped prompt — the member's beach action concept plus the keychain's real product photo — and composes one cinematic first frame: the keychain planted in the sand, its tag and colors intact, ocean and blurred beachgoers behind it. Placement, lighting, and composition are all locked in here, before any motion exists.",
             image: "/demos/reelcast/pipeline-first-frame.jpg",
           },
           {
@@ -100,6 +100,13 @@ export const projects = [
       moreFeatures: [
         "Schedule a post for later and a background worker publishes it automatically the moment it's due — no need to be online when it goes live.",
         "A performance dashboard pulling real revenue, views, and clicks from TikTok Shop, Shopee, and Lazada is still in progress.",
+      ],
+      challenges: [
+        {
+          problem: "The generated video doesn't always follow the prompt exactly.",
+          solution:
+            "In the run shown above, the prompt described hazy figures chasing the character in the background, but LTX Video rendered them as ordinary blurred beachgoers instead — everything else (the sprint, the trip, the low-angle push-in) came through fine. That's the tradeoff of running on a budget-tier video model: a higher-end one would likely follow prompts more literally, but at a meaningfully higher cost per generation. Still open, not something the pipeline corrects for yet.",
+        },
       ],
       featureClip: {
         src: "/demos/reelcast/feature-distribute.mp4",
