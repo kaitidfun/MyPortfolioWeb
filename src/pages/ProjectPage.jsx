@@ -151,6 +151,11 @@ function IotProjectLayout({ project, details }) {
         <div className="flex min-w-0 flex-col gap-16">
           <Reveal delay={0.05}>
             <SectionHeading>What is it about?</SectionHeading>
+            {details.problem && (
+              <p className="mt-3 text-sm leading-relaxed text-ink-500 dark:text-navy-300">
+                {details.problem}
+              </p>
+            )}
             <p className="mt-3 text-sm leading-relaxed text-ink-500 dark:text-navy-300">
               {details.description}
             </p>
@@ -307,6 +312,15 @@ function ReelCastLayout({ project, details }) {
             <Reveal delay={0.05}>
               <SectionHeading>What else can it do?</SectionHeading>
               <BulletList items={details.moreFeatures} className="mt-4 space-y-2" />
+              {details.featureClip && (
+                <div className="mt-6">
+                  <HeroClip
+                    src={details.featureClip.src}
+                    poster={details.featureClip.poster}
+                    caption={details.featureClip.caption}
+                  />
+                </div>
+              )}
             </Reveal>
           )}
 
