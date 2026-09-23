@@ -78,6 +78,25 @@ export const projects = [
           },
         ],
       },
+      pipelineDetail: {
+        intro:
+          "Neither model ever sees the member's words alone. The backend wraps the prompt in a fixed system prompt together with the chosen product's title, description, and photo, so every generation stays on-brand and product-accurate no matter what gets typed.",
+        steps: [
+          {
+            label: "Gemini composes the first frame",
+            description:
+              "Gemini reads the wrapped prompt plus the product photo and generates a single cinematic first frame — deciding the product's placement, lighting, and composition up front, before any motion exists.",
+            image: "/demos/reelcast/pipeline-first-frame.jpg",
+          },
+          {
+            label: "LTX Video animates it",
+            description:
+              "That first frame is handed to LTX Video with a second, internally-written prompt — this one describing camera movement and pacing rather than subject matter, since the subject is already locked into the image.",
+            clip: "/demos/reelcast/pipeline-ltx-clip.mp4",
+            poster: "/demos/reelcast/pipeline-ltx-poster.jpg",
+          },
+        ],
+      },
       moreFeatures: [
         "Schedule a post for later and a background worker publishes it automatically the moment it's due — no need to be online when it goes live.",
         "A performance dashboard pulling real revenue, views, and clicks from TikTok Shop, Shopee, and Lazada is still in progress.",

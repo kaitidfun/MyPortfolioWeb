@@ -305,6 +305,45 @@ function ReelCastLayout({ project, details }) {
                   devices={details.architecture.devices}
                 />
               </div>
+              {details.pipelineDetail && (
+                <div className="mt-8">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-navy-500 dark:text-navy-400">
+                    Under the hood, one real run
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-500 dark:text-navy-300">
+                    {details.pipelineDetail.intro}
+                  </p>
+                  <div className="mt-5 grid gap-6 sm:grid-cols-2">
+                    {details.pipelineDetail.steps.map((step) => (
+                      <div key={step.label} className="flex flex-col gap-3">
+                        <p className="text-sm font-bold text-navy-800 dark:text-white">
+                          {step.label}
+                        </p>
+                        {step.image && (
+                          <img
+                            src={step.image}
+                            alt={step.label}
+                            className="aspect-[3/4] w-full rounded-xl border border-navy-100 object-cover dark:border-navy-800"
+                          />
+                        )}
+                        {step.clip && (
+                          <video
+                            src={step.clip}
+                            poster={step.poster}
+                            controls
+                            playsInline
+                            preload="metadata"
+                            className="aspect-[3/4] w-full rounded-xl border border-navy-100 object-cover dark:border-navy-800"
+                          />
+                        )}
+                        <p className="text-xs leading-relaxed text-ink-500 dark:text-navy-300">
+                          {step.description}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </Reveal>
           )}
 
