@@ -307,10 +307,7 @@ function ReelCastLayout({ project, details }) {
               </div>
               {details.pipelineDetail && (
                 <div className="mt-8">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-navy-500 dark:text-navy-400">
-                    Under the hood, one real run
-                  </p>
-                  <p className="mt-2 text-sm leading-relaxed text-ink-500 dark:text-navy-300">
+                  <p className="text-sm leading-relaxed text-ink-500 dark:text-navy-300">
                     {details.pipelineDetail.intro}
                   </p>
                   <div className="mt-5 grid gap-6 sm:grid-cols-2">
@@ -330,7 +327,9 @@ function ReelCastLayout({ project, details }) {
                           <video
                             src={step.clip}
                             poster={step.poster}
-                            controls
+                            autoPlay
+                            muted
+                            loop
                             playsInline
                             preload="metadata"
                             className="aspect-[3/4] w-full rounded-xl border border-navy-100 object-cover dark:border-navy-800"

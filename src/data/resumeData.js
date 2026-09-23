@@ -80,18 +80,18 @@ export const projects = [
       },
       pipelineDetail: {
         intro:
-          "Neither model ever sees the member's words alone. The backend wraps the prompt in a fixed system prompt together with the chosen product's title, description, and photo, so every generation stays on-brand and product-accurate no matter what gets typed.",
+          "Neither model ever sees the member's words alone. Take this actual run: the member typed a beach chase-and-tumble scene for a Fuggler × SpongeBob \"Plankton\" keychain. Before Gemini reads a word of that, the backend wraps it in a fixed system prompt — roughly \"generate a first frame for a paid social ad; product is the Fuggler Plankton keychain, keep it fully visible and true to its real colors and shape; aspect ratio 9:16, photorealistic\" — plus the product's real title, description, and photo, so the keychain that shows up is the one actually being sold, not Gemini's best guess at one.",
         steps: [
           {
             label: "Gemini composes the first frame",
             description:
-              "Gemini reads the wrapped prompt plus the product photo and generates a single cinematic first frame — deciding the product's placement, lighting, and composition up front, before any motion exists.",
+              "Gemini reads that wrapped prompt — the zombie-chase beach concept plus the keychain's real product photo — and composes one cinematic first frame: the keychain planted in the sand, its tag and colors intact, ocean and blurred figures behind it. Placement, lighting, and composition are all locked in here, before any motion exists.",
             image: "/demos/reelcast/pipeline-first-frame.jpg",
           },
           {
             label: "LTX Video animates it",
             description:
-              "That first frame is handed to LTX Video with a second, internally-written prompt — this one describing camera movement and pacing rather than subject matter, since the subject is already locked into the image.",
+              "That exact frame goes to LTX Video with a second, internally-written prompt — this one describing camera work and pacing (\"low-angle handheld, slowly pushing in\") rather than subject matter, since the keychain and beach are already locked into the image. This is the real, unedited clip LTX returned for this run.",
             clip: "/demos/reelcast/pipeline-ltx-clip.mp4",
             poster: "/demos/reelcast/pipeline-ltx-poster.jpg",
           },
