@@ -10,6 +10,8 @@ export default function GestureList({ gestures }) {
               muted
               loop
               playsInline
+              disablePictureInPicture
+              disableRemotePlayback
               preload="metadata"
               className="aspect-[4/3] w-full object-cover"
             />

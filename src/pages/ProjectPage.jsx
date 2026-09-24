@@ -328,6 +328,8 @@ function ReelCastLayout({ project, details }) {
                             muted
                             loop
                             playsInline
+                            disablePictureInPicture
+                            disableRemotePlayback
                             preload="metadata"
                             className="aspect-[3/4] w-full rounded-xl border border-navy-100 object-cover dark:border-navy-800"
                           />
@@ -351,7 +353,12 @@ function ReelCastLayout({ project, details }) {
           {details.featureClips && (
             <Reveal delay={0.05}>
               <SectionHeading>What else can it do?</SectionHeading>
-              <div className="mt-4 grid gap-6 sm:grid-cols-2">
+              {details.moreFeaturesNote && (
+                <p className="mt-3 text-sm leading-relaxed text-ink-500 dark:text-navy-300">
+                  {details.moreFeaturesNote}
+                </p>
+              )}
+              <div className="mt-5 grid gap-6 sm:grid-cols-2">
                 {details.featureClips.map((feature) => (
                   <div key={feature.label} className="flex flex-col gap-3">
                     <video
@@ -361,6 +368,8 @@ function ReelCastLayout({ project, details }) {
                       muted
                       loop
                       playsInline
+                      disablePictureInPicture
+                      disableRemotePlayback
                       preload="metadata"
                       className="aspect-video w-full rounded-xl border border-navy-100 object-cover dark:border-navy-800"
                     />
@@ -375,11 +384,6 @@ function ReelCastLayout({ project, details }) {
                   </div>
                 ))}
               </div>
-              {details.moreFeaturesNote && (
-                <p className="mt-5 text-sm leading-relaxed text-ink-500 dark:text-navy-300">
-                  {details.moreFeaturesNote}
-                </p>
-              )}
             </Reveal>
           )}
 

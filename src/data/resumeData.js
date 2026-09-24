@@ -29,7 +29,7 @@ export const projects = [
     tags: ["Gemini", "LTX Video", "FastAPI", "Celery"],
     demoType: "video",
     details: {
-      heading: "ReelCast",
+      heading: "ReelCast — Prompt to Published",
       subheading: "Senior Project — AI-Powered Social Media Reel Generator",
       problem:
         "Making a branded video ad usually means shooting footage, editing it, and coordinating a team — or settling for a generic AI tool that just drops text over stock footage. Even once it exists, getting it published means uploading it to every platform separately by hand.",
@@ -101,30 +101,30 @@ export const projects = [
         {
           label: "Publishing schedules itself",
           description:
-            "Once a reel is ready, Gemini writes the caption and hashtags and the member picks a publish time instead of a publish button — a Celery Beat worker checks the schedule and fires the post the moment it's due, with nobody needing to be online to press send. It goes out through each connected platform's own API — TikTok, Instagram, Facebook, and YouTube — in one pass, so nothing needs re-uploading by hand per platform.",
+            "Gemini writes the caption and hashtags, then a Celery Beat worker fires the post the moment the scheduled time hits — no need to be online to press send. It goes out through TikTok, Instagram, Facebook, and YouTube's own APIs in one pass, no manual re-uploading.",
           clip: "/demos/reelcast/feature-distribute.mp4",
           poster: "/demos/reelcast/feature-distribute-poster.jpg",
         },
         {
           label: "Performance rolls up from every platform",
           description:
-            "Once a reel is live, the tracking dashboard is meant to pull real revenue, views, clicks, and conversions back from TikTok Shop, Shopee, and Lazada into one view — filterable by platform and time period, with top-performing products, campaigns, and posts surfaced automatically. It's the fifth and last of the planned features, so it still shows placeholder zeros while the data connections get wired up.",
+            "The tracking dashboard pulls revenue, views, clicks, and conversions from TikTok Shop, Shopee, and Lazada into one filterable view, with top products, campaigns, and posts surfaced automatically. It's the fifth and last feature, so it's still showing placeholder zeros while the data connections get wired up.",
           clip: "/demos/reelcast/feature-tracking.mp4",
           poster: "/demos/reelcast/feature-tracking-poster.jpg",
         },
       ],
       moreFeaturesNote:
-        "The rest of the platform covers what a tool like this needs to run day to day: member accounts and login, profile settings, and a library for managing saved products and past campaigns.",
+        "Membership, profile settings, and a library for saved products and campaigns round out the basics. Here's a closer look at the two more involved pieces:",
       challenges: [
         {
           problem: "Running on a budget-tier video model comes with tradeoffs.",
           solution:
-            "The project's budget meant picking a cheaper video generation tier over a premium one — lower cost per generation, but less literal about following the prompt. In the run shown above, the prompt described hazy figures chasing the character in the background; LTX Video rendered them as ordinary blurred beachgoers instead, while everything else — the sprint, the trip, the low-angle push-in — came through fine. A higher-end model would likely follow prompts more literally, at a meaningfully higher cost per generation. Still an open tradeoff, not something the pipeline corrects for.",
+            "It's cheaper per generation but less literal about following the prompt — in the run shown above, the \"hazy figures chasing\" became ordinary blurred beachgoers, while the rest of the scene came through fine. A higher-end model would likely follow prompts more closely, at a meaningfully higher cost. Still an open tradeoff.",
         },
         {
           problem: "Each platform's publishing API has its own rules, and they don't match.",
           solution:
-            "TikTok's Content Posting API keeps unaudited apps limited to private, unlisted drafts until the app passes TikTok's own review for public posting. Instagram and Facebook run through Meta's Graph API as a two-step, asynchronous flow — upload a media container, poll until it's processed, then publish it — and Instagram caps API-published posts at 25 per account per rolling 24 hours. YouTube's Data API runs on a daily quota instead of a simple rate limit, and a single video upload eats a meaningful chunk of the default allowance, so any real posting volume means requesting a quota increase from Google. Getting one scheduler to work around all three took more glue code than the AI pipeline itself.",
+            "TikTok keeps unaudited apps to private drafts only until it reviews the app. Meta's Graph API needs a two-step upload-then-publish flow and caps Instagram at 25 posts a day. YouTube runs on a daily quota, not a simple rate limit, so real posting volume means requesting more from Google. One scheduler had to work around all three.",
         },
       ],
       heroClip: "/demos/reelcast/hero-prompt-to-video.mp4",
