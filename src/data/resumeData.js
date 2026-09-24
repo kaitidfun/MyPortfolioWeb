@@ -80,39 +80,53 @@ export const projects = [
       },
       pipelineDetail: {
         intro:
-          "Neither model ever sees the member's words alone. Take this actual run: the member typed a sprinting, tripping, tumble-into-the-sand scene for a Fuggler × SpongeBob \"Plankton\" keychain. Before Gemini reads a word of that, the backend wraps it in a fixed system prompt — roughly \"generate a first frame for a paid social ad; product is the Fuggler Plankton keychain, keep it fully visible and true to its real colors and shape; aspect ratio 9:16, photorealistic\" — plus the product's real title, description, and photo, so the keychain that shows up is the one actually being sold, not Gemini's best guess at one.",
+          "Neither model ever sees the member's prompt alone: the backend wraps it in a fixed system prompt together with the chosen product's title, description, and photo, so the output stays on-brand and product-accurate no matter what gets typed. Here's what that looked like for the exact run shown in the hero clip above — a Fuggler × SpongeBob \"Plankton\" keychain sprinting, tripping, and tumbling into the sand. The wrapped prompt read roughly \"generate a first frame for a paid social ad; product is the Fuggler Plankton keychain, keep it fully visible and true to its real colors and shape; aspect ratio 9:16, photorealistic.\"",
         steps: [
           {
             label: "Gemini composes the first frame",
             description:
-              "Gemini reads that wrapped prompt — the member's beach action concept plus the keychain's real product photo — and composes one cinematic first frame: the keychain planted in the sand, its tag and colors intact, ocean and blurred beachgoers behind it. Placement, lighting, and composition are all locked in here, before any motion exists.",
+              "Gemini reads that wrapped prompt plus the keychain's real product photo and composes one cinematic first frame — the keychain planted in the sand, its tag and colors intact, ocean and blurred beachgoers behind it. Placement, lighting, and composition are all locked in here, before any motion exists.",
             image: "/demos/reelcast/pipeline-first-frame.jpg",
           },
           {
             label: "LTX Video animates it",
             description:
-              "That exact frame goes to LTX Video with a second, internally-written prompt — this one describing camera work and pacing (\"low-angle handheld, slowly pushing in\") rather than subject matter, since the keychain and beach are already locked into the image. This is the real, unedited clip LTX returned for this run.",
+              "That exact frame goes to LTX Video with a second, internally-written prompt describing camera work and pacing (\"low-angle handheld, slowly pushing in\") rather than subject matter, since the keychain and beach are already locked into the image. This is the real, unedited clip LTX returned for this run.",
             clip: "/demos/reelcast/pipeline-ltx-clip.mp4",
             poster: "/demos/reelcast/pipeline-ltx-poster.jpg",
           },
         ],
       },
-      moreFeatures: [
-        "Schedule a post for later and a background worker publishes it automatically the moment it's due — no need to be online when it goes live.",
-        "A performance dashboard pulling real revenue, views, and clicks from TikTok Shop, Shopee, and Lazada is still in progress.",
-      ],
-      challenges: [
+      featureClips: [
         {
-          problem: "The generated video doesn't always follow the prompt exactly.",
-          solution:
-            "In the run shown above, the prompt described hazy figures chasing the character in the background, but LTX Video rendered them as ordinary blurred beachgoers instead — everything else (the sprint, the trip, the low-angle push-in) came through fine. That's the tradeoff of running on a budget-tier video model: a higher-end one would likely follow prompts more literally, but at a meaningfully higher cost per generation. Still open, not something the pipeline corrects for yet.",
+          label: "Publishing schedules itself",
+          description:
+            "Once a reel is ready, Gemini writes the caption and hashtags and the member picks a publish time instead of a publish button — a Celery Beat worker checks the schedule and fires the post the moment it's due, with nobody needing to be online to press send. It goes out through each connected platform's own API — TikTok, Instagram, Facebook, and YouTube — in one pass, so nothing needs re-uploading by hand per platform.",
+          clip: "/demos/reelcast/feature-distribute.mp4",
+          poster: "/demos/reelcast/feature-distribute-poster.jpg",
+        },
+        {
+          label: "Performance rolls up from every platform",
+          description:
+            "Once a reel is live, the tracking dashboard is meant to pull real revenue, views, clicks, and conversions back from TikTok Shop, Shopee, and Lazada into one view — filterable by platform and time period, with top-performing products, campaigns, and posts surfaced automatically. It's the fifth and last of the planned features, so it still shows placeholder zeros while the data connections get wired up.",
+          clip: "/demos/reelcast/feature-tracking.mp4",
+          poster: "/demos/reelcast/feature-tracking-poster.jpg",
         },
       ],
-      featureClip: {
-        src: "/demos/reelcast/feature-distribute.mp4",
-        poster: "/demos/reelcast/feature-distribute-poster.jpg",
-        caption: "Gemini drafts the caption and hashtags, then the reel schedules straight to the connected accounts.",
-      },
+      moreFeaturesNote:
+        "The rest of the platform covers what a tool like this needs to run day to day: member accounts and login, profile settings, and a library for managing saved products and past campaigns.",
+      challenges: [
+        {
+          problem: "Running on a budget-tier video model comes with tradeoffs.",
+          solution:
+            "The project's budget meant picking a cheaper video generation tier over a premium one — lower cost per generation, but less literal about following the prompt. In the run shown above, the prompt described hazy figures chasing the character in the background; LTX Video rendered them as ordinary blurred beachgoers instead, while everything else — the sprint, the trip, the low-angle push-in — came through fine. A higher-end model would likely follow prompts more literally, at a meaningfully higher cost per generation. Still an open tradeoff, not something the pipeline corrects for.",
+        },
+        {
+          problem: "Each platform's publishing API has its own rules, and they don't match.",
+          solution:
+            "TikTok's Content Posting API keeps unaudited apps limited to private, unlisted drafts until the app passes TikTok's own review for public posting. Instagram and Facebook run through Meta's Graph API as a two-step, asynchronous flow — upload a media container, poll until it's processed, then publish it — and Instagram caps API-published posts at 25 per account per rolling 24 hours. YouTube's Data API runs on a daily quota instead of a simple rate limit, and a single video upload eats a meaningful chunk of the default allowance, so any real posting volume means requesting a quota increase from Google. Getting one scheduler to work around all three took more glue code than the AI pipeline itself.",
+        },
+      ],
       heroClip: "/demos/reelcast/hero-prompt-to-video.mp4",
       heroPoster: "/demos/reelcast/hero-poster.jpg",
       demoAspect: "16:9",

@@ -313,9 +313,6 @@ function ReelCastLayout({ project, details }) {
                   <div className="mt-5 grid gap-6 sm:grid-cols-2">
                     {details.pipelineDetail.steps.map((step) => (
                       <div key={step.label} className="flex flex-col gap-3">
-                        <p className="text-sm font-bold text-navy-800 dark:text-white">
-                          {step.label}
-                        </p>
                         {step.image && (
                           <img
                             src={step.image}
@@ -335,8 +332,13 @@ function ReelCastLayout({ project, details }) {
                             className="aspect-[3/4] w-full rounded-xl border border-navy-100 object-cover dark:border-navy-800"
                           />
                         )}
-                        <p className="text-xs leading-relaxed text-ink-500 dark:text-navy-300">
-                          {step.description}
+                        <p className="text-sm leading-relaxed text-ink-700 dark:text-navy-200">
+                          <span className="font-semibold text-ink-900 dark:text-white">
+                            {step.label}.
+                          </span>{" "}
+                          <span className="text-ink-500 dark:text-navy-300">
+                            {step.description}
+                          </span>
                         </p>
                       </div>
                     ))}
@@ -346,18 +348,37 @@ function ReelCastLayout({ project, details }) {
             </Reveal>
           )}
 
-          {details.moreFeatures && (
+          {details.featureClips && (
             <Reveal delay={0.05}>
               <SectionHeading>What else can it do?</SectionHeading>
-              <BulletList items={details.moreFeatures} className="mt-4 space-y-2" />
-              {details.featureClip && (
-                <div className="mt-6">
-                  <HeroClip
-                    src={details.featureClip.src}
-                    poster={details.featureClip.poster}
-                    caption={details.featureClip.caption}
-                  />
-                </div>
+              <div className="mt-4 grid gap-6 sm:grid-cols-2">
+                {details.featureClips.map((feature) => (
+                  <div key={feature.label} className="flex flex-col gap-3">
+                    <video
+                      src={feature.clip}
+                      poster={feature.poster}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                      className="aspect-video w-full rounded-xl border border-navy-100 object-cover dark:border-navy-800"
+                    />
+                    <p className="text-sm leading-relaxed text-ink-700 dark:text-navy-200">
+                      <span className="font-semibold text-ink-900 dark:text-white">
+                        {feature.label}.
+                      </span>{" "}
+                      <span className="text-ink-500 dark:text-navy-300">
+                        {feature.description}
+                      </span>
+                    </p>
+                  </div>
+                ))}
+              </div>
+              {details.moreFeaturesNote && (
+                <p className="mt-5 text-sm leading-relaxed text-ink-500 dark:text-navy-300">
+                  {details.moreFeaturesNote}
+                </p>
               )}
             </Reveal>
           )}
