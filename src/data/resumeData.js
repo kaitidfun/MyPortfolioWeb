@@ -28,6 +28,7 @@ export const projects = [
       "An AI pipeline that turns a prompt into a branded video ad and publishes it across social platforms.",
     tags: ["Gemini", "LTX Video", "FastAPI", "Celery"],
     demoType: "video",
+    repoUrl: "https://github.com/kaitidfun/reelcast",
     details: {
       heading: "ReelCast — Prompt to Published",
       problem:
