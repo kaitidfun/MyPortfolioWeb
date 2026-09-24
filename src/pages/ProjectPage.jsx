@@ -321,18 +321,21 @@ function ReelCastLayout({ project, details }) {
                           />
                         )}
                         {step.clip && (
-                          <video
-                            src={step.clip}
-                            poster={step.poster}
-                            autoPlay
-                            muted
-                            loop
-                            playsInline
-                            disablePictureInPicture
-                            disableRemotePlayback
-                            preload="metadata"
-                            className="pointer-events-none aspect-[3/4] w-full rounded-xl border border-navy-100 object-cover dark:border-navy-800"
-                          />
+                          <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xl border border-navy-100 dark:border-navy-800">
+                            <video
+                              src={step.clip}
+                              poster={step.poster}
+                              autoPlay
+                              muted
+                              loop
+                              playsInline
+                              disablePictureInPicture
+                              disableRemotePlayback
+                              preload="metadata"
+                              className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+                            />
+                            <div className="absolute inset-0" />
+                          </div>
                         )}
                         <p className="text-sm leading-relaxed text-ink-700 dark:text-navy-200">
                           <span className="font-semibold text-ink-900 dark:text-white">
@@ -361,18 +364,21 @@ function ReelCastLayout({ project, details }) {
               <div className="mt-5 grid gap-6 sm:grid-cols-2">
                 {details.featureClips.map((feature) => (
                   <div key={feature.label} className="flex flex-col gap-3">
-                    <video
-                      src={feature.clip}
-                      poster={feature.poster}
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      disablePictureInPicture
-                      disableRemotePlayback
-                      preload="metadata"
-                      className="pointer-events-none aspect-video w-full rounded-xl border border-navy-100 object-cover dark:border-navy-800"
-                    />
+                    <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-navy-100 dark:border-navy-800">
+                      <video
+                        src={feature.clip}
+                        poster={feature.poster}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        disablePictureInPicture
+                        disableRemotePlayback
+                        preload="metadata"
+                        className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+                      />
+                      <div className="absolute inset-0" />
+                    </div>
                     <p className="text-sm leading-relaxed text-ink-700 dark:text-navy-200">
                       <span className="font-semibold text-ink-900 dark:text-white">
                         {feature.label}.

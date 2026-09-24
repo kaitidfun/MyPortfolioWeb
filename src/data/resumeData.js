@@ -30,7 +30,6 @@ export const projects = [
     demoType: "video",
     details: {
       heading: "ReelCast — Prompt to Published",
-      subheading: "Senior Project — AI-Powered Social Media Reel Generator",
       problem:
         "Making a branded video ad usually means shooting footage, editing it, and coordinating a team — or settling for a generic AI tool that just drops text over stock footage. Even once it exists, getting it published means uploading it to every platform separately by hand.",
       description:
