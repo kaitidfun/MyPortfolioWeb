@@ -328,7 +328,7 @@ function ReelCastLayout({ project, details }) {
                             className="aspect-[3/4] w-full rounded-xl border border-navy-100 dark:border-navy-800"
                           />
                         )}
-                        <p className="text-sm leading-relaxed text-ink-700 dark:text-navy-200">
+                        <p className="text-xs leading-relaxed text-ink-700 dark:text-navy-200">
                           <span className="font-semibold text-ink-900 dark:text-white">
                             {step.label}.
                           </span>{" "}
@@ -360,7 +360,7 @@ function ReelCastLayout({ project, details }) {
                       poster={feature.poster}
                       className="aspect-video w-full rounded-xl border border-navy-100 dark:border-navy-800"
                     />
-                    <p className="text-sm leading-relaxed text-ink-700 dark:text-navy-200">
+                    <p className="text-xs leading-relaxed text-ink-700 dark:text-navy-200">
                       <span className="font-semibold text-ink-900 dark:text-white">
                         {feature.label}.
                       </span>{" "}
