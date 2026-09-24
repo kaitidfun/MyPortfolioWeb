@@ -22,7 +22,7 @@ export const profile = {
 export const projects = [
   {
     id: "reelcast",
-    name: "ReelCast",
+    name: "ReelCast — Prompt to Published",
     subtitle: "Senior Project",
     blurb:
       "An AI pipeline that turns a prompt into a branded video ad and publishes it across social platforms.",
@@ -108,7 +108,7 @@ export const projects = [
         {
           label: "Performance rolls up from every platform",
           description:
-            "The tracking dashboard pulls revenue, views, clicks, and conversions from TikTok Shop, Shopee, and Lazada into one filterable view, with top products, campaigns, and posts surfaced automatically. It's the fifth and last feature, so it's still showing placeholder zeros while the data connections get wired up.",
+            "The dashboard is built to pull revenue, views, clicks, and conversions from TikTok Shop, Shopee, and Lazada into one filterable view. It's the fifth and last feature, still in development — it can't track real numbers yet, so it shows placeholder zeros for now.",
           clip: "/demos/reelcast/feature-tracking.mp4",
           poster: "/demos/reelcast/feature-tracking-poster.jpg",
         },

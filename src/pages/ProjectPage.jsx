@@ -331,7 +331,7 @@ function ReelCastLayout({ project, details }) {
                             disablePictureInPicture
                             disableRemotePlayback
                             preload="metadata"
-                            className="aspect-[3/4] w-full rounded-xl border border-navy-100 object-cover dark:border-navy-800"
+                            className="pointer-events-none aspect-[3/4] w-full rounded-xl border border-navy-100 object-cover dark:border-navy-800"
                           />
                         )}
                         <p className="text-sm leading-relaxed text-ink-700 dark:text-navy-200">
@@ -371,7 +371,7 @@ function ReelCastLayout({ project, details }) {
                       disablePictureInPicture
                       disableRemotePlayback
                       preload="metadata"
-                      className="aspect-video w-full rounded-xl border border-navy-100 object-cover dark:border-navy-800"
+                      className="pointer-events-none aspect-video w-full rounded-xl border border-navy-100 object-cover dark:border-navy-800"
                     />
                     <p className="text-sm leading-relaxed text-ink-700 dark:text-navy-200">
                       <span className="font-semibold text-ink-900 dark:text-white">

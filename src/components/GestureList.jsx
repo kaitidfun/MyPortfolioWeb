@@ -13,7 +13,7 @@ export default function GestureList({ gestures }) {
               disablePictureInPicture
               disableRemotePlayback
               preload="metadata"
-              className="aspect-[4/3] w-full object-cover"
+              className="pointer-events-none aspect-[4/3] w-full object-cover"
             />
           </div>
           <div className="min-w-0">
