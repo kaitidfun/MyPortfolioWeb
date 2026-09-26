@@ -16,29 +16,29 @@ export default function ProjectGallery() {
         </h2>
         <p className="mt-2 hidden text-sm text-ink-500 sm:mt-3 sm:block dark:text-navy-300">
           Four projects spanning generative AI, IoT hardware, game design, and
-          interactive design — click a card for the full write-up.
+          interactive design — click a project for the full write-up.
         </p>
       </Reveal>
 
-      <div className="mt-6 flex flex-col gap-4 sm:mt-10 sm:gap-6">
+      <div className="mt-6 flex flex-col gap-5 sm:mt-10 sm:gap-6">
         {projects.map((project, index) => (
           <Reveal key={project.id} delay={index * 0.08}>
             <Link
               to={`/projects/${project.id}`}
-              className="group flex h-full flex-col overflow-hidden rounded-2xl border border-navy-100 bg-white shadow-sm transition hover:-translate-y-1 hover:border-navy-300 hover:shadow-lg dark:border-navy-800 dark:bg-navy-900 dark:hover:border-navy-600"
+              className="group flex flex-col overflow-hidden rounded-2xl border border-navy-100 bg-white shadow-sm transition hover:-translate-y-1 hover:border-navy-300 hover:shadow-lg sm:flex-row dark:border-navy-800 dark:bg-navy-900 dark:hover:border-navy-600"
             >
-              <CoverPlaceholder />
-              <div className="flex flex-1 flex-col p-4 sm:p-6">
+              <CoverPlaceholder className="aspect-[16/9] w-full sm:aspect-auto sm:w-2/5 sm:flex-shrink-0 md:w-1/3" />
+              <div className="flex flex-1 flex-col justify-center p-4 sm:p-6 lg:p-8">
                 <span className="text-xs font-semibold uppercase tracking-wide text-navy-500 dark:text-navy-400">
                   {project.subtitle}
                 </span>
                 <h3 className="mt-1 text-base font-bold text-ink-900 group-hover:text-navy-800 sm:mt-2 sm:text-xl dark:text-white dark:group-hover:text-navy-300">
                   {project.name}
                 </h3>
-                <p className="mt-2 hidden flex-1 text-sm leading-relaxed text-ink-500 sm:block dark:text-navy-300">
+                <p className="mt-2 text-sm leading-relaxed text-ink-500 dark:text-navy-300">
                   {project.blurb}
                 </p>
-                <div className="mt-2 flex flex-wrap gap-1.5 sm:mt-5 sm:gap-2">
+                <div className="mt-3 flex flex-wrap gap-1.5 sm:mt-5 sm:gap-2">
                   {project.tags.slice(0, 3).map((tag) => (
                     <span
                       key={tag}

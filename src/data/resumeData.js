@@ -339,6 +339,23 @@ export const projects = [
           },
         ],
       },
+      challenges: [
+        {
+          problem: "The dread layer started swallowing entire runs.",
+          solution:
+            "Layer-2 cards get more likely over time by design, but once the deck grew past 100 of them, an uncapped multiplier made snowblind pressure spiral out of control by turn 60 — runs stopped reaching the mundane committee cards at all. Fixed by capping the time-based multiplier at 2x instead of letting it grow unbounded.",
+        },
+        {
+          problem: "Thai text doesn't wrap the way English does.",
+          solution:
+            "Thai is written with no spaces between words, so the browser's default line-breaking either lets a whole sentence overflow or splits mid-word. Solved it with a build-time script that runs Thai copy through a word-segmentation library and inserts soft break points, so translated cards wrap exactly where a human reader would.",
+        },
+        {
+          problem: "The same high-weight cards kept resurfacing within one run.",
+          solution:
+            "A flat weighted draw let a handful of strong cards dominate a session, making runs feel repetitive. Added a dampening factor that lowers a card's weight every time it's already been seen in that run, on top of a short recent-history exclusion list, so the mix stays varied without touching the underlying weights that drive the difficulty curve.",
+        },
+      ],
       demoAspect: "gif",
       demoLabel: "Gameplay clip coming soon",
     },
