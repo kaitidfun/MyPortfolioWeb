@@ -15,18 +15,14 @@ export default function ProjectGallery() {
           Project Gallery
         </h2>
         <p className="mt-2 hidden text-sm text-ink-500 sm:mt-3 sm:block dark:text-navy-300">
-          Three projects spanning generative AI, IoT hardware, and interactive
-          design — click a card for the full write-up.
+          Four projects spanning generative AI, IoT hardware, game design, and
+          interactive design — click a card for the full write-up.
         </p>
       </Reveal>
 
-      <div className="mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 sm:mt-10 sm:grid sm:snap-none sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:pb-0 lg:grid-cols-3">
+      <div className="mt-6 flex flex-col gap-4 sm:mt-10 sm:gap-6">
         {projects.map((project, index) => (
-          <Reveal
-            key={project.id}
-            delay={index * 0.08}
-            className="w-[78%] flex-shrink-0 snap-start sm:w-auto"
-          >
+          <Reveal key={project.id} delay={index * 0.08}>
             <Link
               to={`/projects/${project.id}`}
               className="group flex h-full flex-col overflow-hidden rounded-2xl border border-navy-100 bg-white shadow-sm transition hover:-translate-y-1 hover:border-navy-300 hover:shadow-lg dark:border-navy-800 dark:bg-navy-900 dark:hover:border-navy-600"

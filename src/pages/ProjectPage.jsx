@@ -296,10 +296,11 @@ function ReelCastLayout({ project, details }) {
           {details.architecture && (
             <Reveal delay={0.05}>
               <SectionHeading>How does it work?</SectionHeading>
-              <p className="mt-2 text-sm text-ink-500 dark:text-navy-300">
-                A prompt and a product become a finished, branded video across a few AI-driven
-                stages.
-              </p>
+              {details.architecture.intro && (
+                <p className="mt-2 text-sm text-ink-500 dark:text-navy-300">
+                  {details.architecture.intro}
+                </p>
+              )}
               <div className="mt-4">
                 <ArchitectureDiagram
                   stages={details.architecture.stages}
@@ -429,7 +430,7 @@ export default function ProjectPage() {
     <>
       {details.gestures ? (
         <IotProjectLayout project={project} details={details} />
-      ) : project.id === "reelcast" ? (
+      ) : details.problem ? (
         <ReelCastLayout project={project} details={details} />
       ) : (
         <DefaultProjectLayout project={project} details={details} demoType={demoType} />

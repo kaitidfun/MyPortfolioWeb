@@ -52,6 +52,7 @@ export const projects = [
         "Docker",
       ],
       architecture: {
+        intro: "A prompt and a product become a finished, branded video across a few AI-driven stages.",
         stages: [
           {
             icon: "prompt",
@@ -287,6 +288,59 @@ export const projects = [
       demoLabel: "Image gallery / mockups coming soon",
       certification:
         "Certification: CAU x CMU Joint Hackathon — Chiang Mai University & Chung-Ang University, 2025",
+    },
+  },
+  {
+    id: "quorum",
+    name: "QuORuM",
+    subtitle: "Personal Project",
+    blurb:
+      "A Reigns-style swipe-card survival game about running a snowbound refugee camp's committee — dark bureaucratic comedy sliding into folk horror.",
+    tags: ["React", "react-three-fiber", "Game Design", "i18n"],
+    demoType: "gif",
+    repoUrl: "https://github.com/kaitidfun/QuORuM",
+    details: {
+      heading: "QuORuM",
+      problem:
+        "Most Reigns-style card games settle for one tone — usually dry political satire — and treat the card draw as a flat, even shuffle with nothing steering what shows up when.",
+      description:
+        "QuORuM runs two tones at once instead: petty committee bureaucracy — thermostat wars, karaoke bans, pet policy — sliding into creeping folk-horror as a cult called Himmavatan grows outside the wall. Underneath, a weighted card engine keeps the mundane and the dread in tension rather than just shuffling them together.",
+      highlights: [
+        "207 cards across two tonal layers — mundane committee business and creeping Snowblind dread — with the dread layer growing more frequent the longer a term runs.",
+        "A hidden lore counter tracks how much of the Himmavatan story a player has uncovered, gating a true ending that fires between day 60 and day 90 with two different outcomes.",
+        "Full Thai and English localization, including a custom build step that segments Thai text into words for line-wrapping, plus an in-world Codex that unlocks lore pages — a chairperson's private notes on the escalating 'Stages' of Snowblind — the longer a player survives.",
+      ],
+      techStack: ["React", "react-three-fiber", "Three.js", "Vite"],
+      architecture: {
+        intro: "Each turn runs through the same pipeline: a weighted pool decides which card appears, then the player's pick pushes the run's state forward.",
+        stages: [
+          {
+            icon: "prompt",
+            label: "Card Pool",
+            detail: "207 cards filtered by turn range, flags, and recent-history rules",
+            flow: "eligible cards",
+          },
+          {
+            icon: "sparkle",
+            label: "Weighted Roll",
+            detail: "Layer-2 dread cards grow more likely over time; repeats get dampened",
+            flow: "chosen card",
+          },
+          {
+            icon: "gear",
+            label: "Effects Applied",
+            detail: "The pick adjusts morale, supplies, order, and snowblind — and can queue a forced follow-up card",
+            flow: "updated state",
+          },
+          {
+            icon: "film",
+            label: "Ending Check",
+            detail: "A hidden lore counter plus the snowblind meter decide which of several endings fires",
+          },
+        ],
+      },
+      demoAspect: "gif",
+      demoLabel: "Gameplay clip coming soon",
     },
   },
 ];
