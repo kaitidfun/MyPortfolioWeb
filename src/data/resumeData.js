@@ -308,7 +308,7 @@ export const projects = [
       highlights: [
         "207 cards across two tonal layers — mundane committee business and creeping Snowblind dread — with the dread layer growing more frequent the longer a term runs.",
         "A hidden lore counter tracks how much of the Himmavatan story a player has uncovered, gating a true ending that fires between day 60 and day 90 with two different outcomes.",
-        "Full Thai and English localization, including a custom build step that segments Thai text into words for line-wrapping, plus an in-world Codex that unlocks lore pages — a chairperson's private notes on the escalating 'Stages' of Snowblind — the longer a player survives.",
+        "Full Thai and English localization, including a custom build step that segments Thai text into words for line-wrapping, plus a three-part in-world Codex — static lore on Snowblind's 'Stages' and the camp layout, alongside a per-run 'Notes' log that writes itself as that term's own state crosses real thresholds, then resets clean for the next chairperson.",
       ],
       techStack: ["React", "react-three-fiber", "Three.js", "Vite"],
       architecture: {
@@ -354,6 +354,11 @@ export const projects = [
           problem: "The same high-weight cards kept resurfacing within one run.",
           solution:
             "A flat weighted draw let a handful of strong cards dominate a session, making runs feel repetitive. Added a dampening factor that lowers a card's weight every time it's already been seen in that run, on top of a short recent-history exclusion list, so the mix stays varied without touching the underlying weights that drive the difficulty curve.",
+        },
+        {
+          problem: "A real playtester clicked through without reading and reached an ending anyway.",
+          solution:
+            "Root cause turned out to be structural, not just a content problem: every choice only ever swung a meter by single digits on a 0–100 scale, and the term-ending check fires at day 90 regardless of how engaged the run was — so an inattentive run almost never crashed a meter first. Fixed by scaling effect magnitude up after the midpoint of a term, so late-game choices carry real weight. Verified with a 500-run automated simulation of random choices: runs now fail before day 90 about 71% of the time, up from almost never, with zero crashes or stuck card draws.",
         },
       ],
       demoAspect: "gif",
