@@ -7,7 +7,7 @@ export default function HeroClip({ src, poster, caption }) {
         controls
         playsInline
         preload="metadata"
-        className="aspect-video w-full"
+        className="aspect-video w-full object-contain"
       />
       {caption && (
         <p className="border-t border-navy-800 bg-navy-950 px-4 py-2 text-xs font-medium text-navy-300">

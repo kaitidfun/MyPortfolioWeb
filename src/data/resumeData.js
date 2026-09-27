@@ -297,7 +297,7 @@ export const projects = [
     blurb:
       "A Reigns-style swipe-card survival game about running a snowbound refugee camp's committee — dark bureaucratic comedy sliding into folk horror.",
     tags: ["React", "react-three-fiber", "Game Design", "i18n"],
-    demoType: "gif",
+    demoType: "video",
     repoUrl: "https://github.com/kaitidfun/QuORuM",
     details: {
       heading: "QuORuM",
@@ -361,8 +361,8 @@ export const projects = [
             "Root cause turned out to be structural, not just a content problem: every choice only ever swung a meter by single digits on a 0–100 scale, and the term-ending check fires at day 90 regardless of how engaged the run was — so an inattentive run almost never crashed a meter first. Fixed by scaling effect magnitude up after the midpoint of a term, so late-game choices carry real weight. Verified with a 500-run automated simulation of random choices: runs now fail before day 90 about 71% of the time, up from almost never, with zero crashes or stuck card draws.",
         },
       ],
-      demoAspect: "gif",
-      demoLabel: "Gameplay clip coming soon",
+      heroClip: "/demos/quorum/hero-swipe-loop.mp4",
+      heroPoster: "/demos/quorum/hero-poster.jpg",
     },
   },
 ];
