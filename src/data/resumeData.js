@@ -311,6 +311,20 @@ export const projects = [
         "Full Thai and English localization, including a custom build step that segments Thai text into words for line-wrapping, plus a three-part in-world Codex — static lore on Snowblind's 'Stages' and the camp layout, alongside a per-run 'Notes' log that writes itself as that term's own state crosses real thresholds, then resets clean for the next chairperson.",
       ],
       techStack: ["React", "react-three-fiber", "Three.js", "Vite"],
+      storyArc: {
+        heading: "The story underneath",
+        paragraphs: [
+          "Underneath the daily committee grind runs one continuous story, and the game never marks it as separate — it's just more cards in the same shuffle, so noticing it happening is part of the experience.",
+          "It starts as a rumor: something out on the snow was \"born,\" and no two people telling it agree on how. Three competing origin stories circulate before the rumor even gets a name — the Himmavats. First a few hundred, spotted past the ridge. Then an offer to join, not a threat. Then the count jumps to the thousands, moving with no particular hurry.",
+          "What follows is quieter but heavier: another shelter, three ridges over, empty with its doors standing open. A visitor at the gate who says nothing and walks back into the white. A note tucked into the gate mechanism: \"There's room.\" The camp's own medic keeps private notes on what happens to the people who keep listening — Stage 1 is a bad night's sleep, laughed off. By Stage 4, they stop hearing you, and they walk out, calm, like they finally know where they're going.",
+          "However the 90-day term plays out, it resolves one of two ways depending on how much of this the chairperson actually pieced together and how the wall held — full spoilers are in the game itself, not here.",
+        ],
+        beats: [
+          { image: "/demos/quorum/story-beat-1-rumor.png", caption: "Turn 13 — one of three competing origin stories for what's out on the snow." },
+          { image: "/demos/quorum/story-beat-2-stages.png", caption: "The medic's private Codex notes, tracking Stage 1 through Stage 4." },
+          { image: "/demos/quorum/story-beat-3-ending.png", caption: "One of two ways a term can end — told as a first-person send-off, not a verdict card." },
+        ],
+      },
       architecture: {
         intro: "Each turn runs through the same pipeline: a weighted pool decides which card appears, then the player's pick pushes the run's state forward.",
         stages: [
@@ -339,6 +353,33 @@ export const projects = [
           },
         ],
       },
+      pipelineDetail: {
+        intro: "An earlier balance pass had already scaled every card's effect up 1.7x. A friend's playtest showed that still wasn't enough — here's the fix, and the data behind it.",
+        steps: [
+          {
+            label: "Effects now sharpen after the midpoint",
+            description: "Every effect scales further past day 50, capped at 1.8x by day 90 — a choice on day 20 and a choice on day 80 no longer carry the same weight.",
+            image: "/demos/quorum/balance-curve.png",
+          },
+          {
+            label: "Verified with a 500-run simulation",
+            description: "Simulating pure random clicking before and after the change: the early-failure rate rose from 50% to 71%, with zero crashes or stuck card draws in either run.",
+            image: "/demos/quorum/playtest-outcomes.png",
+          },
+        ],
+      },
+      featureClips: [
+        {
+          label: "Consequences that outlast the turn",
+          description: "Some cards queue a forced follow-up days later — reporting a ledger discrepancy quietly or auditing it publicly both reach the same second-offender card eventually, just by different roads and different costs.",
+          image: "/demos/quorum/feature-card-chain.png",
+        },
+        {
+          label: "A journal that writes itself",
+          description: "The per-run Notes log unlocks personal reflections as that term's own state crosses real thresholds — a week in, a meter under strain — then resets clean for the next chairperson.",
+          image: "/demos/quorum/feature-notes-log.png",
+        },
+      ],
       challenges: [
         {
           problem: "The dread layer started swallowing entire runs.",
@@ -358,7 +399,7 @@ export const projects = [
         {
           problem: "A real playtester clicked through without reading and reached an ending anyway.",
           solution:
-            "Root cause turned out to be structural, not just a content problem: every choice only ever swung a meter by single digits on a 0–100 scale, and the term-ending check fires at day 90 regardless of how engaged the run was — so an inattentive run almost never crashed a meter first. Fixed by scaling effect magnitude up after the midpoint of a term, so late-game choices carry real weight. Verified with a 500-run automated simulation of random choices: runs now fail before day 90 about 71% of the time, up from almost never, with zero crashes or stuck card draws.",
+            "An earlier pass had already scaled every effect up 1.7x globally to make choices matter more, but a 500-run simulation of pure random clicking showed it wasn't enough on its own: half of those runs (50%) still coasted all the way to the day-90 ending regardless of how badly they were played. The real gap was structural — nothing distinguished an early choice from a late one, and the term-ending check fires at day 90 no matter how engaged the run was. Fixed by scaling effect magnitude further, specifically after the midpoint of a term. Re-run the same 500-run simulation afterward: early-failure rate rose from 50% to 71%, with zero crashes or stuck card draws.",
         },
       ],
       heroClip: "/demos/quorum/hero-swipe-loop.mp4",

@@ -293,6 +293,31 @@ function ReelCastLayout({ project, details }) {
             </Reveal>
           )}
 
+          {details.storyArc && (
+            <Reveal delay={0.05}>
+              <SectionHeading>{details.storyArc.heading ?? "The story underneath"}</SectionHeading>
+              <div className="mt-3 space-y-3 text-sm leading-relaxed text-ink-500 dark:text-navy-300">
+                {details.storyArc.paragraphs.map((p) => (
+                  <p key={p}>{p}</p>
+                ))}
+              </div>
+              <div className="mt-6 grid gap-6 sm:grid-cols-3">
+                {details.storyArc.beats.map((beat) => (
+                  <div key={beat.caption} className="flex flex-col gap-2">
+                    <img
+                      src={beat.image}
+                      alt={beat.caption}
+                      className="aspect-[9/16] w-full rounded-xl border border-navy-100 object-cover dark:border-navy-800"
+                    />
+                    <p className="text-xs leading-relaxed text-ink-500 dark:text-navy-300">
+                      {beat.caption}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+          )}
+
           {details.architecture && (
             <Reveal delay={0.05}>
               <SectionHeading>How does it work?</SectionHeading>
@@ -356,11 +381,19 @@ function ReelCastLayout({ project, details }) {
               <div className="mt-5 grid gap-6 sm:grid-cols-2">
                 {details.featureClips.map((feature) => (
                   <div key={feature.label} className="flex flex-col gap-3">
-                    <SilentLoopVideo
-                      src={feature.clip}
-                      poster={feature.poster}
-                      className="aspect-video w-full rounded-xl border border-navy-100 dark:border-navy-800"
-                    />
+                    {feature.clip ? (
+                      <SilentLoopVideo
+                        src={feature.clip}
+                        poster={feature.poster}
+                        className="aspect-video w-full rounded-xl border border-navy-100 dark:border-navy-800"
+                      />
+                    ) : (
+                      <img
+                        src={feature.image}
+                        alt={feature.label}
+                        className="aspect-video w-full rounded-xl border border-navy-100 object-cover dark:border-navy-800"
+                      />
+                    )}
                     <p className="text-xs leading-relaxed text-ink-700 dark:text-navy-200">
                       <span className="font-semibold text-ink-900 dark:text-white">
                         {feature.label}.
