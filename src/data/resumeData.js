@@ -292,7 +292,7 @@ export const projects = [
   },
   {
     id: "quorum",
-    name: "QuORuM",
+    name: "QuORuM — Four Numbers, Ninety Days",
     subtitle: "Personal Project",
     blurb:
       "A Reigns-style swipe-card survival game about running a snowbound refugee camp's committee — dark bureaucratic comedy sliding into folk horror.",
@@ -300,7 +300,7 @@ export const projects = [
     demoType: "video",
     repoUrl: "https://github.com/kaitidfun/QuORuM",
     details: {
-      heading: "QuORuM",
+      heading: "QuORuM — Four Numbers, Ninety Days",
       problem:
         "Most Reigns-style card games settle for one tone — usually dry political satire — and treat the card draw as a flat, even shuffle with nothing steering what shows up when.",
       description:
