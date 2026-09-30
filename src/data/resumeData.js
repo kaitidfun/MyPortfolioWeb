@@ -275,6 +275,7 @@ export const projects = [
     tags: ["React", "react-three-fiber", "Game Design", "i18n"],
     demoType: "video",
     repoUrl: "https://github.com/kaitidfun/QuORuM",
+    liveUrl: "https://quorum-six-chi.vercel.app",
     details: {
       heading: "QuORuM — Four Numbers, Ninety Days",
       problem:
@@ -381,8 +382,14 @@ export const projects = [
         "Window light passes through a bounded volumetric-scattering box scoped to just the room's air, so it reads as a visible shaft of light rather than fogging the whole scene.",
       ],
       techStack: ["Blender", "3D Modeling", "Cloth Simulation", "EEVEE"],
-      heroClip: "/demos/room-art/room-loop.mp4",
-      heroPoster: "/demos/room-art/hero-poster.jpg",
+      stillAndMotion: {
+        heading: "Still Life, In Motion",
+        image: "/demos/room-art/process-4-final2026.jpg",
+        imageLabel: "The finished piece — 2026",
+        clip: "/demos/room-art/room-loop.mp4",
+        poster: "/demos/room-art/hero-poster.jpg",
+        clipLabel: "The same piece, looping",
+      },
       architecture: {
         intro:
           "Two different processes, five years apart, on the same file.",
@@ -406,36 +413,49 @@ export const projects = [
           },
         ],
       },
-      pipelineDetail: {
-        intro:
-          "The same room across four real stages — from an empty box to the finished, animated piece.",
-        steps: [
+      storyArc: {
+        heading: "From Empty to Lived-In",
+        paragraphs: [
+          "The room's build, in three real stages: a bare shell to get the composition and light right, a furnished draft, then the frame actually submitted for the application.",
+        ],
+        imageAspect: "aspect-square",
+        beats: [
           {
-            label: "Empty room",
-            description:
-              "The shell first: walls, floor, window, and curtain, before a single piece of furniture goes in. Composition and light direction get decided here, while the room is still easy to read.",
             image: "/demos/room-art/process-1-empty.jpg",
+            caption:
+              "Empty room — walls, floor, window, and curtain, before a single piece of furniture goes in. Composition and light direction get decided here.",
           },
           {
-            label: "Furnished",
-            description:
-              "Couch, guitar, books, headphones — each one placed by hand until the room started to feel lived-in rather than staged. An earlier pass had a doodled note board on the wall; it got cut for a cleaner read.",
             image: "/demos/room-art/process-2-furnished.jpg",
+            caption:
+              "Furnished — couch, guitar, books, headphones placed by hand. An earlier pass had a doodled note board on the wall; it got cut for a cleaner read.",
           },
           {
-            label: "2022 — the finished still",
-            description:
-              "The version submitted for the school application: one rendered frame, flat and even lighting, nothing pulling the eye anywhere in particular.",
             image: "/demos/room-art/process-3-final2022.jpg",
-          },
-          {
-            label: "2026 — relit and animated",
-            description:
-              "Same geometry, reworked lighting and materials, and a real physics simulation and volumetric light in place of a static scene. What used to be a single frozen frame now loops as a room that's quietly, actually alive.",
-            image: "/demos/room-art/process-4-final2026.jpg",
+            caption:
+              "2022 — the finished still submitted for the school application.",
           },
         ],
       },
+      featureClipsHeading: "A Closer Look: The Headphones",
+      featureClipsImageAspect: "aspect-square",
+      featureClips: [
+        {
+          label: "Raw form",
+          description: "The ear cup and cushion shapes blocked in before any detail work.",
+          image: "/demos/room-art/headphones-1-parts.jpg",
+        },
+        {
+          label: "Wireframe",
+          description: "The full band and cups, checking proportions before shading.",
+          image: "/demos/room-art/headphones-2-wireframe.jpg",
+        },
+        {
+          label: "Final render",
+          description: "Shaded and lit to match the same soft, muted palette as the room itself.",
+          image: "/demos/room-art/headphones-3-final.jpg",
+        },
+      ],
       challenges: [
         {
           problem: "The cloth simulation would silently hang for hours in headless Blender.",

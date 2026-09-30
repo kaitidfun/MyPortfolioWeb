@@ -267,6 +267,18 @@ function ReelCastLayout({ project, details }) {
                 View source on GitHub
               </a>
             )}
+
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-3 inline-flex items-center gap-2 rounded-full border border-navy-200 bg-white px-4 py-2 text-sm font-semibold text-navy-800 transition hover:border-navy-300 hover:bg-navy-50 dark:border-navy-700 dark:bg-navy-900 dark:text-navy-100 dark:hover:bg-navy-800"
+              >
+                Play it live
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+            )}
           </Reveal>
         </div>
 
@@ -284,13 +296,45 @@ function ReelCastLayout({ project, details }) {
             <BulletList items={details.highlights} className="mt-6 space-y-2" />
           </Reveal>
 
-          {details.heroClip && (
+          {details.stillAndMotion ? (
             <Reveal delay={0.05}>
-              <SectionHeading>See it in action</SectionHeading>
-              <div className="mt-4">
-                <HeroClip src={details.heroClip} poster={details.heroPoster} />
+              <SectionHeading>{details.stillAndMotion.heading ?? "See it in action"}</SectionHeading>
+              <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                <div className="flex flex-col gap-2">
+                  <img
+                    src={details.stillAndMotion.image}
+                    alt={details.stillAndMotion.imageLabel ?? "Finished piece"}
+                    className="aspect-square w-full rounded-xl border border-navy-100 object-cover dark:border-navy-800"
+                  />
+                  {details.stillAndMotion.imageLabel && (
+                    <p className="text-center text-xs text-ink-500 dark:text-navy-300">
+                      {details.stillAndMotion.imageLabel}
+                    </p>
+                  )}
+                </div>
+                <div className="flex flex-col gap-2">
+                  <SilentLoopVideo
+                    src={details.stillAndMotion.clip}
+                    poster={details.stillAndMotion.poster}
+                    className="aspect-square w-full rounded-xl border border-navy-100 dark:border-navy-800"
+                  />
+                  {details.stillAndMotion.clipLabel && (
+                    <p className="text-center text-xs text-ink-500 dark:text-navy-300">
+                      {details.stillAndMotion.clipLabel}
+                    </p>
+                  )}
+                </div>
               </div>
             </Reveal>
+          ) : (
+            details.heroClip && (
+              <Reveal delay={0.05}>
+                <SectionHeading>See it in action</SectionHeading>
+                <div className="mt-4">
+                  <HeroClip src={details.heroClip} poster={details.heroPoster} />
+                </div>
+              </Reveal>
+            )
           )}
 
           {details.storyArc && (
@@ -307,7 +351,7 @@ function ReelCastLayout({ project, details }) {
                     <img
                       src={beat.image}
                       alt={beat.caption}
-                      className="aspect-[3/4] w-full rounded-xl border border-navy-100 object-cover dark:border-navy-800"
+                      className={`${details.storyArc.imageAspect ?? "aspect-[3/4]"} w-full rounded-xl border border-navy-100 object-cover dark:border-navy-800`}
                     />
                     <p className="text-xs leading-relaxed text-ink-500 dark:text-navy-300">
                       {beat.caption}
@@ -391,7 +435,7 @@ function ReelCastLayout({ project, details }) {
                       <img
                         src={feature.image}
                         alt={feature.label}
-                        className="aspect-video w-full rounded-xl border border-navy-100 object-cover dark:border-navy-800"
+                        className={`${details.featureClipsImageAspect ?? "aspect-video"} w-full rounded-xl border border-navy-100 object-cover dark:border-navy-800`}
                       />
                     )}
                     <p className="text-xs leading-relaxed text-ink-700 dark:text-navy-200">
