@@ -315,13 +315,11 @@ export const projects = [
         heading: "The story underneath",
         paragraphs: [
           "Underneath the daily committee grind runs one continuous story, and the game never marks it as separate — it's just more cards in the same shuffle, so noticing it happening is part of the experience.",
-          "It starts as a rumor: something out on the snow was \"born,\" and no two people telling it agree on how. Three competing origin stories circulate before the rumor even gets a name — the Himmavats. First a few hundred, spotted past the ridge. Then an offer to join, not a threat. Then the count jumps to the thousands, moving with no particular hurry.",
-          "What follows is quieter but heavier: another shelter, three ridges over, empty with its doors standing open. A visitor at the gate who says nothing and walks back into the white. A note tucked into the gate mechanism: \"There's room.\" The camp's own medic keeps private notes on what happens to the people who keep listening — Stage 1 is a bad night's sleep, laughed off. By Stage 4, they stop hearing you, and they walk out, calm, like they finally know where they're going.",
-          "However the 90-day term plays out, it resolves one of two ways depending on how much of this the chairperson actually pieced together and how the wall held — full spoilers are in the game itself, not here.",
+          "It starts as a rumor — something out on the snow was \"born\" — and grows into a group with a name, the Himmavats, then an invitation to join, then quieter and heavier signs: an empty shelter, a visitor at the gate who says nothing, a note that just reads \"There's room.\"",
+          "However the 90-day term plays out, it resolves one of two ways depending on how much of this the chairperson actually pieced together — full spoilers are in the game itself, not here.",
         ],
         beats: [
           { image: "/demos/quorum/story-beat-1-rumor.png", caption: "Turn 13 — one of three competing origin stories for what's out on the snow." },
-          { image: "/demos/quorum/story-beat-2-stages.png", caption: "The medic's private Codex notes, tracking Stage 1 through Stage 4." },
           { image: "/demos/quorum/story-beat-3-ending.png", caption: "One of two ways a term can end — told as a first-person send-off, not a verdict card." },
         ],
       },
@@ -354,16 +352,16 @@ export const projects = [
         ],
       },
       pipelineDetail: {
-        intro: "An earlier balance pass had already scaled every card's effect up 1.7x. A friend's playtest showed that still wasn't enough — here's the fix, and the data behind it.",
+        intro: "A friend's playtest showed that clicking through carelessly performed almost as well as reading and reacting. Here's how the engine makes choices carry real weight.",
         steps: [
           {
-            label: "Effects now sharpen after the midpoint",
-            description: "Every effect scales further past day 50, capped at 1.8x by day 90 — a choice on day 20 and a choice on day 80 no longer carry the same weight.",
+            label: "Effects sharpen after the midpoint",
+            description: "Every effect scales up past day 50, capped at 1.8x by day 90 — a choice on day 20 and a choice on day 80 don't carry the same weight.",
             image: "/demos/quorum/balance-curve.png",
           },
           {
             label: "Verified with a 500-run simulation",
-            description: "Simulating pure random clicking before and after the change: the early-failure rate rose from 50% to 71%, with zero crashes or stuck card draws in either run.",
+            description: "Simulating pure random clicking: 71% of runs now crash a meter before the day-90 ending, with zero crashes or stuck card draws.",
             image: "/demos/quorum/playtest-outcomes.png",
           },
         ],
@@ -387,19 +385,9 @@ export const projects = [
             "Layer-2 cards get more likely over time by design, but once the deck grew past 100 of them, an uncapped multiplier made snowblind pressure spiral out of control by turn 60 — runs stopped reaching the mundane committee cards at all. Fixed by capping the time-based multiplier at 2x instead of letting it grow unbounded.",
         },
         {
-          problem: "Thai text doesn't wrap the way English does.",
-          solution:
-            "Thai is written with no spaces between words, so the browser's default line-breaking either lets a whole sentence overflow or splits mid-word. Solved it with a build-time script that runs Thai copy through a word-segmentation library and inserts soft break points, so translated cards wrap exactly where a human reader would.",
-        },
-        {
-          problem: "The same high-weight cards kept resurfacing within one run.",
-          solution:
-            "A flat weighted draw let a handful of strong cards dominate a session, making runs feel repetitive. Added a dampening factor that lowers a card's weight every time it's already been seen in that run, on top of a short recent-history exclusion list, so the mix stays varied without touching the underlying weights that drive the difficulty curve.",
-        },
-        {
           problem: "A real playtester clicked through without reading and reached an ending anyway.",
           solution:
-            "An earlier pass had already scaled every effect up 1.7x globally to make choices matter more, but a 500-run simulation of pure random clicking showed it wasn't enough on its own: half of those runs (50%) still coasted all the way to the day-90 ending regardless of how badly they were played. The real gap was structural — nothing distinguished an early choice from a late one, and the term-ending check fires at day 90 no matter how engaged the run was. Fixed by scaling effect magnitude further, specifically after the midpoint of a term. Re-run the same 500-run simulation afterward: early-failure rate rose from 50% to 71%, with zero crashes or stuck card draws.",
+            "Root cause was structural: nothing distinguished an early choice from a late one, and the term-ending check fires at day 90 no matter how engaged the run was. Fixed by scaling effect magnitude up specifically after the midpoint of a term, so late-game choices carry real weight. Verified with a 500-run simulation of pure random clicking: 71% of runs now crash a meter before day 90, with zero crashes or stuck card draws.",
         },
       ],
       heroClip: "/demos/quorum/hero-swipe-loop.mp4",
