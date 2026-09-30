@@ -3,7 +3,7 @@ export const profile = {
   title: "Software Engineer Intern",
   tagline: "Bridging the gap between code and creativity.",
   summary:
-    "A Software Engineering student experienced in full-stack feature development, IoT, and API integrations — with a keen interest in applying technology to multimedia production, video generation, and interactive media.",
+    "A Software Engineering student experienced in full-stack feature development, IoT, and API integrations — with a keen interest in applying technology to multimedia production, video generation, interactive media, and 3D art.",
   education: {
     degree: "B.S. in Software Engineering",
     school: "Chiang Mai University, College of Art Media and Technology (CAMT)",
@@ -21,120 +21,6 @@ export const profile = {
 
 export const projects = [
   {
-    id: "reelcast",
-    name: "ReelCast — Prompt to Published",
-    subtitle: "Senior Project",
-    blurb:
-      "An AI pipeline that turns a prompt into a branded video ad and publishes it across social platforms.",
-    tags: ["Gemini", "LTX Video", "FastAPI", "Celery"],
-    demoType: "video",
-    repoUrl: "https://github.com/kaitidfun/reelcast",
-    details: {
-      heading: "ReelCast — Prompt to Published",
-      problem:
-        "Making a branded video ad usually means shooting footage, editing it, and coordinating a team — or settling for a generic AI tool that just drops text over stock footage. Even once it exists, getting it published means uploading it to every platform separately by hand.",
-      description:
-        "ReelCast automates the whole loop instead. A prompt and a product become a finished, branded video — Gemini plans the shot and writes the caption, LTX Video generates the footage — and it publishes straight to TikTok, Instagram, Facebook, and YouTube from one screen.",
-      highlights: [
-        "Full pipeline from prompt to a finished, branded video — no separate script, footage, or editing tools needed.",
-        "Publishes straight to TikTok, Instagram, Facebook, and YouTube — no manual re-uploading per platform.",
-      ],
-      techStack: [
-        "Python",
-        "FastAPI",
-        "Celery",
-        "Redis",
-        "Next.js",
-        "PostgreSQL",
-        "Cloudflare R2",
-        "Google Gemini",
-        "LTX Video",
-        "Docker",
-      ],
-      architecture: {
-        intro: "A prompt and a product become a finished, branded video across a few AI-driven stages.",
-        stages: [
-          {
-            icon: "prompt",
-            label: "Prompt + Product",
-            detail: "Member describes the ad and picks a product",
-            flow: "prompt",
-          },
-          {
-            icon: "sparkle",
-            label: "Gemini",
-            detail: "Generates a cinematic first frame, then writes captions and hashtags",
-            flow: "first frame",
-          },
-          {
-            icon: "film",
-            label: "LTX Video",
-            detail: "Animates the first frame into a full video clip",
-            flow: "raw video",
-          },
-          {
-            icon: "gear",
-            label: "FFmpeg",
-            detail: "Adds branding overlays and strips audio",
-          },
-        ],
-      },
-      pipelineDetail: {
-        intro:
-          "Neither model ever sees the member's prompt alone: the backend wraps it in a fixed system prompt together with the chosen product's title, description, and photo, so the output stays on-brand and product-accurate no matter what gets typed. Here's what that looked like for the exact run shown in the hero clip above — a Fuggler × SpongeBob \"Plankton\" keychain sprinting, tripping, and tumbling into the sand. The wrapped prompt read roughly \"generate a first frame for a paid social ad; product is the Fuggler Plankton keychain, keep it fully visible and true to its real colors and shape; aspect ratio 9:16, photorealistic.\"",
-        steps: [
-          {
-            label: "Gemini composes the first frame",
-            description:
-              "Gemini reads that wrapped prompt plus the keychain's real product photo and composes one cinematic first frame — the keychain planted in the sand, its tag and colors intact, ocean and blurred beachgoers behind it. Placement, lighting, and composition are all locked in here, before any motion exists.",
-            image: "/demos/reelcast/pipeline-first-frame.jpg",
-          },
-          {
-            label: "LTX Video animates it",
-            description:
-              "That exact frame goes to LTX Video with a second, internally-written prompt describing camera work and pacing (\"low-angle handheld, slowly pushing in\") rather than subject matter, since the keychain and beach are already locked into the image. This is the real, unedited clip LTX returned for this run.",
-            clip: "/demos/reelcast/pipeline-ltx-clip.mp4",
-            poster: "/demos/reelcast/pipeline-ltx-poster.jpg",
-          },
-        ],
-      },
-      featureClips: [
-        {
-          label: "Publishing schedules itself",
-          description:
-            "Gemini writes the caption and hashtags, then a Celery Beat worker fires the post the moment the scheduled time hits — no need to be online to press send. It goes out through TikTok, Instagram, Facebook, and YouTube's own APIs in one pass, no manual re-uploading.",
-          clip: "/demos/reelcast/feature-distribute.mp4",
-          poster: "/demos/reelcast/feature-distribute-poster.jpg",
-        },
-        {
-          label: "Performance rolls up from every platform",
-          description:
-            "The dashboard is built to pull revenue, views, clicks, and conversions from TikTok Shop, Shopee, and Lazada into one filterable view. It's the fifth and last feature, still in development — it can't track real numbers yet, so it shows placeholder zeros for now.",
-          clip: "/demos/reelcast/feature-tracking.mp4",
-          poster: "/demos/reelcast/feature-tracking-poster.jpg",
-        },
-      ],
-      moreFeaturesNote:
-        "Membership, profile settings, and a library for saved products and campaigns round out the basics. Here's a closer look at the two more involved pieces:",
-      challenges: [
-        {
-          problem: "Running on a budget-tier video model comes with tradeoffs.",
-          solution:
-            "It's cheaper per generation but less literal about following the prompt — in the run shown above, the \"hazy figures chasing\" became ordinary blurred beachgoers, while the rest of the scene came through fine. A higher-end model would likely follow prompts more closely, at a meaningfully higher cost. Still an open tradeoff.",
-        },
-        {
-          problem: "Each platform's publishing API has its own rules, and they don't match.",
-          solution:
-            "TikTok keeps unaudited apps to private drafts only until it reviews the app. Meta's Graph API needs a two-step upload-then-publish flow and caps Instagram at 25 posts a day. YouTube runs on a daily quota, not a simple rate limit, so real posting volume means requesting more from Google. One scheduler had to work around all three.",
-        },
-      ],
-      heroClip: "/demos/reelcast/hero-prompt-to-video.mp4",
-      heroPoster: "/demos/reelcast/hero-poster.jpg",
-      demoAspect: "16:9",
-      demoLabel: "Video demo coming soon",
-    },
-  },
-  {
     id: "iot-gesture-player",
     name: "Gesture-Controlled Media Player",
     subtitle: "Personal / Coursework Project",
@@ -142,6 +28,7 @@ export const projects = [
       "A touchless media control system powered by computer vision and an ESP32-CAM.",
     tags: ["Python", "Computer Vision", "ESP32-CAM", "Spotify API"],
     demoType: "gif",
+    cover: "/demos/iot/cover.jpg",
     repoUrl: "https://github.com/kaitidfun/GestureMusicController",
     details: {
       heading: "Gesture-Controlled Media Player",
@@ -155,8 +42,6 @@ export const projects = [
         "Works with any Spotify Connect device — PC, iPad, iPhone, or anything else signed into the same account — so the same gesture set can control several at once.",
       ],
       techStack: ["Python", "OpenCV", "MediaPipe", "ESP32-CAM", "Spotify API"],
-      demoAspect: "video",
-      demoLabel: "GIF / video demo coming soon",
       stats: [
         { label: "Frame rate", value: "19–20 FPS" },
         { label: "Median latency", value: "340 ms" },
@@ -267,6 +152,119 @@ export const projects = [
     },
   },
   {
+    id: "reelcast",
+    name: "ReelCast — Prompt to Published",
+    subtitle: "Senior Project",
+    blurb:
+      "An AI pipeline that turns a prompt into a branded video ad and publishes it across social platforms.",
+    tags: ["Gemini", "LTX Video", "FastAPI", "Celery"],
+    demoType: "video",
+    cover: "/demos/reelcast/cover.jpg",
+    repoUrl: "https://github.com/kaitidfun/reelcast",
+    details: {
+      heading: "ReelCast — Prompt to Published",
+      problem:
+        "Making a branded video ad usually means shooting footage, editing it, and coordinating a team — or settling for a generic AI tool that just drops text over stock footage. Even once it exists, getting it published means uploading it to every platform separately by hand.",
+      description:
+        "ReelCast automates the whole loop instead. A prompt and a product become a finished, branded video — Gemini plans the shot and writes the caption, LTX Video generates the footage — and it publishes straight to TikTok, Instagram, Facebook, and YouTube from one screen.",
+      highlights: [
+        "Full pipeline from prompt to a finished, branded video — no separate script, footage, or editing tools needed.",
+        "Publishes straight to TikTok, Instagram, Facebook, and YouTube — no manual re-uploading per platform.",
+      ],
+      techStack: [
+        "Python",
+        "FastAPI",
+        "Celery",
+        "Redis",
+        "Next.js",
+        "PostgreSQL",
+        "Cloudflare R2",
+        "Google Gemini",
+        "LTX Video",
+        "Docker",
+      ],
+      architecture: {
+        intro: "A prompt and a product become a finished, branded video across a few AI-driven stages.",
+        stages: [
+          {
+            icon: "prompt",
+            label: "Prompt + Product",
+            detail: "Member describes the ad and picks a product",
+            flow: "prompt",
+          },
+          {
+            icon: "sparkle",
+            label: "Gemini",
+            detail: "Generates a cinematic first frame, then writes captions and hashtags",
+            flow: "first frame",
+          },
+          {
+            icon: "film",
+            label: "LTX Video",
+            detail: "Animates the first frame into a full video clip",
+            flow: "raw video",
+          },
+          {
+            icon: "gear",
+            label: "FFmpeg",
+            detail: "Adds branding overlays and strips audio",
+          },
+        ],
+      },
+      pipelineDetail: {
+        intro:
+          "Neither model ever sees the member's prompt alone: the backend wraps it in a fixed system prompt together with the chosen product's title, description, and photo, so the output stays on-brand and product-accurate no matter what gets typed. Here's what that looked like for the exact run shown in the hero clip above — a Fuggler × SpongeBob \"Plankton\" keychain sprinting, tripping, and tumbling into the sand. The wrapped prompt read roughly \"generate a first frame for a paid social ad; product is the Fuggler Plankton keychain, keep it fully visible and true to its real colors and shape; aspect ratio 9:16, photorealistic.\"",
+        steps: [
+          {
+            label: "Gemini composes the first frame",
+            description:
+              "Gemini reads that wrapped prompt plus the keychain's real product photo and composes one cinematic first frame — the keychain planted in the sand, its tag and colors intact, ocean and blurred beachgoers behind it. Placement, lighting, and composition are all locked in here, before any motion exists.",
+            image: "/demos/reelcast/pipeline-first-frame.jpg",
+          },
+          {
+            label: "LTX Video animates it",
+            description:
+              "That exact frame goes to LTX Video with a second, internally-written prompt describing camera work and pacing (\"low-angle handheld, slowly pushing in\") rather than subject matter, since the keychain and beach are already locked into the image. This is the real, unedited clip LTX returned for this run.",
+            clip: "/demos/reelcast/pipeline-ltx-clip.mp4",
+            poster: "/demos/reelcast/pipeline-ltx-poster.jpg",
+          },
+        ],
+      },
+      featureClips: [
+        {
+          label: "Publishing schedules itself",
+          description:
+            "Gemini writes the caption and hashtags, then a Celery Beat worker fires the post the moment the scheduled time hits — no need to be online to press send. It goes out through TikTok, Instagram, Facebook, and YouTube's own APIs in one pass, no manual re-uploading.",
+          clip: "/demos/reelcast/feature-distribute.mp4",
+          poster: "/demos/reelcast/feature-distribute-poster.jpg",
+        },
+        {
+          label: "Performance rolls up from every platform",
+          description:
+            "The dashboard is built to pull revenue, views, clicks, and conversions from TikTok Shop, Shopee, and Lazada into one filterable view. It's the fifth and last feature, still in development — it can't track real numbers yet, so it shows placeholder zeros for now.",
+          clip: "/demos/reelcast/feature-tracking.mp4",
+          poster: "/demos/reelcast/feature-tracking-poster.jpg",
+        },
+      ],
+      moreFeaturesNote:
+        "Membership, profile settings, and a library for saved products and campaigns round out the basics. Here's a closer look at the two more involved pieces:",
+      challenges: [
+        {
+          problem: "Running on a budget-tier video model comes with tradeoffs.",
+          solution:
+            "It's cheaper per generation but less literal about following the prompt — in the run shown above, the \"hazy figures chasing\" became ordinary blurred beachgoers, while the rest of the scene came through fine. A higher-end model would likely follow prompts more closely, at a meaningfully higher cost. Still an open tradeoff.",
+        },
+        {
+          problem: "Each platform's publishing API has its own rules, and they don't match.",
+          solution:
+            "TikTok keeps unaudited apps to private drafts only until it reviews the app. Meta's Graph API needs a two-step upload-then-publish flow and caps Instagram at 25 posts a day. YouTube runs on a daily quota, not a simple rate limit, so real posting volume means requesting more from Google. One scheduler had to work around all three.",
+        },
+      ],
+      heroClip: "/demos/reelcast/hero-prompt-to-video.mp4",
+      heroPoster: "/demos/reelcast/hero-poster.jpg",
+    },
+  },
+  {
     id: "quorum",
     name: "QuORuM — Four Numbers, Ninety Days",
     subtitle: "Personal Project",
@@ -274,6 +272,7 @@ export const projects = [
       "A Reigns-style swipe-card survival game about running a snowbound refugee camp's committee — dark bureaucratic comedy sliding into folk horror.",
     tags: ["React", "react-three-fiber", "Game Design", "i18n"],
     demoType: "video",
+    cover: "/demos/quorum/cover.jpg",
     repoUrl: "https://github.com/kaitidfun/QuORuM",
     liveUrl: "https://quorum-six-chi.vercel.app",
     details: {
@@ -365,14 +364,15 @@ export const projects = [
   },
   {
     id: "room-art",
-    name: "A Room of My Own",
+    name: "A Room of My Own — Model to Motion",
     subtitle: "Personal Project",
     blurb:
       "An isometric 3D living room built in Blender as a personal-space portrait, revisited years later and brought to life with a physics-driven curtain and volumetric window light.",
     tags: ["Blender", "3D Art", "AI-Assisted Animation"],
     demoType: "video",
+    cover: "/demos/room-art/cover.jpg",
     details: {
-      heading: "A Room of My Own",
+      heading: "A Room of My Own — Model to Motion",
       problem:
         "Everyone has a space that's their own — somewhere that calls back a memory worth keeping, somewhere that stays a comfort no matter how long you sit with it. This room is that space, imagined: a couch, a guitar, headphones, a stack of books, light through a curtain. Every object in it was chosen to say something about who made it.",
       description:
@@ -386,12 +386,11 @@ export const projects = [
         heading: "Finally — In Motion",
         clip: "/demos/room-art/room-loop.mp4",
         poster: "/demos/room-art/hero-poster.jpg",
-        clipLabel: "145 frames, six seconds, looping forever.",
       },
       storyArc: {
         heading: "From Empty to Lived-In",
         paragraphs: [
-          "The room's build, in four real stages: a bare shell to get the composition and light right, a furnished draft, the frame actually submitted in 2022, and the same file relit for 2026.",
+          "The room's build, in three real stages: a bare shell to get the composition and light right, a furnished pass actually submitted for the 2022 application, and the same file relit for 2026.",
         ],
         imageAspect: "aspect-square",
         beats: [
@@ -401,14 +400,9 @@ export const projects = [
               "Empty room — walls, floor, window, and curtain, before a single piece of furniture goes in. Composition and light direction get decided here.",
           },
           {
-            image: "/demos/room-art/process-2-furnished.jpg",
-            caption:
-              "Furnished — couch, guitar, books, headphones placed by hand. An earlier pass had a doodled note board on the wall; it got cut for a cleaner read.",
-          },
-          {
             image: "/demos/room-art/process-3-final2022.jpg",
             caption:
-              "2022 — the finished still submitted for the school application.",
+              "2022 — couch, guitar, books, and headphones placed by hand, the frame actually submitted for the school application. An earlier pass had a doodled note board on the wall; it got cut for a cleaner read.",
           },
           {
             image: "/demos/room-art/process-4-final2026.jpg",
@@ -467,7 +461,7 @@ export const skillCategories = [
   },
   {
     title: "Design & Tools",
-    skills: ["Figma (UX/UI)", "GitHub", "VS Code", "Claude Code"],
+    skills: ["Figma (UX/UI)", "Blender", "GitHub", "VS Code", "Claude Code"],
   },
   {
     title: "Programming Languages",

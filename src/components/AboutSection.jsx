@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { profile } from "../data/resumeData";
 import { GithubIcon, MailIcon, PhoneIcon, DownloadIcon, ArrowDownIcon } from "./Icons";
-import ProfilePlaceholder from "./ProfilePlaceholder";
+import ProfilePhoto from "./ProfilePhoto";
 import Reveal from "./Reveal";
 
 export default function AboutSection() {
@@ -71,7 +71,7 @@ export default function AboutSection() {
         </div>
 
         <Reveal delay={0.1} y={16}>
-          <ProfilePlaceholder />
+          <ProfilePhoto />
         </Reveal>
       </div>
     </div>

@@ -23,10 +23,18 @@ export default function ProjectGallery() {
               to={`/projects/${project.id}`}
               className="group flex flex-row items-stretch overflow-hidden rounded-xl border border-navy-100 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-navy-300 hover:shadow-lg dark:border-navy-800 dark:bg-navy-900 dark:hover:border-navy-600"
             >
-              <CoverPlaceholder
-                label="Cover soon"
-                className="w-20 flex-shrink-0 sm:w-1/3 sm:min-w-[140px] md:w-1/4"
-              />
+              {project.cover ? (
+                <img
+                  src={project.cover}
+                  alt={project.name}
+                  className="aspect-[16/9] w-20 flex-shrink-0 object-cover sm:aspect-[16/10] sm:w-1/3 sm:min-w-[140px] md:w-1/4"
+                />
+              ) : (
+                <CoverPlaceholder
+                  label="Cover soon"
+                  className="w-20 flex-shrink-0 sm:w-1/3 sm:min-w-[140px] md:w-1/4"
+                />
+              )}
               <div className="flex flex-1 flex-col justify-center p-2 sm:p-3">
                 <span className="text-[10px] font-semibold uppercase tracking-wide text-navy-500 sm:text-xs dark:text-navy-400">
                   {project.subtitle}
