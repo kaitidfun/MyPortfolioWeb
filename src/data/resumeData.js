@@ -376,47 +376,22 @@ export const projects = [
       problem:
         "Everyone has a space that's their own — somewhere that calls back a memory worth keeping, somewhere that stays a comfort no matter how long you sit with it. This room is that space, imagined: a couch, a guitar, headphones, a stack of books, light through a curtain. Every object in it was chosen to say something about who made it.",
       description:
-        "Modeled entirely by hand in Blender for a media/design school application in 2022 — the room, every object in it, the composition, the lighting, all built and arranged by hand, no code involved. It said what it needed to as a still image, but a still image is also where it stopped: nothing in the room moved, and it sat unfinished for years. Revisiting it in 2026 meant relighting it for a colder, more atmospheric mood and finally giving it motion — with Claude doing the Python/Blender scripting to add a physics-driven curtain and volumetric window light, since the modeling skills from 2022 hadn't carried forward but AI-assisted scripting could fill the gap.",
+        "Modeled entirely by hand in Blender for a media/design school application in 2022 — the room, every object in it, the composition, the lighting, no code involved. It said what it needed to as a still image, but that's also where it stopped: nothing in the room moved, and it sat unfinished for years. Revisiting it in 2026 meant relighting it for a colder, more atmospheric mood and finally giving it motion — with Claude handling the Python/Blender scripting for a physics-driven curtain and volumetric window light, since the 2022 modeling skills hadn't carried forward but AI-assisted scripting could fill the gap.",
       highlights: [
         "The curtain runs on real cloth physics (a pinned cloth simulation plus a wind force field) instead of a hand-keyframed sway, so its motion comes from an actual simulation, not an animator's guess at one.",
         "Window light passes through a bounded volumetric-scattering box scoped to just the room's air, so it reads as a visible shaft of light rather than fogging the whole scene.",
       ],
       techStack: ["Blender", "3D Modeling", "Cloth Simulation", "EEVEE"],
-      stillAndMotion: {
-        heading: "Still Life, In Motion",
-        image: "/demos/room-art/process-4-final2026.jpg",
-        imageLabel: "The finished piece — 2026",
+      loopClip: {
+        heading: "Finally — In Motion",
         clip: "/demos/room-art/room-loop.mp4",
         poster: "/demos/room-art/hero-poster.jpg",
-        clipLabel: "The same piece, looping",
-      },
-      architecture: {
-        intro:
-          "Two different processes, five years apart, on the same file.",
-        stages: [
-          {
-            icon: "sparkle",
-            label: "Model & Light (2022)",
-            detail: "Room, furniture, and materials built and lit by hand in Blender",
-            flow: "still render",
-          },
-          {
-            icon: "python",
-            label: "AI-Assisted Animation (2026)",
-            detail: "Claude scripted Blender headlessly to add cloth-sim curtain motion and volumetric window light",
-            flow: "baked simulation",
-          },
-          {
-            icon: "film",
-            label: "Render & Loop",
-            detail: "145 frames rendered out and stitched into a seamless 6-second loop",
-          },
-        ],
+        clipLabel: "145 frames, six seconds, looping forever.",
       },
       storyArc: {
         heading: "From Empty to Lived-In",
         paragraphs: [
-          "The room's build, in three real stages: a bare shell to get the composition and light right, a furnished draft, then the frame actually submitted for the application.",
+          "The room's build, in four real stages: a bare shell to get the composition and light right, a furnished draft, the frame actually submitted in 2022, and the same file relit for 2026.",
         ],
         imageAspect: "aspect-square",
         beats: [
@@ -434,6 +409,10 @@ export const projects = [
             image: "/demos/room-art/process-3-final2022.jpg",
             caption:
               "2022 — the finished still submitted for the school application.",
+          },
+          {
+            image: "/demos/room-art/process-4-final2026.jpg",
+            caption: "2026 — the same file, relit for a colder, more atmospheric mood.",
           },
         ],
       },
@@ -460,17 +439,17 @@ export const projects = [
         {
           problem: "The cloth simulation would silently hang for hours in headless Blender.",
           solution:
-            "Scripting Blender from the command line (`blender --background`) doesn't drive physics forward just because the current frame changes — stepping through frames one at a time looked like it was working, then froze solid a few frames in. The actual fix was calling Blender's cache-bake operator explicitly before rendering, rather than relying on frame-stepping to simulate it implicitly. Even then, one parameter combination (low mass, low damping, sharp wind gusts) sent the solver into a multi-hour hang with zero output — dialing the same motion in with gentler, more stable settings fixed it for good.",
+            "Headless Blender doesn't drive physics forward just by stepping through frames — it looked fine, then froze solid a few frames in. The fix was baking the cache explicitly before rendering. Even then, one settings combo (low mass, low damping, sharp wind gusts) still hung for hours; gentler, more stable values fixed it for good.",
         },
         {
           problem: "The wind was blowing the curtain the wrong way — or not at all.",
           solution:
-            "Two bugs stacked on each other: the wind field's shape was left on its default (a point source with distance falloff, like a small explosion) instead of a directional plane, so almost no force reached the curtain at its actual distance; and once that was fixed, the field's rotation had the sign backwards, blowing away from the room instead of into it. Cross-checked by reading back the field's world-space direction vector after each change rather than trusting the rotation values alone.",
+            "Two bugs stacked: the wind field's shape defaulted to a point source with distance falloff instead of a directional plane, so almost no force reached the curtain — and once that was fixed, its rotation had the sign backwards, blowing away from the room instead of into it. Caught both by reading back the field's actual world-space direction after each change, not by trusting the rotation values.",
         },
         {
           problem: "The window light either looked like flat glass or fogged out the whole room.",
           solution:
-            "A volumetric scatter shader on the World background lit the entire scene's air, not just the light passing through the window, so the room read as hazy rather than sunlit. Swapping it for a scatter volume scoped to a box matching just the room's interior — with the density turned down — kept the effect to a visible shaft of light instead of an overall fog.",
+            "A volumetric scatter shader on the World background lit the scene's entire air, not just the window light, so the room read hazy instead of sunlit. Scoping the scatter volume to a box matching just the room's interior, with density turned down, kept it to a visible shaft of light instead of overall fog.",
         },
       ],
     },

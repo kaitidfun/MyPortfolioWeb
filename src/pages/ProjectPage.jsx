@@ -296,34 +296,20 @@ function ReelCastLayout({ project, details }) {
             <BulletList items={details.highlights} className="mt-6 space-y-2" />
           </Reveal>
 
-          {details.stillAndMotion ? (
+          {details.loopClip ? (
             <Reveal delay={0.05}>
-              <SectionHeading>{details.stillAndMotion.heading ?? "See it in action"}</SectionHeading>
-              <div className="mt-4 grid gap-4 sm:grid-cols-2">
-                <div className="flex flex-col gap-2">
-                  <img
-                    src={details.stillAndMotion.image}
-                    alt={details.stillAndMotion.imageLabel ?? "Finished piece"}
-                    className="aspect-square w-full rounded-xl border border-navy-100 object-cover dark:border-navy-800"
-                  />
-                  {details.stillAndMotion.imageLabel && (
-                    <p className="text-center text-xs text-ink-500 dark:text-navy-300">
-                      {details.stillAndMotion.imageLabel}
-                    </p>
-                  )}
-                </div>
-                <div className="flex flex-col gap-2">
-                  <SilentLoopVideo
-                    src={details.stillAndMotion.clip}
-                    poster={details.stillAndMotion.poster}
-                    className="aspect-square w-full rounded-xl border border-navy-100 dark:border-navy-800"
-                  />
-                  {details.stillAndMotion.clipLabel && (
-                    <p className="text-center text-xs text-ink-500 dark:text-navy-300">
-                      {details.stillAndMotion.clipLabel}
-                    </p>
-                  )}
-                </div>
+              <SectionHeading>{details.loopClip.heading ?? "See it in action"}</SectionHeading>
+              <div className="mt-4 flex flex-col gap-2">
+                <SilentLoopVideo
+                  src={details.loopClip.clip}
+                  poster={details.loopClip.poster}
+                  className="aspect-square w-full rounded-xl border border-navy-100 dark:border-navy-800"
+                />
+                {details.loopClip.clipLabel && (
+                  <p className="text-center text-xs text-ink-500 dark:text-navy-300">
+                    {details.loopClip.clipLabel}
+                  </p>
+                )}
               </div>
             </Reveal>
           ) : (
@@ -345,7 +331,15 @@ function ReelCastLayout({ project, details }) {
                   <p key={p}>{p}</p>
                 ))}
               </div>
-              <div className={`mt-6 grid gap-6 ${details.storyArc.beats.length >= 3 ? "sm:grid-cols-3" : "sm:grid-cols-2"}`}>
+              <div
+                className={`mt-6 grid gap-6 ${
+                  details.storyArc.beats.length >= 4
+                    ? "sm:grid-cols-4"
+                    : details.storyArc.beats.length >= 3
+                      ? "sm:grid-cols-3"
+                      : "sm:grid-cols-2"
+                }`}
+              >
                 {details.storyArc.beats.map((beat) => (
                   <div key={beat.caption} className="flex flex-col gap-2">
                     <img
