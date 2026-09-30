@@ -307,7 +307,7 @@ export const projects = [
         "QuORuM runs two tones at once instead: petty committee bureaucracy — thermostat wars, karaoke bans, pet policy — sliding into creeping folk-horror as a cult called Himmavatan grows outside the wall. Underneath, a weighted card engine keeps the mundane and the dread in tension rather than just shuffling them together.",
       highlights: [
         "207 cards across two tonal layers — mundane committee business and creeping Snowblind dread — with the dread layer growing more frequent the longer a term runs.",
-        "A hidden lore counter tracks how much of the Himmavatan story a player has uncovered, gating a true ending that fires between day 60 and day 90 with two different outcomes.",
+        "Two very different endings, gated by how much of the buried story a player actually pieced together — more on that below.",
         "Full Thai and English localization, including a custom build step that segments Thai text into words for line-wrapping, plus a three-part in-world Codex — static lore on Snowblind's 'Stages' and the camp layout, alongside a per-run 'Notes' log that writes itself as that term's own state crosses real thresholds, then resets clean for the next chairperson.",
       ],
       techStack: ["React", "react-three-fiber", "Three.js", "Vite"],
@@ -351,22 +351,14 @@ export const projects = [
           },
         ],
       },
-      pipelineDetail: {
-        intro: "A friend's playtest showed that clicking through carelessly performed almost as well as reading and reacting. Here's how the engine makes choices carry real weight.",
-        steps: [
-          {
-            label: "Effects sharpen after the midpoint",
-            description: "Every effect scales up past day 50, capped at 1.8x by day 90 — a choice on day 20 and a choice on day 80 don't carry the same weight.",
-            image: "/demos/quorum/balance-curve.png",
-          },
-          {
-            label: "Verified with a 500-run simulation",
-            description: "Simulating pure random clicking: 71% of runs now crash a meter before the day-90 ending, with zero crashes or stuck card draws.",
-            image: "/demos/quorum/playtest-outcomes.png",
-          },
-        ],
-      },
+      featureClipsHeading: "What makes a choice matter?",
+      moreFeaturesNote: "Three separate design details, all aimed at the same problem: making a swipe feel like it actually did something.",
       featureClips: [
+        {
+          label: "Effects sharpen after the midpoint",
+          description: "Every effect scales up past day 50, capped at 1.8x by day 90 — a choice on day 20 and a choice on day 80 don't carry the same weight.",
+          image: "/demos/quorum/balance-curve.png",
+        },
         {
           label: "Consequences that outlast the turn",
           description: "Some cards queue a forced follow-up days later — reporting a ledger discrepancy quietly or auditing it publicly both reach the same second-offender card eventually, just by different roads and different costs.",

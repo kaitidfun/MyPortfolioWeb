@@ -372,13 +372,13 @@ function ReelCastLayout({ project, details }) {
 
           {details.featureClips && (
             <Reveal delay={0.05}>
-              <SectionHeading>What else can it do?</SectionHeading>
+              <SectionHeading>{details.featureClipsHeading ?? "What else can it do?"}</SectionHeading>
               {details.moreFeaturesNote && (
                 <p className="mt-3 text-sm leading-relaxed text-ink-500 dark:text-navy-300">
                   {details.moreFeaturesNote}
                 </p>
               )}
-              <div className="mt-5 grid gap-6 sm:grid-cols-2">
+              <div className={`mt-5 grid gap-6 ${details.featureClips.length >= 3 ? "sm:grid-cols-3" : "sm:grid-cols-2"}`}>
                 {details.featureClips.map((feature) => (
                   <div key={feature.label} className="flex flex-col gap-3">
                     {feature.clip ? (
