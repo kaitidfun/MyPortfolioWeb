@@ -267,30 +267,6 @@ export const projects = [
     },
   },
   {
-    id: "nature-conservation-game",
-    name: "Nature Conservation Game",
-    subtitle: "CAU x CMU Hackathon",
-    blurb:
-      "UI/UX prototypes for an educational app, designed under intense hackathon time constraints.",
-    tags: ["Figma", "UX/UI", "Teamwork"],
-    demoType: "gallery",
-    details: {
-      heading: "Nature Conservation Game",
-      subheading: "CAU x CMU Joint Hackathon 2025",
-      description:
-        "An educational game concept designed to raise awareness of nature conservation. Working under intense hackathon time constraints, the focus was on rapid UI/UX prototyping in Figma and close cross-functional collaboration with a diverse team.",
-      highlights: [
-        "Designed UI/UX prototypes (Figma) for an educational app under intense time constraints.",
-        "Collaborated cross-functionally with a diverse team, demonstrating rapid problem-solving.",
-      ],
-      techStack: ["Figma", "Teamwork", "Rapid Problem-Solving"],
-      demoAspect: "gallery",
-      demoLabel: "Image gallery / mockups coming soon",
-      certification:
-        "Certification: CAU x CMU Joint Hackathon — Chiang Mai University & Chung-Ang University, 2025",
-    },
-  },
-  {
     id: "quorum",
     name: "QuORuM — Four Numbers, Ninety Days",
     subtitle: "Personal Project",
@@ -392,35 +368,35 @@ export const projects = [
     subtitle: "Personal Project",
     blurb:
       "An isometric 3D living room built in Blender as a personal-space portrait, revisited years later and brought to life with a physics-driven curtain and volumetric window light.",
-    tags: ["Blender", "Python (bpy)", "3D Art"],
+    tags: ["Blender", "3D Art", "AI-Assisted Animation"],
     demoType: "video",
     details: {
       heading: "A Room of My Own",
       problem:
-        "The piece started as a single still render, made for a media/design school application portfolio: everyone has a space that's theirs, and this was mine — a couch, a guitar, headphones, a stack of books, light through a curtain. It said what it needed to as a still image, but a still image is also where it stopped; nothing in the room moved, and the piece sat unfinished for years.",
+        "Everyone has a space that's their own — somewhere that calls back a memory worth keeping, somewhere that stays a comfort no matter how long you sit with it. This room is that space, imagined: a couch, a guitar, headphones, a stack of books, light through a curtain. Every object in it was chosen to say something about who made it.",
       description:
-        "Revisiting it meant two things: relighting the scene for a colder, more atmospheric mood, and finally giving it motion — a curtain that actually responds to a breeze, and window light you can see hanging in the air rather than just a bright rectangle of glass. Neither of those came from clicking around in Blender's UI; both were built and debugged through Python scripts driving Blender headlessly from the command line, since the modeling skills from years ago hadn't carried forward but the scripting could fill the gap.",
+        "Modeled entirely by hand in Blender for a media/design school application in 2022 — the room, every object in it, the composition, the lighting, all built and arranged by hand, no code involved. It said what it needed to as a still image, but a still image is also where it stopped: nothing in the room moved, and it sat unfinished for years. Revisiting it in 2026 meant relighting it for a colder, more atmospheric mood and finally giving it motion — with Claude doing the Python/Blender scripting to add a physics-driven curtain and volumetric window light, since the modeling skills from 2022 hadn't carried forward but AI-assisted scripting could fill the gap.",
       highlights: [
         "The curtain runs on real cloth physics (a pinned cloth simulation plus a wind force field) instead of a hand-keyframed sway, so its motion comes from an actual simulation, not an animator's guess at one.",
         "Window light passes through a bounded volumetric-scattering box scoped to just the room's air, so it reads as a visible shaft of light rather than fogging the whole scene.",
       ],
-      techStack: ["Blender", "Python (bpy)", "Cloth Simulation", "EEVEE"],
+      techStack: ["Blender", "3D Modeling", "Cloth Simulation", "EEVEE"],
       heroClip: "/demos/room-art/room-loop.mp4",
       heroPoster: "/demos/room-art/hero-poster.jpg",
       architecture: {
         intro:
-          "No plugin drives this — every step past the original modeling is a Python script talking to Blender on the command line.",
+          "Two different processes, five years apart, on the same file.",
         stages: [
           {
             icon: "sparkle",
-            label: "Model & Light",
+            label: "Model & Light (2022)",
             detail: "Room, furniture, and materials built and lit by hand in Blender",
-            flow: "scene file",
+            flow: "still render",
           },
           {
             icon: "python",
-            label: "Script the Physics",
-            detail: "Python (bpy) drives Blender headlessly — cloth sim, wind, and volumetric light, no clicking through menus",
+            label: "AI-Assisted Animation (2026)",
+            detail: "Claude scripted Blender headlessly to add cloth-sim curtain motion and volumetric window light",
             flow: "baked simulation",
           },
           {
@@ -432,19 +408,31 @@ export const projects = [
       },
       pipelineDetail: {
         intro:
-          "Same room, five years apart. The 2022 version is flatter and cooler — a straightforward still for a portfolio deadline. The 2026 pass kept the composition but rebuilt the mood: warmer light, real shadow falloff, a curtain and window glow that both do something instead of sitting still.",
+          "The same room across four real stages — from an empty box to the finished, animated piece.",
         steps: [
           {
-            label: "2022 — the original still",
+            label: "Empty room",
             description:
-              "Built for a school application portfolio: model the room, arrange the objects, light it, render one frame. Everything in it was chosen to say something about the person who made it, but the lighting is flat and even — nothing pulls the eye anywhere in particular.",
-            image: "/demos/room-art/before-2022.jpg",
+              "The shell first: walls, floor, window, and curtain, before a single piece of furniture goes in. Composition and light direction get decided here, while the room is still easy to read.",
+            image: "/demos/room-art/process-1-empty.jpg",
           },
           {
-            label: "2026 — relit and rebuilt",
+            label: "Furnished",
             description:
-              "Same geometry, reworked lighting and materials, and — new this pass — a real physics simulation and volumetric light instead of a static scene. What used to be a single frozen frame now loops as a few seconds of a room that's quietly, actually alive.",
-            image: "/demos/room-art/after-2026.jpg",
+              "Couch, guitar, books, headphones — each one placed by hand until the room started to feel lived-in rather than staged. An earlier pass had a doodled note board on the wall; it got cut for a cleaner read.",
+            image: "/demos/room-art/process-2-furnished.jpg",
+          },
+          {
+            label: "2022 — the finished still",
+            description:
+              "The version submitted for the school application: one rendered frame, flat and even lighting, nothing pulling the eye anywhere in particular.",
+            image: "/demos/room-art/process-3-final2022.jpg",
+          },
+          {
+            label: "2026 — relit and animated",
+            description:
+              "Same geometry, reworked lighting and materials, and a real physics simulation and volumetric light in place of a static scene. What used to be a single frozen frame now loops as a room that's quietly, actually alive.",
+            image: "/demos/room-art/process-4-final2026.jpg",
           },
         ],
       },
