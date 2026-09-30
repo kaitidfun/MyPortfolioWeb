@@ -386,6 +386,87 @@ export const projects = [
       heroPoster: "/demos/quorum/hero-poster.jpg",
     },
   },
+  {
+    id: "room-art",
+    name: "A Room of My Own",
+    subtitle: "Personal Project",
+    blurb:
+      "An isometric 3D living room built in Blender as a personal-space portrait, revisited years later and brought to life with a physics-driven curtain and volumetric window light.",
+    tags: ["Blender", "Python (bpy)", "3D Art"],
+    demoType: "video",
+    details: {
+      heading: "A Room of My Own",
+      problem:
+        "The piece started as a single still render, made for a media/design school application portfolio: everyone has a space that's theirs, and this was mine — a couch, a guitar, headphones, a stack of books, light through a curtain. It said what it needed to as a still image, but a still image is also where it stopped; nothing in the room moved, and the piece sat unfinished for years.",
+      description:
+        "Revisiting it meant two things: relighting the scene for a colder, more atmospheric mood, and finally giving it motion — a curtain that actually responds to a breeze, and window light you can see hanging in the air rather than just a bright rectangle of glass. Neither of those came from clicking around in Blender's UI; both were built and debugged through Python scripts driving Blender headlessly from the command line, since the modeling skills from years ago hadn't carried forward but the scripting could fill the gap.",
+      highlights: [
+        "The curtain runs on real cloth physics (a pinned cloth simulation plus a wind force field) instead of a hand-keyframed sway, so its motion comes from an actual simulation, not an animator's guess at one.",
+        "Window light passes through a bounded volumetric-scattering box scoped to just the room's air, so it reads as a visible shaft of light rather than fogging the whole scene.",
+      ],
+      techStack: ["Blender", "Python (bpy)", "Cloth Simulation", "EEVEE"],
+      heroClip: "/demos/room-art/room-loop.mp4",
+      heroPoster: "/demos/room-art/hero-poster.jpg",
+      architecture: {
+        intro:
+          "No plugin drives this — every step past the original modeling is a Python script talking to Blender on the command line.",
+        stages: [
+          {
+            icon: "sparkle",
+            label: "Model & Light",
+            detail: "Room, furniture, and materials built and lit by hand in Blender",
+            flow: "scene file",
+          },
+          {
+            icon: "python",
+            label: "Script the Physics",
+            detail: "Python (bpy) drives Blender headlessly — cloth sim, wind, and volumetric light, no clicking through menus",
+            flow: "baked simulation",
+          },
+          {
+            icon: "film",
+            label: "Render & Loop",
+            detail: "145 frames rendered out and stitched into a seamless 6-second loop",
+          },
+        ],
+      },
+      pipelineDetail: {
+        intro:
+          "Same room, five years apart. The 2022 version is flatter and cooler — a straightforward still for a portfolio deadline. The 2026 pass kept the composition but rebuilt the mood: warmer light, real shadow falloff, a curtain and window glow that both do something instead of sitting still.",
+        steps: [
+          {
+            label: "2022 — the original still",
+            description:
+              "Built for a school application portfolio: model the room, arrange the objects, light it, render one frame. Everything in it was chosen to say something about the person who made it, but the lighting is flat and even — nothing pulls the eye anywhere in particular.",
+            image: "/demos/room-art/before-2022.jpg",
+          },
+          {
+            label: "2026 — relit and rebuilt",
+            description:
+              "Same geometry, reworked lighting and materials, and — new this pass — a real physics simulation and volumetric light instead of a static scene. What used to be a single frozen frame now loops as a few seconds of a room that's quietly, actually alive.",
+            image: "/demos/room-art/after-2026.jpg",
+          },
+        ],
+      },
+      challenges: [
+        {
+          problem: "The cloth simulation would silently hang for hours in headless Blender.",
+          solution:
+            "Scripting Blender from the command line (`blender --background`) doesn't drive physics forward just because the current frame changes — stepping through frames one at a time looked like it was working, then froze solid a few frames in. The actual fix was calling Blender's cache-bake operator explicitly before rendering, rather than relying on frame-stepping to simulate it implicitly. Even then, one parameter combination (low mass, low damping, sharp wind gusts) sent the solver into a multi-hour hang with zero output — dialing the same motion in with gentler, more stable settings fixed it for good.",
+        },
+        {
+          problem: "The wind was blowing the curtain the wrong way — or not at all.",
+          solution:
+            "Two bugs stacked on each other: the wind field's shape was left on its default (a point source with distance falloff, like a small explosion) instead of a directional plane, so almost no force reached the curtain at its actual distance; and once that was fixed, the field's rotation had the sign backwards, blowing away from the room instead of into it. Cross-checked by reading back the field's world-space direction vector after each change rather than trusting the rotation values alone.",
+        },
+        {
+          problem: "The window light either looked like flat glass or fogged out the whole room.",
+          solution:
+            "A volumetric scatter shader on the World background lit the entire scene's air, not just the light passing through the window, so the room read as hazy rather than sunlit. Swapping it for a scatter volume scoped to a box matching just the room's interior — with the density turned down — kept the effect to a visible shaft of light instead of an overall fog.",
+        },
+      ],
+    },
+  },
 ];
 
 export const skillCategories = [
