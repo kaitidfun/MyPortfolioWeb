@@ -27,12 +27,12 @@ export default function ProjectGallery() {
                 <img
                   src={project.cover}
                   alt={project.name}
-                  className="aspect-square w-20 flex-shrink-0 self-start object-cover sm:w-32 md:w-36"
+                  className="aspect-square w-20 flex-shrink-0 self-start object-cover sm:w-24 md:w-28"
                 />
               ) : (
                 <CoverPlaceholder
                   label="Cover soon"
-                  className="w-20 flex-shrink-0 sm:w-32 md:w-36"
+                  className="w-20 flex-shrink-0 sm:w-24 md:w-28"
                 />
               )}
               <div className="flex flex-1 flex-col justify-center p-2 sm:p-3">
