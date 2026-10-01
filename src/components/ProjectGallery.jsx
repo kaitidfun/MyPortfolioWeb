@@ -27,7 +27,7 @@ export default function ProjectGallery() {
                 <img
                   src={project.cover}
                   alt={project.name}
-                  className="aspect-[16/9] w-20 flex-shrink-0 object-cover sm:aspect-[16/10] sm:w-1/3 sm:min-w-[140px] md:w-1/4"
+                  className="aspect-square w-20 flex-shrink-0 self-start object-cover sm:w-1/3 sm:min-w-[140px] md:w-1/4"
                 />
               ) : (
                 <CoverPlaceholder
