@@ -14,6 +14,9 @@ export default function ProjectGallery() {
         <h2 className="mt-1 text-base font-bold tracking-tight text-ink-900 sm:text-xl dark:text-white">
           Project Gallery
         </h2>
+        <p className="mt-1 text-xs text-ink-500 sm:mt-1.5 sm:text-sm dark:text-navy-300">
+          Click a project below for the full write-up.
+        </p>
       </Reveal>
 
       <div className="mt-2.5 flex flex-col gap-2 sm:mt-3 sm:gap-2.5">

@@ -367,7 +367,7 @@ export const projects = [
     name: "A Room of My Own — Model to Motion",
     subtitle: "Personal Project",
     blurb:
-      "An isometric 3D living room built in Blender as a personal-space portrait, revisited years later and brought to life with a physics-driven curtain and volumetric window light.",
+      "An isometric 3D living room built in Blender, revisited years later and brought to life with a physics-driven curtain and volumetric light.",
     tags: ["Blender", "3D Art", "AI-Assisted Animation"],
     demoType: "video",
     cover: "/demos/room-art/cover.jpg",
